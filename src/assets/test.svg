@@ -1,0 +1,44 @@
+<svg data-frames="10" data-rate="10" data-width="50" data-height="50" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" fill-rule="evenodd">
+    <rect fill="#FFBE00" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="15.176" y="36">0</tspan>
+    </text>
+    <rect fill="#FFFD00" x="50" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="68.776" y="36">1</tspan>
+    </text>
+    <rect fill="#A9FF00" x="100" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="115.896" y="36">2</tspan>
+    </text>
+    <rect fill="#00FF9C" x="150" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="166.408" y="36">3</tspan>
+    </text>
+    <rect fill="#00D8FF" x="200" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="215.592" y="36">4</tspan>
+    </text>
+    <rect fill="#317CFF" x="250" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="265.784" y="36">5</tspan>
+    </text>
+    <rect fill="#8726FF" x="300" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="316.152" y="36">6</tspan>
+    </text>
+    <rect fill="#E600FF" x="350" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="366.216" y="36">7</tspan>
+    </text>
+    <rect fill="#F06" x="400" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="416.232" y="36">8</tspan>
+    </text>
+    <rect fill="#FF6400" x="450" width="50" height="50" rx="8"/>
+    <text font-family="Quicksand-Bold, Quicksand" font-size="32" font-weight="bold" fill="#013">
+      <tspan x="465.912" y="36">9</tspan>
+    </text>
+  </g>
+</svg>
