@@ -1,5 +1,6 @@
 export { BitmapImage } from './BitmapImage';
 export { BitmapSprite } from './BitmapSprite';
+export { Box } from './Box';
 export { Camera } from './Camera';
 export { Circle } from './Circle';
 export { CollisionBox } from './CollisionBox';
@@ -7,7 +8,8 @@ export { Engine } from './Engine';
 export { Keyboard } from './Keyboard';
 export { Node } from './Node';
 export { Physics } from './Physics';
-export { Rectangle } from './Rectangle';
+export { PhysicsBox } from './PhysicsBox';
+export { PhysicsCircle } from './PhysicsCircle';
 export { SpriteSet, SpriteSetContext } from './SpriteSet';
 export { Tilemap } from './Tilemap';
 export { VectorSprite } from './VectorSprite';

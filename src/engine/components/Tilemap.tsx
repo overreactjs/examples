@@ -1,7 +1,7 @@
 import { usePosition, useProperty } from "../hooks";
 import { Position, Prop, Size, Tileset } from "../types";
 import { BitmapImage } from "./BitmapImage";
-import { Rectangle } from "./Rectangle";
+import { Box } from "./Box";
 
 type TilemapProps = {
   pos?: Prop<Position>;
@@ -18,7 +18,7 @@ export const Tilemap: React.FC<TilemapProps> = ({ tileset, tiles, ...props }) =>
   const tilesetCols = Math.floor((image.size[0] * image.scale) / cellSize[0]);
   
   return (
-    <Rectangle pos={pos} size={size}>
+    <Box pos={pos} size={size}>
       {tiles.map((tile, index) => {
         if (tile >= 0) {
           const x = (index % gridSize[0]) * cellSize[0];
@@ -30,6 +30,6 @@ export const Tilemap: React.FC<TilemapProps> = ({ tileset, tiles, ...props }) =>
           return null;
         }
       })}
-    </Rectangle>
+    </Box>
   )
 }

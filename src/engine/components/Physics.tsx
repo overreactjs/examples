@@ -35,6 +35,15 @@ export const Physics: React.FC<PhysicsProps> = ({ children }) => {
   }, []);
 
   /**
+   * Set the angle of gravity.
+   */
+  const setGravity = useCallback((angle: number) => {
+    const radians = angle * Math.PI / 180;
+    engine.current.gravity.x = Math.sin(radians);
+    engine.current.gravity.y = Math.cos(radians);
+  }, []);
+
+  /**
    * Each frame, play the physics system forwards, then call all of the update functions.
    */
   useUpdate((delta) => {
@@ -45,7 +54,7 @@ export const Physics: React.FC<PhysicsProps> = ({ children }) => {
     }
   });
 
-  const context = useMemo(() => ({ register }), [register]);
+  const context = useMemo(() => ({ register, setGravity }), [register, setGravity]);
 
   return (
     <PhysicsContext.Provider value={context}>

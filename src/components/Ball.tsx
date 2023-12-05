@@ -1,14 +1,26 @@
-import { Circle, Size, useCirclePhysics, useOffsetPosition, usePosition, useProperty } from "@engine";
+import { Prop, Position, usePosition, useProperty, Size, Circle, Node, PhysicsCircle, useDynamicProperty } from "@engine";
 
-export const Ball: React.FC = () => {
-  const pos = usePosition([0, -100]);
-  const radius = useProperty(25);
-  const size = useProperty<Size>([radius.current * 2, radius.current * 2]);
-  const circlePos = useOffsetPosition(pos, [-radius.current, -radius.current]);
+type BallProps = {
+  pos: Prop<Position>;
+  radius: Prop<number>;
+  color: string;
+};
 
-  useCirclePhysics(pos, radius);
+export const Ball: React.FC<BallProps> = (props) => {
+  const pos = usePosition(props.pos);
+  const radius = useProperty(props.radius);
+
+  const circlePos = useDynamicProperty(pos, (pos): Position => [
+    pos[0] - radius.current,
+    pos[1] - radius.current,
+  ]);
+
+  const circleSize = useDynamicProperty(radius, (radius): Size => [radius * 2, radius * 2]);
 
   return (
-    <Circle pos={circlePos} size={size} color="cyan" />
+    <Node>
+      <Circle pos={circlePos} size={circleSize} color={props.color} />
+      <PhysicsCircle pos={pos} radius={radius} />
+    </Node>
   );
 };

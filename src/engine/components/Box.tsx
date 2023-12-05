@@ -2,21 +2,20 @@ import { useElement, usePosition, useProperty, useRender } from "../hooks";
 import { Position, Prop, Size } from "../types";
 import { Node } from "./Node";
 
-/**
- * Rectangle
- * ---------
- * 
- * ...
- */
-
-type RectangleProps = {
+type BoxProps = {
   pos?: Prop<Position>;
   size: Prop<Size>;
   color?: Prop<string>;
   children?: React.ReactNode;
 };
 
-export const Rectangle: React.FC<RectangleProps> = (props) => {
+/**
+ * Box
+ * ---
+ * 
+ * ...
+ */
+export const Box: React.FC<BoxProps> = (props) => {
   const element = useElement<HTMLDivElement>();
 
   const pos = usePosition(props.pos);

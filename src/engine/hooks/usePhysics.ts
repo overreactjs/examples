@@ -3,10 +3,6 @@ import { Bodies } from "matter-js";
 import { PhysicsContext } from "../context";
 import { PhysicsUpdateFunction, Position, Property, Size } from "../types";
 
-type PhysicsOptions = {
-  isStatic?: boolean;
-}
-
 export const usePhysics = (
   body: Property<Matter.Body>,
   update: PhysicsUpdateFunction,
@@ -22,7 +18,7 @@ export const usePhysics = (
 export const useBoxPhysics = (
   pos: Property<Position>,
   size: Property<Size>,
-  options?: PhysicsOptions,
+  options?: Matter.IBodyDefinition,
 ) => {
   const [x, y] = pos.current;
   const [w, h] = size.current;
@@ -40,7 +36,7 @@ export const useBoxPhysics = (
 export const useCirclePhysics = (
   pos: Property<Position>,
   radius: Property<number>,
-  options?: PhysicsOptions,
+  options?: Matter.IBodyDefinition,
 ) => {
   const [x, y] = pos.current;
   const r = radius.current;

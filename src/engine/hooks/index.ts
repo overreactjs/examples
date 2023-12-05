@@ -2,6 +2,7 @@ export { use8DirectionMovement } from './use8DirectionMovement';
 export { useCollision, useTaggedCollision } from './useCollision';
 export { useCollider, useBoxCollider } from './useCollider';
 export { useDebug } from './useDebug';
+export { useDynamicProperty } from './useDynamicProperty';
 export { useElement } from './useElement';
 export { useKeyboard } from './useKeyboard';
 export { useLogMount } from './useLogMount';

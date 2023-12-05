@@ -60,7 +60,7 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
 
   return (
     <NodeContext.Provider value={context}>
-      <div className="w-screen h-screen">{children}</div>
+      {children}
     </NodeContext.Provider>
   );
 };
