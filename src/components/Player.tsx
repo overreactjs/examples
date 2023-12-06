@@ -58,7 +58,7 @@ export const Player: React.FC<PlayerProps> = ({ index, showLabels = false }) => 
         <BitmapSprite name="fall" pos={fallSpritePos} size={[60, 108]} image={PLAYER_FALL} count={2} rate={10} flip={flip} repeat={false} />
       </SpriteSet>
       <CollisionBox pos={colliderPos} size={[50, 78]} id={collider} tags={['player']} />
-      <Camera smooth axis="x" />
+      <Camera smooth axis="xy" />
       {showLabels && <PlayerIndicator pos={labelPos} index={index} />}
     </Node>
   );
