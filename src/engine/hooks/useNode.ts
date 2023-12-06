@@ -7,9 +7,9 @@ export const useNode = () => {
   const updates = useRef<Map<string, UpdateFunction>>(new Map());
   const renders = useRef<Map<string, RenderFunction>>(new Map());
 
-  const update = useCallback((delta: number) => {
+  const update = useCallback((delta: number, time: number) => {
     for (const entry of updates.current) {
-      entry[1](delta);
+      entry[1](delta, time);
     }
   }, []);
 

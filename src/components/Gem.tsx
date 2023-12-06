@@ -12,7 +12,7 @@ type GemProps = {
 export const Gem: React.FC<GemProps> = (props) => {
   const game = useGame();
   const gem = useProperty(props.gem);
-  const gemPos = useOffsetPosition(gem.current.pos, [-24, -24]);
+  const spritePos = useOffsetPosition(gem.current.pos, [-24, -24]);
   const colliderPos = useOffsetPosition(gem.current.pos, [-18, -18]);
   const collider = useId();
 
@@ -23,9 +23,9 @@ export const Gem: React.FC<GemProps> = (props) => {
   });
 
   return (
-    <Node pos={gem.current.pos}>
+    <Node>
       <SpriteSet animation="default">
-        <BitmapSprite name="default" pos={gemPos} size={[48, 48]} image={GEM} count={8} rate={10} />
+        <BitmapSprite name="default" pos={spritePos} size={[48, 48]} image={GEM} count={8} rate={10} />
       </SpriteSet>
       <CollisionBox id={collider} pos={colliderPos} size={[36, 36]} tags={['gem']} />
     </Node>

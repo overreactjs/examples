@@ -1,21 +1,24 @@
 import { useMemo } from "react";
 import { Property } from "@engine";
 
-export function useDynamicProperty<T, R>(value: Property<T>, fn: (value: T) => R) {
+export function useDynamicProperty<IN, OUT>(
+  value: Property<IN>,
+  fn: (value: IN) => OUT,
+) {
   return useMemo(() => new DynamicProperty(value, fn), [fn, value]);
 }
 
-export class DynamicProperty<T, R> {
+export class DynamicProperty<IN, OUT> {
   
-  value: Property<T>;
-  fn: (value: T) => R;
+  value: Property<IN>;
+  fn: (value: IN) => OUT;
 
-  constructor(value: Property<T>, fn: (value: T) => R) {
+  constructor(value: Property<IN>, fn: (value: IN) => OUT) {
     this.value = value;
     this.fn = fn;
   }
   
-  get current(): R {
+  get current(): OUT {
     return this.fn(this.value.current);
   }
 }

@@ -22,6 +22,7 @@ export const World: React.FC<WorldProps> = ({ children }) => {
   const bodyTags = useRef<Map<Body, string[]>>(new Map());
   const updaters = useRef<Map<Body, CollisionUpdateFunction>>(new Map());
   const handlers = useRef<Map<Body, Set<CollisionEventFunction>>>(new Map());
+  const overlaps = useRef(new OverlappingSet());
 
   const registerCollider = useCallback((id: string, tags: string[], body: Body, fn: CollisionUpdateFunction) => {
     if (!bodies.current.has(id)) {
@@ -64,8 +65,6 @@ export const World: React.FC<WorldProps> = ({ children }) => {
     () => ({ registerCollider, registerHandler }),
     [registerCollider, registerHandler],
   );
-
-  const overlaps = useRef(new OverlappingSet());
 
   useUpdate(() => {
     // Run all body update callbacks.

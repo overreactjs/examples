@@ -1,5 +1,5 @@
 import { Engine, Keyboard, Physics, Viewport, World } from "@engine";
-import { Collectibles, Game, LevelGeometry, PassivePlayer, Player } from "./components";
+import { Collectibles, Game, LevelGeometry, PassivePlayer, Player } from "../components";
 
 export const MultiplayerDemo = () => {
   return (

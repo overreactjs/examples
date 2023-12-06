@@ -1,5 +1,5 @@
 import { Engine, Keyboard, Viewport, World } from "@engine";
-import { Collectibles, Game, LevelGeometry, Player, ScoreUI } from "./components";
+import { Collectibles, Game, LevelGeometry, Player, ScoreUI } from "../components";
 
 export const PlatformerDemo = () => {
   return (

@@ -30,8 +30,6 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
     const delta = t - time.current;
     time.current = t;
 
-    // console.log(delta.toFixed(3));
-
     if (isKeyPressed('KeyP')) {
       paused.current = !paused.current;
     }
@@ -41,7 +39,7 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
     }
 
     if (!paused.current && delta > 0) {
-      update(delta);
+      update(delta, t);
     }
     
     render();

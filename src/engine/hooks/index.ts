@@ -4,7 +4,7 @@ export { useCollider, useBoxCollider } from './useCollider';
 export { useDebug } from './useDebug';
 export { useDynamicProperty } from './useDynamicProperty';
 export { useElement } from './useElement';
-export { useKeyboard } from './useKeyboard';
+export { useKeyboard, useKeyAxis, useKeyPressed } from './useKeyboard';
 export { useLogMount } from './useLogMount';
 export { useNode } from './useNode';
 export { useOffsetPosition } from './useOffsetPosition';

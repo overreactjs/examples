@@ -5,6 +5,7 @@ import { Node } from "./Node";
 type BoxProps = {
   pos?: Prop<Position>;
   size: Prop<Size>;
+  angle?: Prop<number>;
   color?: Prop<string>;
   children?: React.ReactNode;
 };
@@ -19,11 +20,12 @@ export const Box: React.FC<BoxProps> = (props) => {
   const element = useElement<HTMLDivElement>();
 
   const pos = usePosition(props.pos);
-  const size = useProperty<Size>(props.size);
-  const color = useProperty<string>(props.color || 'transparent');
+  const size = useProperty(props.size);
+  const angle = useProperty(props.angle || 0);
+  const color = useProperty(props.color || 'transparent');
 
   useRender(() => {
-    element.setBaseStyles({ pos, size });
+    element.setBaseStyles({ pos, size, angle });
     element.setStyle('backgroundColor', color.current);
   });
 

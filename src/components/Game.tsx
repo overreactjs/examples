@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { GameState } from "../state";
-import { Property, useKeyboard, useUpdate } from "@engine";
+import { Property, useKeyPressed } from "@engine";
 
 export const GameContext = React.createContext<Property<GameState>>({ current: new GameState() });
 
@@ -14,12 +14,9 @@ type GameProps = {
 
 export const Game: React.FC<GameProps> = ({ children }) => {
   const state = useRef(new GameState());
-  const { isKeyPressed } = useKeyboard();
 
-  useUpdate(() => {
-    if (isKeyPressed('KeyO')) {
-      console.log(state.current);
-    }
+  useKeyPressed('KeyO', () => {
+    console.log(state.current);
   });
 
   return (

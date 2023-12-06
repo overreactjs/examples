@@ -2,7 +2,7 @@ import { useElement, useDebug, usePosition, useProperty, useRender } from "../ho
 import { useBoxPhysics } from "../hooks/usePhysics";
 import { Prop, Position, Size } from "../types";
 
-const CLASS_NAME = "absolute outline outline-2 outline-[#0ff] bg-[#0ff3] -outline-offset-1";
+const CLASS_NAME = "absolute outline outline-2 outline-[#f0f] bg-[#f0f3] -outline-offset-1";
 
 type PhysicsBoxProps = {
   id?: string;

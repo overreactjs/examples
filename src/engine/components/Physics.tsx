@@ -54,7 +54,7 @@ export const Physics: React.FC<PhysicsProps> = ({ children }) => {
     }
   });
 
-  const context = useMemo(() => ({ register, setGravity }), [register, setGravity]);
+  const context = useMemo(() => ({ engine, register, setGravity }), [engine, register, setGravity]);
 
   return (
     <PhysicsContext.Provider value={context}>
