@@ -30,7 +30,7 @@ const Lighting: React.FC = () => {
 
   return (
     <>
-      <Box pos={[-800, -800]} size={[1600, 1600]} color="black" className="mix-blend-color-burn">
+      <Box pos={[-800, -800]} size={[1600, 1600]} color="black" className="mix-blend-hard-light">
         <Flame pos={lightPos} size={[600, 600]} />
         <Flame pos={[950, 400]} size={[400, 400]} />
         <Flame pos={[250, 400]} size={[400, 400]} />

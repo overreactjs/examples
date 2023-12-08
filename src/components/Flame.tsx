@@ -1,6 +1,6 @@
 import { Circle, Position, Prop, Size, useDynamicProperty, usePosition, useProperty, useUpdate } from "@engine";
 
-const CLASS_NAME = "!bg-[radial-gradient(#ffc_0%,_black_70%)] mix-blend-screen";
+const CLASS_NAME = "!bg-[radial-gradient(#888_0%,_black_70%)] mix-blend-lighten";
 const FRAMES = [1.00, 1.02, 0.96, 1.04, 0.98];
 
 type FlameProps = {
