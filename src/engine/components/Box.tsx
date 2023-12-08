@@ -8,6 +8,7 @@ type BoxProps = {
   angle?: Prop<number>;
   color?: Prop<string>;
   children?: React.ReactNode;
+  className?: string;
 };
 
 /**
@@ -16,7 +17,7 @@ type BoxProps = {
  * 
  * ...
  */
-export const Box: React.FC<BoxProps> = (props) => {
+export const Box: React.FC<BoxProps> = ({ className, ...props }) => {
   const element = useElement<HTMLDivElement>();
 
   const pos = usePosition(props.pos);
@@ -31,7 +32,7 @@ export const Box: React.FC<BoxProps> = (props) => {
 
   return (
     <Node pos={pos}>
-      <div ref={element.ref} className="absolute" style={{ contain: 'content' }}>
+      <div ref={element.ref} className={`absolute ${className}`} style={{ contain: 'content' }}>
         {props.children}
       </div>
     </Node>

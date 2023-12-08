@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useUpdate } from "./useUpdate";
+import { useTicker } from "./useTicker";
 
 export function useSync<T>(fn: () => T) {
   const [value, setValue] = useState<T>();
 
-  useUpdate(() => {
+  useTicker(() => {
     const newValue = fn();
     if (newValue !== value) {
       setValue(newValue);

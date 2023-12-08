@@ -13,9 +13,10 @@ type CircleProps = {
   pos?: Prop<Position>;
   size: Prop<Size>;
   color: Prop<string>;
+  className?: string;
 };
 
-export const Circle: React.FC<CircleProps> = (props) => {
+export const Circle: React.FC<CircleProps> = ({ className, ...props }) => {
   const element = useElement<HTMLDivElement>();
 
   const pos = usePosition(props.pos);
@@ -29,7 +30,7 @@ export const Circle: React.FC<CircleProps> = (props) => {
 
   return (
     <Node pos={pos}>
-      <div ref={element.ref} className="absolute rounded-[100%]" style={{ contain: 'content' }} />
+      <div ref={element.ref} className={`absolute rounded-[100%] ${className}`} style={{ contain: 'content' }} />
     </Node>
   );
 }

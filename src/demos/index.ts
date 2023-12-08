@@ -1,4 +1,5 @@
 import { EmptyDemo } from "./EmptyDemo";
+import { LightingDemo } from "./LightingDemo";
 import { MultiplayerDemo } from "./MultiplayerDemo";
 import { PhysicsDemo } from "./PhysicsDemo";
 import { PlatformerDemo } from "./PlatformerDemo";
@@ -8,6 +9,7 @@ export const demos = [
   { name: 'Empty', path: '/empty', component: EmptyDemo },
   { name: 'Rotating Box', path: '/rotating-box', component: RotatingBoxDemo },
   { name: 'Platformer', path: '/platformer', component: PlatformerDemo },
-  { name: 'Split-screen Multiplayer', path: '/multiplayer', component: MultiplayerDemo },
+  { name: 'Multiplayer (Split-screen) ', path: '/multiplayer', component: MultiplayerDemo },
   { name: 'Physics (Marble Jar)', path: '/physics', component: PhysicsDemo },
+  { name: 'Lighting', path: '/lighting', component: LightingDemo },
 ];
