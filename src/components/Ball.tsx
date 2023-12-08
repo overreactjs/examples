@@ -3,12 +3,13 @@ import { Prop, Position, usePosition, useProperty, Size, Circle, Node, PhysicsCi
 type BallProps = {
   pos: Prop<Position>;
   radius: Prop<number>;
-  color: string;
+  color: Prop<string>;
 };
 
 export const Ball: React.FC<BallProps> = (props) => {
   const pos = usePosition(props.pos);
   const radius = useProperty(props.radius);
+  const color = useProperty(props.color);
 
   const circlePos = useDynamicProperty(pos, (pos): Position => [
     pos[0] - radius.current,
@@ -19,7 +20,7 @@ export const Ball: React.FC<BallProps> = (props) => {
 
   return (
     <Node>
-      <Circle pos={circlePos} size={circleSize} color={props.color} />
+      <Circle pos={circlePos} size={circleSize} color={color} />
       <PhysicsCircle pos={pos} radius={radius} />
     </Node>
   );

@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo, useRef } from "react";
-import { System, Body } from "detect-collisions";
+import { System, Body, Point } from "detect-collisions";
 import { Node } from "./Node";
-import { CollisionEventFunction, CollisionUpdateFunction } from "../types";
-import { useUpdate } from "../hooks";
+import { CollisionEventFunction, CollisionUpdateFunction, Position, Property } from "../types";
+import { useDynamicProperty, useMouse, useTouch, useUpdate } from "../hooks";
 import { WorldContext } from "../context";
 
 /**
@@ -17,6 +17,7 @@ type WorldProps = {
 }
 
 export const World: React.FC<WorldProps> = ({ children }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const system = useRef<System>(new System());
   const bodies = useRef<Map<string, Body>>(new Map());
   const bodyTags = useRef<Map<Body, string[]>>(new Map());
@@ -61,11 +62,22 @@ export const World: React.FC<WorldProps> = ({ children }) => {
     };
   }, []);
 
-  const context = useMemo(
-    () => ({ registerCollider, registerHandler }),
-    [registerCollider, registerHandler],
-  );
+  /**
+   * Check to see if the given point is inside of the body with the given identifier.
+   */
+  const isInside = useCallback((id: string, pos?: Property<Position>) => {
+    const body = bodies.current.get(id);
+    if (body && pos?.current) {
+      const point = new Point({ x: pos.current[0], y: pos.current[1] });
+      return system.current.checkCollision(point, body);
+    }
+    return false;
+  }, []);
 
+  
+  /**
+   * Update all bodies so that they 
+   */
   useUpdate(() => {
     // Run all body update callbacks.
     for (const [body, update] of updaters.current) {
@@ -88,14 +100,37 @@ export const World: React.FC<WorldProps> = ({ children }) => {
     overlaps.current = newOverlaps;
   });
 
+  /**
+   * Convert the global mouse position to world co-ordinates.
+   */
+  const mouse = useMouse();
+  const worldMousePos = useDynamicProperty(mouse.pos, ([x, y]): Position => {
+    const rect = ref.current?.getBoundingClientRect();
+    return [x - (rect?.x || 0), y - (rect?.y || 0)];
+  });
+
+  /**
+   * Convert the global mouse position to world co-ordinates.
+   */
+  const touch = useTouch();
+  const worldTouchPos = useDynamicProperty(touch.pos, ([x, y]): Position => {
+    const rect = ref.current?.getBoundingClientRect();
+    return [x - (rect?.x || 0), y - (rect?.y || 0)];
+  });
+
+  const worldContext = useMemo(
+    () => ({ registerCollider, registerHandler, isInside, mouse: worldMousePos, touch: worldTouchPos }),
+    [registerCollider, registerHandler, isInside, worldMousePos, worldTouchPos],
+  );
+
   return (
-    <WorldContext.Provider value={context}>
+    <WorldContext.Provider value={worldContext}>
       <Node>
-        <div>{children}</div>
+        <div ref={ref}>{children}</div>
       </Node>
     </WorldContext.Provider>
   );
-}
+};
 
 class OverlappingSet {
   overlaps: Map<Body, Set<Body>> = new Map();

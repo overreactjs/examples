@@ -1,4 +1,5 @@
 export { Ball } from './Ball';
+export { Balls } from './Balls';
 export { Collectibles } from './Collectibles';
 export { Device } from './Device';
 export { Game } from './Game';

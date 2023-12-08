@@ -1,43 +1,45 @@
-import { useContext, useState } from "react";
+import { useCallback, useState } from "react";
 import { Body } from "matter-js";
-import { Engine, Keyboard, Physics, PhysicsContext, Position, Viewport, useKeyAxis, useKeyPressed, useProperty } from "@engine";
-import { Ball, Device, Wall } from "../components";
+import { Engine, Physics, Position, Viewport, World, useKeyAxis, useKeyPressed, usePhysicsEngine, useProperty } from "@engine";
+import { Balls, Device, Wall } from "../components";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from "../constants";
+import { BallState } from "../state";
 
 export const PhysicsDemo = () => {
   return (
     <div className="w-screen h-screen grid place-content-center bg-black">
-      <Keyboard>
-        <Engine>
-          <Physics>
-            <PhysicsGame />
-          </Physics>
-        </Engine>
-      </Keyboard>
+      <Engine>
+        <Physics>
+          <PhysicsGame />
+        </Physics>
+      </Engine>
     </div>
   );
 };
 
-type BallState = {
-  pos: Position;
-  radius: number;
-  color: string;
-};
-
 const PhysicsGame: React.FC = () => {
-  const { engine, setGravity } = useContext(PhysicsContext);
+  const { engine, setGravity } = usePhysicsEngine();
   const [balls, setBalls] = useState<BallState[]>([]);
   const [hasWalls, setHasWalls] = useState(true);
   const angle = useProperty(0);
 
-  // Press "A": Add a new ball.
-  useKeyPressed('KeyA', () => {
-    setBalls((balls) => [...balls, {
-      pos: [Math.random() * 200 - 100, -300],
-      radius: Math.random() * 25 + 15,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-    }]);
-  });
+  /**
+   * Add a new ball at the given location.
+   */
+  const addBall = useCallback((pos: Position) => {
+    setBalls((balls) => [...balls, new BallState(
+      pos,
+      Math.random() * 25 + 15,
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+    )]);
+  }, []);
+
+  /**
+   * Remove the given ball from the scene.
+   */
+  const removeBall = useCallback((remove: BallState) => {
+    setBalls((balls) => balls.filter((ball) => remove !== ball));
+  }, []);
 
   // Press "S": Shake the device.
   useKeyPressed('KeyS', () => {
@@ -64,15 +66,15 @@ const PhysicsGame: React.FC = () => {
   return (
     <Device angle={angle}>
       <Viewport>
-        <Wall pos={[-250, 0]} size={[100, 1000]} />
-        <Wall pos={[250, 0]} size={[100, 1000]} />
+        <World>
+          <Wall pos={[-250, 0]} size={[100, 1000]} />
+          <Wall pos={[250, 0]} size={[100, 1000]} />
 
-        {hasWalls && <Wall pos={[0, 450]} size={[600, 100]} />}
-        {hasWalls && <Wall pos={[0, -450]} size={[600, 100]} />}
+          {hasWalls && <Wall pos={[0, 450]} size={[600, 100]} />}
+          {hasWalls && <Wall pos={[0, -450]} size={[600, 100]} />}
 
-        {balls.map(({ pos, radius, color }, index) => (
-          <Ball key={index} pos={pos} radius={radius} color={color} />
-        ))}
+          <Balls balls={balls} onAdd={addBall} onRemove={removeBall} />
+        </World>
       </Viewport>
     </Device>
   );

@@ -36,7 +36,7 @@ export const Viewport: React.FC<ViewportProps> = ({ children }) => {
 
   return (
     <div className="overflow-hidden w-full h-full">
-      <div ref={element.ref} className="relative left-[50%] top-[50%]">
+      <div ref={element.ref} className="relative left-[50%] top-[50%] bg-yellow-500 h-0 w-0">
         <ViewportContext.Provider value={context}>
           {children}
         </ViewportContext.Provider>

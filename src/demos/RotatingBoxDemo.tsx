@@ -1,19 +1,15 @@
-import { Box, Engine, Keyboard, Physics, Size, Viewport, World, useDynamicProperty, useProperty, useUpdate } from "@engine";
+import { Box, Engine, Size, Viewport, World, useDynamicProperty, useProperty, useUpdate } from "@engine";
 
 export const RotatingBoxDemo = () => {
   return (
     <div className="w-screen h-screen bg-black">
-      <Keyboard>
-        <Engine>
-          <Viewport>
-            <Physics>
-              <World>
-                <RotatingBox />
-              </World>
-            </Physics>
-          </Viewport>
-        </Engine>
-      </Keyboard>
+      <Engine>
+        <Viewport>
+          <World>
+            <RotatingBox />
+          </World>
+        </Viewport>
+      </Engine>
     </div>
   );
 };

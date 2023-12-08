@@ -23,6 +23,8 @@ export type Tileset = {
   cellSize: Size;
 }
 
+export type TickerFunction = (delta: number, time: number) => void;
+
 export type UpdateFunction = (delta: number, time: number) => void;
 
 export type RenderFunction = () => void;

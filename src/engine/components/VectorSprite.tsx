@@ -63,7 +63,7 @@ export const VectorSprite: React.FC<VectorSpriteProps> = ({ sprite: Sprite, ...p
 
   return (
     <Node pos={pos}>
-      <Sprite ref={element.ref} />
+      <Sprite ref={element.ref} style={{ userSelect: 'none' }} />
     </Node>
   );
 };

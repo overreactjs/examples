@@ -1,6 +1,9 @@
 import { useMemo, useRef, useCallback, useEffect, useState } from "react";
-import { useKeyboard, useNode } from "../hooks";
-import { NodeContext } from "../context";
+import { useNode } from "../hooks";
+import { EngineContext, NodeContext } from "../context";
+import { Keyboard } from "./Keyboard";
+import { Mouse } from "./Mouse";
+import { Touch } from "./Touch";
 
 /**
  * Engine
@@ -17,11 +20,11 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
   const started = useRef(false);
   const paused = useRef(true);
   const time = useRef<number>(0);
-  const { update, render, ...node } = useNode();
-  const { isKeyPressed } = useKeyboard();
-
   const [debug, setDebug] = useState(false);
-  const toggleDebug = useCallback(() => setDebug((debug) => !debug), []);
+  const node = useNode();
+
+  const onPause = useCallback(() => paused.current = !paused.current, []);
+  const onDebug = useCallback(() => setDebug((debug) => !debug), []);
 
   // Handle one tick of the game loop.
   const tick = useCallback((t: number) => {
@@ -30,21 +33,14 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
     const delta = t - time.current;
     time.current = t;
 
-    if (isKeyPressed('KeyP')) {
-      paused.current = !paused.current;
-    }
+    node.ticker(delta, t);
 
-    if (isKeyPressed('KeyO')) {
-      toggleDebug();
-    }
-
-    if (!paused.current && delta > 0) {
-      update(delta, t);
+    if (!paused.current) {
+      node.update(delta, t);
     }
     
-    render();
-
-  }, [isKeyPressed, render, toggleDebug, update]);
+    node.render();
+  }, [node]);
 
   // Start the game loop.
   useEffect(() => {
@@ -54,11 +50,19 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
     }
   }, [tick]);
 
-  const context = useMemo(() => ({ ...node, debug, toggleDebug }), [node, debug, toggleDebug]);
+  const engineContext = useMemo(() => ({ debug, onDebug, onPause }), [debug, onDebug, onPause]);
 
   return (
-    <NodeContext.Provider value={context}>
-      {children}
-    </NodeContext.Provider>
+    <EngineContext.Provider value={engineContext}>
+      <NodeContext.Provider value={node}>
+        <Keyboard>
+          <Mouse>
+            <Touch>
+              {children}
+            </Touch>
+          </Mouse>
+        </Keyboard>
+      </NodeContext.Provider>
+    </EngineContext.Provider>
   );
 };

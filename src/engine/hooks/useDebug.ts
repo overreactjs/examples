@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { NodeContext } from "../context";
+import { EngineContext } from "../context";
 
 export const useDebug = (): boolean => {
-  const { debug } = useContext(NodeContext);
+  const { debug } = useContext(EngineContext);
   return !!debug;
 }
