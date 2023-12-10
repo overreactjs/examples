@@ -1,0 +1,10 @@
+export { default as bee } from './bee.png';
+export { default as campfire } from './campfire.png';
+export { default as carrot } from './carrot.png';
+export { default as cheese } from './cheese.png';
+export { default as diamond } from './diamond.png';
+export { default as heart } from './heart.png';
+export { default as leaf } from './leaf.png';
+export { default as map } from './map.png';
+export { default as mushroom } from './mushroom.png';
+export { default as treasure } from './treasure.png';

@@ -13,3 +13,5 @@ export const PLAYER_IDLE: BitmapAsset = { url: playerIdle, size: [228, 34], scal
 export const PLAYER_RUN: BitmapAsset = { url: playerRun, size: [168, 33], scale: 3 };
 export const PLAYER_JUMP: BitmapAsset = { url: playerJump, size: [40, 36], scale: 3 };
 export const PLAYER_FALL: BitmapAsset = { url: playerFall, size: [40, 36], scale: 3 };
+
+export * as cards from './cards';

@@ -64,7 +64,7 @@ const PhysicsGame: React.FC = () => {
   });
   
   return (
-    <Device angle={angle}>
+    <Device angle={angle} allowShake allowTilt>
       <Viewport>
         <World>
           <Wall pos={[-250, 0]} size={[100, 1000]} />

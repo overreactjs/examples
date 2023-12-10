@@ -1,9 +1,9 @@
 import { useElement, useLogMount, useRender } from "@engine";
-import { useGame } from "./Game";
+import { usePlatformGame } from "./PlatformGame";
 
 export const ScoreUI: React.FC = () => {
   const element = useElement<HTMLDivElement>();
-  const game = useGame();
+  const game = usePlatformGame();
 
   useLogMount('ScoreUI');
 

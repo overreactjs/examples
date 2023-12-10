@@ -11,6 +11,7 @@ export const Mouse: React.FC<MouseProps> = ({ children }) => {
   const down = useRef<Set<number>>(new Set());
   const pressed = useRef<Set<number>>(new Set());
   const pos = useProperty<Position>([0, 0]);
+  const target = useProperty<Element | null>(null);
 
   /**
    * Returns true if the given mouse button is down.
@@ -26,12 +27,17 @@ export const Mouse: React.FC<MouseProps> = ({ children }) => {
     return pressed.current.has(button);
   }, []);
 
+  const isTarget = useCallback((element: Element | null) => {
+    return element !== null && element.contains(target.current);
+  }, [target]);
+
   /**
    * Keep track of which buttons are pressed down.
    */
   const handleMouseDown = useCallback((event: MouseEvent) => {
     down.current.add(event.button);
-  }, []);
+    target.current = event.target as Element;
+  }, [target]);
 
   /**
    * Keep track of which buttons have just been released.
@@ -41,8 +47,9 @@ export const Mouse: React.FC<MouseProps> = ({ children }) => {
     pressed.current.add(event.button);
     requestAnimationFrame(() => {
       pressed.current.delete(event.button);
+      target.current = null;
     });
-  }, []);
+  }, [target]);
 
   /**
    * Track the current screen position of the mouse.
@@ -50,7 +57,6 @@ export const Mouse: React.FC<MouseProps> = ({ children }) => {
   const handleMouseMove = useCallback((event: MouseEvent) => {
     pos.current[0] = event.clientX;
     pos.current[1] = event.clientY;
-    // console.log('update mouse pos...', pos.current);
   }, [pos]);
 
   /**
@@ -69,8 +75,8 @@ export const Mouse: React.FC<MouseProps> = ({ children }) => {
   }, [handleMouseDown, handleMouseMove, handleMouseUp]);
 
   const context = useMemo(
-    () => ({ pos, isDown, isPressed }),
-    [pos, isDown, isPressed],
+    () => ({ pos, isDown, isPressed, isTarget }),
+    [pos, isDown, isPressed, isTarget],
   );
 
   return (

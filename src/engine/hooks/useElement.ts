@@ -17,7 +17,7 @@ export type UseElementResult<E extends Element> = {
   setBaseStyles: (options: SetBaseStyles) => void;
 }
 
-export function useElement<E extends Element>(element?: UseElementResult<E>): UseElementResult<E> {
+export function useElement<E extends Element = HTMLDivElement>(element?: UseElementResult<E>): UseElementResult<E> {
   const generatedRef = useRef<Element>(null) as RefObject<E>;
   const ref = element?.ref || generatedRef;
 

@@ -1,9 +1,9 @@
 import { useSync } from "@engine";
 import { Gem } from "./Gem";
-import { useGame } from "./Game";
+import { usePlatformGame } from "./PlatformGame";
 
 export const Collectibles: React.FC = () => {
-  const game = useGame();
+  const game = usePlatformGame();
   const gems = useSync(() => game.current.gems.gems);
   
   return gems?.map((gem) => <Gem key={gem.id} gem={gem} />);

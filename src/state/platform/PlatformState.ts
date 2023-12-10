@@ -2,7 +2,7 @@ import { PlayerState } from "./PlayerState";
 import { GemState } from "./GemState";
 import { GemsState } from "./GemsState";
 
-export class GameState {
+export class PlatformState {
   score = 0;
   players = [
     new PlayerState([-144, 48]),

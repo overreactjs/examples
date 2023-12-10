@@ -52,7 +52,6 @@ export const Touch: React.FC<TouchProps> = ({ children }) => {
   const handleTouchMove = useCallback((event: TouchEvent) => {
     pos.current[0] = event.touches[0].clientX;
     pos.current[1] = event.touches[0].clientY;
-    console.log('update touch move pos...', pos.current);
   }, [pos]);
 
   /**

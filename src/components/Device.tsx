@@ -4,6 +4,8 @@ import { useShake } from "../hooks";
 type DeviceProps = {
   children: React.ReactNode;
   angle?: Prop<number>;
+  allowShake?: boolean;
+  allowTilt?: boolean;
 };
 
 export const Device: React.FC<DeviceProps> = ({ children, ...props }) => {
@@ -11,10 +13,14 @@ export const Device: React.FC<DeviceProps> = ({ children, ...props }) => {
   const { ref: shaker, shake } = useShake();
   const angle = useProperty(props.angle || 0);
   
-  useKeyPressed('KeyS', shake);
+  useKeyPressed('KeyS', () => {
+    if (props.allowShake) {
+      shake();
+    }
+  });
 
   useKeyAxis('KeyG', 'KeyH', (value) => {
-    if (value !== 0) {
+    if (props.allowTilt && value !== 0) {
       angle.current += value * 2;
     }
   });

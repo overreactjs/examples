@@ -1,5 +1,5 @@
 import { Position } from "@engine";
-import { ObjectState, StateProp } from "./ObjectState";
+import { ObjectState, StateProp } from "../ObjectState";
 
 export class BallState extends ObjectState {
   pos: StateProp<Position>;

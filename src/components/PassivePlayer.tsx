@@ -1,7 +1,7 @@
 import React from "react";
 import { PLAYER_FALL, PLAYER_IDLE, PLAYER_JUMP, PLAYER_RUN } from "../assets";
 import { BitmapSprite, Node, SpriteSet, useOffsetPosition, usePosition, useProperty } from "@engine";
-import { useGame } from "./Game";
+import { usePlatformGame } from "./PlatformGame";
 import { PlayerIndicator } from "./PlayerIndicator";
 
 const COLLIDER_OFFSET_Y = 9;
@@ -18,7 +18,7 @@ type PlayerProps = {
 }
 
 export const PassivePlayer: React.FC<PlayerProps> = ({ index }) => {
-  const game = useGame();
+  const game = usePlatformGame();
   const pos = usePosition(game.current.players[index].pos);
   const flip = useProperty(game.current.players[index].flip);
   const animation = useProperty(game.current.players[index].animation);

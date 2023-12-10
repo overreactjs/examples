@@ -1,4 +1,5 @@
 import { EmptyDemo } from "./EmptyDemo";
+import { CardsDemo } from "./CardsDemo";
 import { LightingDemo } from "./LightingDemo";
 import { MultiplayerDemo } from "./MultiplayerDemo";
 import { PhysicsDemo } from "./PhysicsDemo";
@@ -12,4 +13,5 @@ export const demos = [
   { name: 'Multiplayer (Split-screen) ', path: '/multiplayer', component: MultiplayerDemo },
   { name: 'Physics (Marble Jar)', path: '/physics', component: PhysicsDemo },
   { name: 'Lighting', path: '/lighting', component: LightingDemo },
+  { name: 'Card Game (Pairs)', path: '/input', component: CardsDemo },
 ];

@@ -1,11 +1,11 @@
 import { Engine, Physics, Viewport, World } from "@engine";
-import { Collectibles, Game, LevelGeometry, PassivePlayer, Player } from "../components";
+import { Collectibles, PlatformGame, LevelGeometry, PassivePlayer, Player } from "../components";
 
 export const MultiplayerDemo = () => {
   return (
     <div className="w-screen h-screen bg-black">
       <Engine>
-        <Game>
+        <PlatformGame>
           <div className="w-full h-full grid grid-cols-2 box-border p-8 gap-8">
             <div className="w-full h-full border-4 border-red-500 box-border rounded-xl overflow-hidden">
               <Viewport>
@@ -30,7 +30,7 @@ export const MultiplayerDemo = () => {
               </Viewport>
             </div>
           </div>
-        </Game>
+        </PlatformGame>
       </Engine>
     </div>
   );

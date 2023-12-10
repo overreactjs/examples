@@ -2,7 +2,7 @@ import React, { useId } from "react";
 import { BitmapSprite, Camera, CollisionBox, Node, SpriteSet, Velocity, useLogMount, useOffsetPosition, usePlatformMovement, usePosition, useProperty, useRender } from "@engine";
 import { PLAYER_FALL, PLAYER_IDLE, PLAYER_JUMP, PLAYER_RUN } from "../assets";
 import { P1_KEYBINDINGS, P2_KEYBINDINGS } from "../constants";
-import { useGame } from "./Game";
+import { usePlatformGame } from "./PlatformGame";
 import { PlayerIndicator } from "./PlayerIndicator";
 
 const COLLIDER_OFFSET_Y = 9;
@@ -14,7 +14,7 @@ type PlayerProps = {
 }
 
 export const Player: React.FC<PlayerProps> = ({ index, showLabels = false }) => {
-  const game = useGame();
+  const game = usePlatformGame();
   const pos = usePosition(game.current.players[index].pos);
   const flip = useProperty(game.current.players[index].flip);
   const animation = useProperty(game.current.players[index].animation);
