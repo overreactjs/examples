@@ -10,7 +10,7 @@ type DeviceProps = {
 
 export const Device: React.FC<DeviceProps> = ({ children, ...props }) => {
   const device = useElement<HTMLDivElement>();
-  const { ref: shaker, shake } = useShake();
+  const { ref: shaker, shake } = useShake<HTMLDivElement>();
   const angle = useProperty(props.angle || 0);
   
   useKeyPressed('KeyS', () => {

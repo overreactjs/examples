@@ -3,6 +3,7 @@ import { CONFIG } from "../constants";
 import { Device } from "../components";
 import { useCardGame } from "../components/CardGame";
 import { CardState } from "../state";
+import { useShake } from "../hooks";
 
 export const CardsDemo = () => {
   return (
@@ -38,6 +39,7 @@ const Card: React.FC<CardProps> = (props) => {
   const front = useElement();
   const back = useElement();
   const mouse = useMouse();
+  const shaker = useShake<HTMLDivElement>({ strength: 10, phase: 20 });
 
   const game = useCardGame();
   const card = useProperty(props.card);
@@ -50,12 +52,17 @@ const Card: React.FC<CardProps> = (props) => {
   });
 
   useUpdate((delta) => {
-    const { flipped } = card.current;
+    const { flipped, shake } = card.current;
 
     if (angle.current > 0 && !flipped.current) {
       angle.current = Math.max(angle.current - delta / 2, 0);
     } else if (angle.current < 180 && flipped.current) {
       angle.current = Math.min(angle.current + delta / 2, 180);
+    }
+
+    if (shake.current) {
+      shake.current = false;
+      shaker.shake();
     }
   })
 
@@ -75,10 +82,12 @@ const Card: React.FC<CardProps> = (props) => {
   })
 
   return (
-    <div ref={element.ref} className="w-full h-full relative">
-      <div ref={front.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-contain bg-center bg-no-repeat" />
-      <div ref={back.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-slate-100 border-4 border-slate-300 grid place-items-center">
-        <div className="text-6xl font-bold font-[quicksand] text-slate-600">?</div>
+    <div ref={shaker.ref} className="w-full h-full">
+      <div ref={element.ref} className="w-full h-full relative">
+        <div ref={front.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-contain bg-center bg-no-repeat" />
+        <div ref={back.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-slate-100 border-4 border-slate-300 grid place-items-center">
+          <div className="text-6xl font-bold font-[quicksand] text-slate-600">?</div>
+        </div>
       </div>
     </div>
   );

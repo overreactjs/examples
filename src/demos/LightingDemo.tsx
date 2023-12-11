@@ -1,4 +1,4 @@
-import { Box, Engine, Viewport, World, useOffsetPosition, usePosition } from "@engine";
+import { Box, Engine, Viewport, World, useOffsetPosition } from "@engine";
 import { Collectibles, Flame, PlatformGame, LevelGeometry, Player, ScoreUI } from "../components";
 import { usePlatformGame } from "../components/PlatformGame";
 
@@ -25,8 +25,7 @@ export const LightingDemo = () => {
 
 const Lighting: React.FC = () => {
   const game = usePlatformGame();
-  const pos = usePosition(game.current.players[0].pos);
-  const lightPos = useOffsetPosition(pos, [500, 460]);
+  const lightPos = useOffsetPosition(game.current.players[0].pos, [500, 460]);
 
   return (
     <>

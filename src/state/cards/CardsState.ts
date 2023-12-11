@@ -39,13 +39,19 @@ export class CardsState {
         flipped[0].found.current = true;
         flipped[1].found.current = true;
       } else {
-        setTimeout(() => {
-          this.flipped.forEach((card) => {
-            card.flipped.current = false;
-          });
-        }, 1000);
+        this.shakeAndResetFlipped();
       }
     }
+  }
+
+  
+  shakeAndResetFlipped() {
+    setTimeout(() => {
+      this.flipped.forEach(({ shake }) => shake.current = true);
+    }, 500);
+    setTimeout(() => {
+      this.flipped.forEach(({ flipped }) => flipped.current = false);
+    }, 1500);
   }
 
   /**

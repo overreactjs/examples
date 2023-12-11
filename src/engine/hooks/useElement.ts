@@ -49,7 +49,9 @@ export function useElement<E extends Element = HTMLDivElement>(element?: UseElem
       transforms.push(`scaleX(-1)`);
     }
 
-    setStyle('transform', transforms.join(' '));
+    if (transforms.length > 0) {
+      setStyle('transform', transforms.join(' '));
+    }
 
     if (size?.current) {
       const [width, height] = size.current;

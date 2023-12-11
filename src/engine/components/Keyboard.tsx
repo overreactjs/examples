@@ -28,7 +28,6 @@ export const Keyboard: React.FC<KeyboardProps> = ({ children }) => {
    */
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     down.current.add(event.code);
-    console.log(event.code);
   }, []);
 
   /**
