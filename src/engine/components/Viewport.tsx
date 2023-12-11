@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import { Position, Property } from "../types";
-import { useElement, useLogMount, useProperty, useRender } from "../hooks";
+import { Position, Prop, Property } from "../types";
+import { useElement, useProperty, useRender } from "../hooks";
 
 type ViewportContextProps = {
   origin?: Property<Position>;
@@ -19,19 +19,20 @@ export const ViewportContext = React.createContext<ViewportContextProps>({
 
 type ViewportProps = {
   children: React.ReactNode;
+  scale?: Prop<number>;
 }
 
-export const Viewport: React.FC<ViewportProps> = ({ children }) => {
+export const Viewport: React.FC<ViewportProps> = ({ children, ...props }) => {
   const element = useElement<HTMLDivElement>();
 
-  useLogMount('Viewport');
-
+  const scale = useProperty(props.scale || 1);
   const origin = useProperty<Position>([0, 0]);
   const context = useMemo(() => ({ origin }), [origin]);
 
   useRender(() => {
-    const [x, y] = origin.current;
-    element.setStyle('transform', `translate(${-Math.round(x)}px, ${-Math.round(y)}px)`);
+    const x = -Math.round(origin.current[0] * scale.current);
+    const y = -Math.round(origin.current[1] * scale.current);
+    element.setStyle('transform', `translate(${x}px, ${y}px) scale(${scale.current})`);
   });
 
   return (

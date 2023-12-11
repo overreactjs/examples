@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import { BitmapSprite, Camera, CollisionBox, Node, SpriteSet, Velocity, useLogMount, useOffsetPosition, usePlatformMovement, usePosition, useProperty, useRender } from "@engine";
+import { BitmapSprite, Camera, CollisionBox, Node, SpriteSet, Velocity, useOffsetPosition, usePlatformMovement, usePosition, useProperty, useRender } from "@engine";
 import { PLAYER_FALL, PLAYER_IDLE, PLAYER_JUMP, PLAYER_RUN } from "../assets";
 import { P1_KEYBINDINGS, P2_KEYBINDINGS } from "../constants";
 import { usePlatformGame } from "./PlatformGame";
@@ -27,8 +27,6 @@ export const Player: React.FC<PlayerProps> = ({ index, showLabels = false }) => 
   const jumpSpritePos = useOffsetPosition(pos, [-30, -108 + COLLIDER_OFFSET_Y]);
   const fallSpritePos = useOffsetPosition(pos, [-30, -108 + COLLIDER_OFFSET_Y]);
   const labelPos = useOffsetPosition(pos, [0, -128]);
-
-  useLogMount('Player');
   
   const movement = usePlatformMovement(collider, pos, velocity, {
     jumpStrength: 0.8,

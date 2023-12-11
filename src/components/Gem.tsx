@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { BitmapSprite, CollisionBox, Node, Prop, SpriteSet, useLogMount, useOffsetPosition, useProperty, useTaggedCollision } from "@engine";
+import { BitmapSprite, CollisionBox, Node, Prop, SpriteSet, useOffsetPosition, useProperty, useTaggedCollision } from "@engine";
 import { GemState } from "../state";
 import { usePlatformGame } from "./PlatformGame";
 
@@ -15,8 +15,6 @@ export const Gem: React.FC<GemProps> = (props) => {
   const spritePos = useOffsetPosition(gem.current.pos, [-24, -24]);
   const colliderPos = useOffsetPosition(gem.current.pos, [-18, -18]);
   const collider = useId();
-
-  useLogMount('Gem');
 
   useTaggedCollision(collider, 'player', () => {
     game.current.collectGem(gem.current);

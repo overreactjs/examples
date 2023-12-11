@@ -3,23 +3,10 @@ import { CardState, CardType } from "./CardState";
 const TYPES: CardType[] = ['bee', 'campfire', 'carrot', 'cheese', 'diamond', 'leaf', 'heart', 'map', 'mushroom', 'treasure'];
 
 export class CardsState {
-  cards: CardState[];
+  cards: CardState[] = [];
 
   constructor() {
-    this.cards = [];
-    const unused = new Map(TYPES.map((type) => [type, 2]));
-
-    while (unused.size > 0) {
-      const entries = Array.from(unused.entries());
-      const [type, count] = entries[Math.floor(Math.random() * entries.length)];
-      this.cards.push(new CardState(type));
-
-      if (count === 1) {
-        unused.delete(type);
-      } else {
-        unused.set(type, count - 1);
-      }
-    }
+    this.randomize();
   }
 
   /**
@@ -61,6 +48,9 @@ export class CardsState {
     }
   }
 
+  /**
+   * Check to see if all of the pairs have been found. If so, reset the board.
+   */
   checkAll() {
     if (this.cards.every((card) => card.found.current)) {
       setTimeout(() => {
@@ -69,6 +59,26 @@ export class CardsState {
           card.found.current = false;
         });
       }, 2000);
+      setTimeout(() => {
+        this.randomize();
+      }, 3000);
+    }
+  }
+
+  randomize() {
+    this.cards = [];
+    const unused = new Map(TYPES.map((type) => [type, 2]));
+
+    while (unused.size > 0) {
+      const entries = Array.from(unused.entries());
+      const [type, count] = entries[Math.floor(Math.random() * entries.length)];
+      this.cards.push(new CardState(type));
+
+      if (count === 1) {
+        unused.delete(type);
+      } else {
+        unused.set(type, count - 1);
+      }
     }
   }
 }

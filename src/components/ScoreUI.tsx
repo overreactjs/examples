@@ -1,11 +1,9 @@
-import { useElement, useLogMount, useRender } from "@engine";
+import { useElement, useRender } from "@engine";
 import { usePlatformGame } from "./PlatformGame";
 
 export const ScoreUI: React.FC = () => {
   const element = useElement<HTMLDivElement>();
   const game = usePlatformGame();
-
-  useLogMount('ScoreUI');
 
   useRender(() => {
     element.setText(`Score: ${game.current.score}`);
