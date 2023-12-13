@@ -4,6 +4,7 @@ import { EngineContext, NodeContext } from "../context";
 import { Keyboard } from "./Keyboard";
 import { Mouse } from "./Mouse";
 import { Touch } from "./Touch";
+import { Motion } from "./Motion";
 
 /**
  * Engine
@@ -46,6 +47,7 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
   useEffect(() => {
     if (!started.current) {
       started.current = true;
+      setTimeout(onPause, 1000);
       tick(0);
     }
   }, [tick]);
@@ -55,13 +57,15 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
   return (
     <EngineContext.Provider value={engineContext}>
       <NodeContext.Provider value={node}>
-        <Keyboard>
-          <Mouse>
-            <Touch>
-              {children}
-            </Touch>
-          </Mouse>
-        </Keyboard>
+        <Motion>
+          <Keyboard>
+            <Mouse>
+              <Touch>
+                {children}
+              </Touch>
+            </Mouse>
+          </Keyboard>
+        </Motion>
       </NodeContext.Provider>
     </EngineContext.Provider>
   );

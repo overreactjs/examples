@@ -1,5 +1,4 @@
-import { Prop, useElement, useKeyAxis, useKeyPressed, useProperty, useRender } from "@engine";
-import { useShake } from "../hooks";
+import { Prop, useElement, useKeyAxis, useKeyPressed, useProperty, useRender , useShaker } from "@engine";
 
 type DeviceProps = {
   children: React.ReactNode;
@@ -10,7 +9,7 @@ type DeviceProps = {
 
 export const Device: React.FC<DeviceProps> = ({ children, ...props }) => {
   const device = useElement<HTMLDivElement>();
-  const { ref: shaker, shake } = useShake<HTMLDivElement>();
+  const { ref: shaker, shake } = useShaker();
   const angle = useProperty(props.angle || 0);
   
   useKeyPressed('KeyS', () => {
@@ -30,9 +29,11 @@ export const Device: React.FC<DeviceProps> = ({ children, ...props }) => {
   });
 
   return (
-    <div ref={shaker} className="w-[400px] h-[800px]">
-      <div ref={device.ref} className="w-full h-full bg-[#223344] relative rounded-3xl overflow-hidden">
-        {children}
+    <div className="engine">
+      <div className="engine-device" ref={shaker}>
+        <div className="engine-screen" ref={device.ref}>
+          {children}
+        </div>
       </div>
     </div>
   );

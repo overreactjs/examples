@@ -1,19 +1,23 @@
 import { RefObject, useCallback, useMemo } from "react";
-import { useElement, useProperty, useDynamicProperty, Position, useUpdate, useRender } from "@engine";
-import { UseElementResult } from "src/engine/hooks/useElement";
+import { UseElementResult, useElement } from "./useElement";
+import { useProperty } from "./useProperty";
+import { useDynamicProperty } from "./useDynamicProperty";
+import { Position } from "../types";
+import { useUpdate } from "./useUpdate";
+import { useRender } from "./useRender";
 
-type UseShakeProps<E extends Element> = {
+type UseShakerProps<E extends Element> = {
   element?: UseElementResult<E>;
   strength?: number;
   phase?: number;
 }
 
-type UseShakeResult<E extends Element> = {
+type UseShakerResult<E extends Element> = {
   ref: RefObject<E>;
   shake: () => void;
 }
 
-export function useShake<E extends Element>(props?: UseShakeProps<E>): UseShakeResult<E> {
+export function useShaker<E extends Element = HTMLDivElement>(props?: UseShakerProps<E>): UseShakerResult<E> {
   const element = useElement<E>(props?.element);
   const amount = useProperty(0);
   const strength = useProperty(props?.strength || 40);

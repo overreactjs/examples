@@ -1,24 +1,23 @@
 import { useCallback, useState } from "react";
 import { Body } from "matter-js";
-import { Engine, Physics, Position, Viewport, World, useKeyAxis, useKeyPressed, usePhysicsEngine, useProperty } from "@engine";
-import { Balls, Device, Wall } from "../components";
+import { Device, Engine, Physics, Position, Viewport, World, useDeviceShaken, useKeyAxis, useKeyPressed, useMotion, usePhysicsEngine, useProperty } from "@engine";
+import { Balls, Wall } from "../components";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from "../constants";
 import { BallState } from "../state";
 
 export const PhysicsDemo = () => {
   return (
-    <div className="w-screen h-screen grid place-content-center bg-black">
-      <Engine>
-        <Physics>
-          <PhysicsGame />
-        </Physics>
-      </Engine>
-    </div>
+    <Engine>
+      <Physics>
+        <PhysicsGame />
+      </Physics>
+    </Engine>
   );
 };
 
 const PhysicsGame: React.FC = () => {
   const { engine, setGravity } = usePhysicsEngine();
+  const { activate } = useMotion();
   const [balls, setBalls] = useState<BallState[]>([]);
   const [hasWalls, setHasWalls] = useState(true);
   const angle = useProperty(0);
@@ -41,8 +40,7 @@ const PhysicsGame: React.FC = () => {
     setBalls((balls) => balls.filter((ball) => remove !== ball));
   }, []);
 
-  // Press "S": Shake the device.
-  useKeyPressed('KeyS', () => {
+  const shakeBalls = useCallback(() => {
     for (const body of engine.current?.world.bodies || []) {
       if (!body.isStatic) {
         Body.setVelocity(body, {
@@ -51,7 +49,11 @@ const PhysicsGame: React.FC = () => {
         });
       }
     }
-  });
+  }, []);
+
+  // Press "S": Shake the device.
+  useKeyPressed('KeyS', shakeBalls);
+  useDeviceShaken(1000, shakeBalls);
 
   // Press: "D": Toggle the wall devices at the ends.
   useKeyPressed('KeyD', () => {
@@ -76,6 +78,7 @@ const PhysicsGame: React.FC = () => {
           <Balls balls={balls} onAdd={addBall} onRemove={removeBall} />
         </World>
       </Viewport>
+      <button onClick={activate} className="absolute left-0 top-1/2 text-white">Activate</button>
     </Device>
   );
 };

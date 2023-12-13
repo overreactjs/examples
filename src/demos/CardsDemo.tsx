@@ -1,19 +1,15 @@
-import { Engine, Prop, useElement, useMouse, useProperty, useRender, useSync, useUpdate } from "@engine";
+import { Device, Engine, Prop, useElement, useMouse, useProperty, useRender, useShaker, useSync, useUpdate } from "@engine";
 import { CONFIG } from "../constants";
-import { Device } from "../components";
 import { useCardGame } from "../components/CardGame";
 import { CardState } from "../state";
-import { useShake } from "../hooks";
 
 export const CardsDemo = () => {
   return (
-    <div className="w-screen h-screen grid place-content-center bg-black select-none">
-      <Engine>
-        <Device>
-          <Cards />
-        </Device>
-      </Engine>
-    </div>
+    <Engine>
+      <Device>
+        <Cards />
+      </Device>
+    </Engine>
   );
 };
 
@@ -39,7 +35,7 @@ const Card: React.FC<CardProps> = (props) => {
   const front = useElement();
   const back = useElement();
   const mouse = useMouse();
-  const shaker = useShake<HTMLDivElement>({ strength: 10, phase: 20 });
+  const shaker = useShaker({ strength: 10, phase: 20 });
 
   const game = useCardGame();
   const card = useProperty(props.card);

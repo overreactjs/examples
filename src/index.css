@@ -5,3 +5,40 @@
 body {
   margin: 0;
 }
+
+.engine {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  user-select: none;
+}
+
+.engine-device {
+  width: 100%;
+  height: 100%;
+}
+
+.engine-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+@media (hover: hover) {
+  .engine {
+    display: grid;
+    place-content: center;
+    background: #223344;
+  }
+  
+  .engine-device {
+    width: 400px;
+    height: 800px;
+  }
+  
+  .engine-screen {
+    border-radius: 1.5rem;
+    background: black;
+    overflow: hidden;
+  }
+}

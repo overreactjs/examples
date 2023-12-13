@@ -1,7 +1,6 @@
 export { Ball } from './Ball';
 export { Balls } from './Balls';
 export { Collectibles } from './Collectibles';
-export { Device } from './Device';
 export { Flame } from './Flame';
 export { Gem } from './Gem';
 export { LevelGeometry } from './LevelGeometry';

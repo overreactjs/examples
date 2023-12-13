@@ -89,6 +89,7 @@ export const usePlatformMovement = (collider: string, pos: Property<Position>, v
     pos.current[0] += change.current[0];
     pos.current[1] += change.current[1];
 
+    // Update the players direction.
     if (isOnFloor.current) {
       if (keyboardHorizontal < 0) {
         direction.current = 'left';
@@ -98,7 +99,7 @@ export const usePlatformMovement = (collider: string, pos: Property<Position>, v
     }
   });
 
-  // Handle collisions, ensuring that the entity cannot pass through solid object.
+  // Handle collisions, ensuring that the entity cannot pass through solid objects.
   useOverlap(collider, ({ collision, tags }) => {
     const isLanding = collision.overlapV.y > 0;
     const isSolid = tags.includes('solid');

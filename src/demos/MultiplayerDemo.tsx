@@ -7,7 +7,7 @@ export const MultiplayerDemo = () => {
       <Engine>
         <PlatformGame>
           <div className="w-full h-full grid grid-cols-2 box-border p-8 gap-8">
-            <div className="w-full h-full border-4 border-red-500 box-border rounded-xl overflow-hidden">
+            <div className="w-full h-full border-4 border-red-500 box-border rounded-xl overflow-hidden bg-[#001122]">
               <Viewport>
                 <World>
                   <Physics>
@@ -19,7 +19,7 @@ export const MultiplayerDemo = () => {
                 </World>
               </Viewport>
             </div>
-            <div className="w-full h-full border-4 border-cyan-500 box-border rounded-xl overflow-hidden">
+            <div className="w-full h-full border-4 border-cyan-500 box-border rounded-xl overflow-hidden bg-[#001122]">
               <Viewport>
                 <World>
                   <LevelGeometry />
