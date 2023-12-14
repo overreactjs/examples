@@ -1,27 +1,36 @@
 import { useCallback, useState } from "react";
 import { Body } from "matter-js";
-import { Device, Engine, Physics, Position, Viewport, World, useDeviceShaken, useKeyAxis, useKeyPressed, useMotion, usePhysicsEngine, useProperty } from "@engine";
-import { Balls, Wall } from "../components";
+import { Device, Engine, Physics, Position, Prop, Viewport, World, useDevice, useDeviceShaken, useKeyAxis, useKeyPressed, usePhysicsEngine, usePosition, useProperty, useUpdate } from "@engine";
+import { Balls, Close, Wall } from "../components";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from "../constants";
 import { BallState } from "../state";
 
 export const PhysicsDemo = () => {
+  const angle = useProperty(0);
+
   return (
     <Engine>
       <Physics>
-        <PhysicsGame />
+        <Device angle={angle} allowShake allowTilt bg="#223344">
+          <PhysicsGame angle={angle} />
+          <Close />
+         </Device>
       </Physics>
     </Engine>
   );
 };
 
-const PhysicsGame: React.FC = () => {
+type PhysicsGameProps = {
+  angle: Prop<number>;
+};
+
+const PhysicsGame: React.FC<PhysicsGameProps> = (props) => {
+  const device = useDevice();
   const { engine, setGravity } = usePhysicsEngine();
-  const { activate } = useMotion();
   const [balls, setBalls] = useState<BallState[]>([]);
   const [hasWalls, setHasWalls] = useState(true);
-  const angle = useProperty(0);
-
+  const angle = useProperty(props.angle);
+  
   /**
    * Add a new ball at the given location.
    */
@@ -64,21 +73,31 @@ const PhysicsGame: React.FC = () => {
   useKeyAxis('KeyG', 'KeyH', () => {
     setGravity(angle.current);
   });
+
+  const left = usePosition([-200, 0]);
+  const right = usePosition([200, 0]);
+  const top = usePosition([0, -400]);
+  const bottom = usePosition([0, 400]);
+
+  useUpdate(() => {
+    const [w, h] = device.size.current;
+    left.current[0] = -50 - w / 2;
+    right.current[0] = 50 + w / 2;
+    top.current[1] = -50 - h / 2;
+    bottom.current[1] = 50 + h / 2;
+  });
   
   return (
-    <Device angle={angle} allowShake allowTilt>
-      <Viewport>
-        <World>
-          <Wall pos={[-250, 0]} size={[100, 1000]} />
-          <Wall pos={[250, 0]} size={[100, 1000]} />
+    <Viewport>
+      <World>
+        <Wall pos={left} size={[100, 1000]} />
+        <Wall pos={right} size={[100, 1000]} />
 
-          {hasWalls && <Wall pos={[0, 450]} size={[600, 100]} />}
-          {hasWalls && <Wall pos={[0, -450]} size={[600, 100]} />}
+        {hasWalls && <Wall pos={top} size={[600, 100]} />}
+        {hasWalls && <Wall pos={bottom} size={[600, 100]} />}
 
-          <Balls balls={balls} onAdd={addBall} onRemove={removeBall} />
-        </World>
-      </Viewport>
-      <button onClick={activate} className="absolute left-0 top-1/2 text-white">Activate</button>
-    </Device>
+        <Balls balls={balls} onAdd={addBall} onRemove={removeBall} />
+      </World>
+    </Viewport>
   );
 };

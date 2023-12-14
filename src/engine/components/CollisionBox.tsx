@@ -1,7 +1,7 @@
 import { useElement, useDebug, usePosition, useProperty, useRender, useBoxCollider } from "../hooks";
 import { Prop, Position, Size, CollisionTag } from "../types";
 
-const CLASS_NAME = "absolute outline outline-2 outline-[#f0f] bg-[#f0f3] -outline-offset-1";
+const CLASS_NAME = "absolute outline outline-2 !outline-[#f0f] bg-[#f0f3] -outline-offset-1";
 
 type CollisionBoxProps = {
   id?: string;

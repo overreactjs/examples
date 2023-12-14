@@ -50,10 +50,10 @@ export const Player: React.FC<PlayerProps> = ({ index, showLabels = false }) => 
   return (
     <Node pos={pos}>
       <SpriteSet animation={animation}>
-        <BitmapSprite name="idle" pos={idleSpritePos} size={[57, 102]} image={PLAYER_IDLE} count={12} rate={10} flip={flip} />
-        <BitmapSprite name="run" pos={runSpritePos} size={[63, 99]} image={PLAYER_RUN} count={8} rate={10} flip={flip} />
-        <BitmapSprite name="jump" pos={jumpSpritePos} size={[60, 108]} image={PLAYER_JUMP} count={1} rate={10} flip={flip} repeat={false} />
-        <BitmapSprite name="fall" pos={fallSpritePos} size={[60, 108]} image={PLAYER_FALL} count={2} rate={10} flip={flip} repeat={false} />
+        <BitmapSprite name="idle" pos={idleSpritePos} size={[57, 102]} sprite={PLAYER_IDLE} flip={flip} />
+        <BitmapSprite name="run" pos={runSpritePos} size={[63, 99]} sprite={PLAYER_RUN} flip={flip} />
+        <BitmapSprite name="jump" pos={jumpSpritePos} size={[60, 108]} sprite={PLAYER_JUMP} flip={flip} repeat={false} />
+        <BitmapSprite name="fall" pos={fallSpritePos} size={[60, 108]} sprite={PLAYER_FALL} flip={flip} repeat={false} />
       </SpriteSet>
       <CollisionBox pos={colliderPos} size={[50, 78]} id={collider} tags={['player']} />
       <Camera axis="xy" />

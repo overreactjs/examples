@@ -1,8 +1,7 @@
 import { useId } from "react";
-import { BitmapSprite, CollisionBox, Node, Prop, SpriteSet, useOffsetPosition, useProperty, useTaggedCollision } from "@engine";
+import { BitmapSprite, CollisionBox, Node, Prop, useOffsetPosition, useProperty, useTaggedCollision } from "@engine";
 import { GemState } from "../state";
 import { usePlatformGame } from "./PlatformGame";
-
 import { GEM } from "../assets";
 
 type GemProps = {
@@ -22,9 +21,7 @@ export const Gem: React.FC<GemProps> = (props) => {
 
   return (
     <Node>
-      <SpriteSet animation="default">
-        <BitmapSprite name="default" pos={spritePos} size={[48, 48]} image={GEM} count={8} rate={10} />
-      </SpriteSet>
+      <BitmapSprite pos={spritePos} size={[48, 48]} sprite={GEM} />
       <CollisionBox id={collider} pos={colliderPos} size={[36, 36]} tags={['gem']} />
     </Node>
   );

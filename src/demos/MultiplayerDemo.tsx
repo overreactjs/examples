@@ -1,4 +1,4 @@
-import { Engine, Physics, Viewport, World } from "@engine";
+import { Engine, Viewport, World } from "@engine";
 import { Collectibles, PlatformGame, LevelGeometry, PassivePlayer, Player } from "../components";
 
 export const MultiplayerDemo = () => {
@@ -10,12 +10,10 @@ export const MultiplayerDemo = () => {
             <div className="w-full h-full border-4 border-red-500 box-border rounded-xl overflow-hidden bg-[#001122]">
               <Viewport>
                 <World>
-                  <Physics>
-                    <LevelGeometry />
-                    <Collectibles />
-                    <Player index={0} showLabels />
-                    <PassivePlayer index={1} />
-                  </Physics>
+                  <LevelGeometry />
+                  <Collectibles />
+                  <Player index={0} showLabels />
+                  <PassivePlayer index={1} />
                 </World>
               </Viewport>
             </div>

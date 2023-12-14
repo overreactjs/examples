@@ -10,6 +10,7 @@ type BitmapImageProps = {
   size: Prop<Size>;
   offset: Prop<Position>;
   flip?: Prop<boolean>;
+  scale?: Prop<number>;
 }
 
 export const BitmapImage: React.FC<BitmapImageProps> = (props) => {
@@ -20,12 +21,16 @@ export const BitmapImage: React.FC<BitmapImageProps> = (props) => {
   const size = useProperty(props.size);
   const flip = useProperty(props.flip || false);
   const offset = useProperty(props.offset);
+  const scale = useProperty(props.scale || 1);
 
   useRender(() => {
+    const width = image.current.size[0] * scale.current;
+    const height = image.current.size[1] * scale.current;
+
     element.setBaseStyles({ pos, size, flip });
     element.setStyle('imageRendering', 'pixelated');
     element.setStyle('backgroundImage', `url(${image.current.url})`);
-    element.setStyle('backgroundSize', `${image.current.size[0] * image.current.scale}px ${image.current.size[1] * image.current.scale}px`);
+    element.setStyle('backgroundSize', `${width}px ${height}px`);
     element.setStyle('backgroundPosition', `${-offset.current[0]}px ${-offset.current[1]}px`);
   });
 

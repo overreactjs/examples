@@ -1,5 +1,6 @@
 export { Ball } from './Ball';
 export { Balls } from './Balls';
+export { Close } from './Close';
 export { Collectibles } from './Collectibles';
 export { Flame } from './Flame';
 export { Gem } from './Gem';

@@ -1,19 +1,24 @@
-import { EmptyDemo } from "./EmptyDemo";
+import { BuddyDemo } from "./BuddyDemo";
 import { CardsDemo } from "./CardsDemo";
 import { LightingDemo } from "./LightingDemo";
+import { MotionDemo } from "./MotionDemo";
 import { MultiplayerDemo } from "./MultiplayerDemo";
 import { PhysicsDemo } from "./PhysicsDemo";
 import { PlatformerDemo } from "./PlatformerDemo";
 import { RotatingBoxDemo } from "./RotatingBoxDemo";
 import { ViewportScaleDemo } from "./ViewportScaleDemo";
 
-export const demos = [
-  { name: 'Empty', path: '/empty', component: EmptyDemo },
+export const mobile = [
   { name: 'Rotating Box', path: '/rotating-box', component: RotatingBoxDemo },
-  { name: 'Platform game (collisions)', path: '/platformer', component: PlatformerDemo },
-  { name: 'Multiplayer (split-screen) ', path: '/multiplayer', component: MultiplayerDemo },
-  { name: 'Lighting effects', path: '/lighting', component: LightingDemo },
-  { name: 'Viewport scale', path: '/viewport-scale', component: ViewportScaleDemo },
-  { name: 'Physics (Marble Jar)', path: '/physics', component: PhysicsDemo },
-  { name: 'Card Game (Pairs)', path: '/input', component: CardsDemo },
+  { name: 'Buddy (Sprite Animation)', path: '/buddy', component: BuddyDemo },
+  { name: 'Device Motion', path: '/motion', component: MotionDemo },
+  { name: 'Marble Jar (Physics)', path: '/physics', component: PhysicsDemo },
+  { name: 'Card Game (Tap Events)', path: '/input', component: CardsDemo },
+  { name: 'Platform Game (Collisions)', path: '/platformer', component: PlatformerDemo },
+  { name: 'Lighting Effects', path: '/lighting', component: LightingDemo },
+];
+
+export const desktop = [
+  { name: 'Multiplayer (Split-screen) ', path: '/multiplayer', component: MultiplayerDemo },
+  { name: 'Viewport Scaling', path: '/viewport-scale', component: ViewportScaleDemo },
 ];

@@ -47,10 +47,18 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
   useEffect(() => {
     if (!started.current) {
       started.current = true;
-      setTimeout(onPause, 1000);
+      setTimeout(onPause, 100);
       tick(0);
     }
   }, [tick]);
+
+  useEffect(() => {
+    if (debug) {
+      document.body.classList.add('debug');
+    } else {
+      document.body.classList.remove('debug');
+    }
+  }, [debug]);
 
   const engineContext = useMemo(() => ({ debug, onDebug, onPause }), [debug, onDebug, onPause]);
 

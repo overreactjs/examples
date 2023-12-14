@@ -1,10 +1,10 @@
-import { Engine, Viewport, World } from "@engine";
-import { Collectibles, PlatformGame, LevelGeometry, Player, ScoreUI } from "../components";
+import { Device, Engine, Viewport, World } from "@engine";
+import { Collectibles, PlatformGame, LevelGeometry, Player, ScoreUI, Close } from "../components";
 
 export const PlatformerDemo = () => {
   return (
-    <div className="w-screen h-screen bg-black">
-      <Engine>
+    <Engine>
+      <Device bg="#001122">
         <PlatformGame>
           <Viewport>
             <World>
@@ -15,7 +15,8 @@ export const PlatformerDemo = () => {
           </Viewport>
           <ScoreUI />
         </PlatformGame>
-      </Engine>
-    </div>
+        <Close />
+      </Device>
+    </Engine>
   );
 };

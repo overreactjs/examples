@@ -14,8 +14,12 @@ export type Size = [number, number];
 export type BitmapAsset = {
   url: string;
   size: Position;
-  scale: number;
 };
+
+export type BitmapSpriteAsset = BitmapAsset & {
+  count: number;
+  rate: number;
+}
 
 export type Tileset = {
   image: BitmapAsset;

@@ -6,10 +6,15 @@ body {
   margin: 0;
 }
 
+body.debug * {
+  outline: 2px solid #0ff;
+  outline-offset: -1px;
+}
+
 .engine {
   width: 100vw;
   height: 100vh;
-  background: black;
+  background: white;
   user-select: none;
 }
 
@@ -28,7 +33,7 @@ body {
   .engine {
     display: grid;
     place-content: center;
-    background: #223344;
+    background: #778899;
   }
   
   .engine-device {
@@ -38,7 +43,7 @@ body {
   
   .engine-screen {
     border-radius: 1.5rem;
-    background: black;
+    background: white;
     overflow: hidden;
   }
 }

@@ -2,12 +2,14 @@ import { Device, Engine, Prop, useElement, useMouse, useProperty, useRender, use
 import { CONFIG } from "../constants";
 import { useCardGame } from "../components/CardGame";
 import { CardState } from "../state";
+import { Close } from "../components";
 
 export const CardsDemo = () => {
   return (
     <Engine>
-      <Device>
+      <Device bg="#223344">
         <Cards />
+        <Close />
       </Device>
     </Engine>
   );
@@ -18,7 +20,7 @@ const Cards: React.FC = () => {
   const cards = useSync(() => game.current.cards);
 
   return (
-    <div className="w-full h-full grid grid-rows-5 grid-cols-4 gap-3 p-4 py-16 box-border">
+    <div className="w-full h-full grid grid-rows-5 grid-cols-4 gap-3 p-4 py-24 box-border">
       {(cards || []).map((card) => (
         <Card key={card.id} card={card} />
       ))}
@@ -80,7 +82,7 @@ const Card: React.FC<CardProps> = (props) => {
   return (
     <div ref={shaker.ref} className="w-full h-full">
       <div ref={element.ref} className="w-full h-full relative">
-        <div ref={front.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-contain bg-center bg-no-repeat" />
+        <div ref={front.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-[90%_auto] bg-center bg-no-repeat" />
         <div ref={back.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-slate-100 border-4 border-slate-300 grid place-items-center">
           <div className="text-6xl font-bold font-[quicksand] text-slate-600">?</div>
         </div>

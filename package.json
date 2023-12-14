@@ -21,6 +21,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.3",
     "@capacitor/cli": "^5.5.1",
     "@types/matter-js": "^0.19.5",
     "@types/node": "^20.10.1",

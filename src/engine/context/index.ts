@@ -1,5 +1,6 @@
-export { KeyboardContext } from './KeyboardContext';
+export { DeviceContext } from './DeviceContext';
 export { EngineContext } from './EngineContext';
+export { KeyboardContext } from './KeyboardContext';
 export { MotionContext } from './MotionContext';
 export { MouseContext } from './MouseContext';
 export { NodeContext } from './NodeContext';

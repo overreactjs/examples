@@ -1,11 +1,11 @@
-import { Box, Engine, Viewport, World, useOffsetPosition } from "@engine";
-import { Collectibles, Flame, PlatformGame, LevelGeometry, Player, ScoreUI } from "../components";
+import { Box, Device, Engine, Viewport, World, useOffsetPosition } from "@engine";
+import { Collectibles, Flame, PlatformGame, LevelGeometry, Player, Close } from "../components";
 import { usePlatformGame } from "../components/PlatformGame";
 
 export const LightingDemo = () => {
   return (
-    <div className="w-screen h-screen bg-[#001122]">
-      <Engine>
+    <Engine>
+      <Device bg="#001122">
         <PlatformGame>
           <Viewport>
             <World>
@@ -16,10 +16,10 @@ export const LightingDemo = () => {
               <Lighting />
             </World>
           </Viewport>
-          <ScoreUI />
         </PlatformGame>
-      </Engine>
-    </div>
+        <Close />
+      </Device>
+    </Engine>
   );
 };
 

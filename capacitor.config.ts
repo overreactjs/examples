@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.lj.hackathon',
+  appId: 'com.littlejourney.hackathon',
   appName: 'Hackathon!',
   webDir: 'dist',
   server: {
