@@ -4,7 +4,7 @@ import { PhysicsUpdateFunction, Property } from "../types";
 
 type PhysicsContextProps = {
   register: (body: Matter.Body, fn: PhysicsUpdateFunction) => () => void;
-  setGravity: (angle: number) => void;
+  setGravity: (x: number, y: number) => void;
   engine: Property<Engine | null>;
 }
 

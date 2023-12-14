@@ -11,6 +11,7 @@ export { useMotion, useDeviceShaken } from './useMotion';
 export { useMouse } from './useMouse';
 export { useNode } from './useNode';
 export { useOffsetPosition } from './useOffsetPosition';
+export { useOrientation } from './useOrientation';
 export { usePhysicsEngine } from './usePhysicsEngine';
 export { usePlatformMovement } from './usePlatformMovement';
 export { usePosition } from './usePosition';

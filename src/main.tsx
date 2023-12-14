@@ -21,15 +21,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 );
 
 function DemoList() {
-  const activateDeviceMotionEvents = () => {
+  const activateDeviceEvents = () => {
     if ((DeviceMotionEvent as any).requestPermission) {
       (DeviceMotionEvent as any).requestPermission();
+    }
+    if ((DeviceOrientationEvent as any).requestPermission) {
+      (DeviceOrientationEvent as any).requestPermission();
     }
   };
 
   return (
     <Device>
-      <div className="w-full min-h-full p-12 box-border bg-white leading-8">
+      <div className="w-full min-h-full p-12 box-border bg-white leading-8 text-lg">
         <h1 className="text-2xl mb-4">Mobile Demos</h1>
         <ol className="mx-8 list-decimal text-slate-400">
           {mobile.map(({ name, path }) => (
@@ -47,11 +50,9 @@ function DemoList() {
           ))}
         </ol>
         <h1 className="text-2xl mb-4 mt-8">Setup</h1>
-        <ul className="mx-8 list-disc text-slate-400">
-          <li className="pl-2">
-            <button className="text-slate-800" onClick={activateDeviceMotionEvents}>Activate device motion events</button>
-          </li>
-        </ul>
+        <div>
+          <button className="text-slate-800" onClick={activateDeviceEvents}>Activate device events</button>
+        </div>
       </div>
     </Device>
   );

@@ -5,6 +5,7 @@ import { Keyboard } from "./Keyboard";
 import { Mouse } from "./Mouse";
 import { Touch } from "./Touch";
 import { Motion } from "./Motion";
+import { Orientation } from "./Orientation";
 
 /**
  * Engine
@@ -66,13 +67,15 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
     <EngineContext.Provider value={engineContext}>
       <NodeContext.Provider value={node}>
         <Motion>
-          <Keyboard>
-            <Mouse>
-              <Touch>
-                {children}
-              </Touch>
-            </Mouse>
-          </Keyboard>
+          <Orientation>
+            <Keyboard>
+              <Mouse>
+                <Touch>
+                  {children}
+                </Touch>
+              </Mouse>
+            </Keyboard>
+          </Orientation>
         </Motion>
       </NodeContext.Provider>
     </EngineContext.Provider>

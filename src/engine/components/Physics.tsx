@@ -37,10 +37,9 @@ export const Physics: React.FC<PhysicsProps> = ({ children }) => {
   /**
    * Set the angle of gravity.
    */
-  const setGravity = useCallback((angle: number) => {
-    const radians = angle * Math.PI / 180;
-    engine.current.gravity.x = Math.sin(radians);
-    engine.current.gravity.y = Math.cos(radians);
+  const setGravity = useCallback((x: number, y: number) => {
+    engine.current.gravity.x = x;
+    engine.current.gravity.y = y;
   }, []);
 
   /**

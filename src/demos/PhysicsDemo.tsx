@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { Body } from "matter-js";
-import { Device, Engine, Physics, Position, Prop, Viewport, World, useDevice, useDeviceShaken, useKeyAxis, useKeyPressed, usePhysicsEngine, usePosition, useProperty, useUpdate } from "@engine";
+import { Device, Engine, Physics, Position, Prop, Viewport, World, useDevice, useDeviceShaken, useKeyPressed, useOrientation, usePhysicsEngine, usePosition, useProperty, useUpdate } from "@engine";
 import { Balls, Close, Wall } from "../components";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from "../constants";
 import { BallState } from "../state";
@@ -24,12 +24,11 @@ type PhysicsGameProps = {
   angle: Prop<number>;
 };
 
-const PhysicsGame: React.FC<PhysicsGameProps> = (props) => {
+const PhysicsGame: React.FC<PhysicsGameProps> = () => {
   const device = useDevice();
   const { engine, setGravity } = usePhysicsEngine();
   const [balls, setBalls] = useState<BallState[]>([]);
   const [hasWalls, setHasWalls] = useState(true);
-  const angle = useProperty(props.angle);
   
   /**
    * Add a new ball at the given location.
@@ -70,8 +69,15 @@ const PhysicsGame: React.FC<PhysicsGameProps> = (props) => {
   });
 
   // Press "G"/"H": Rotate the device.
-  useKeyAxis('KeyG', 'KeyH', () => {
-    setGravity(angle.current);
+  // useKeyAxis('KeyG', 'KeyH', () => {
+  //   setGravity(angle.current);
+  // });
+
+  const orientation = useOrientation();
+  useUpdate(() => {
+    const x = orientation.gamma.current;
+    const y = orientation.beta.current;
+    setGravity(Math.min(4, x / 10), Math.min(4, y / 10));
   });
 
   const left = usePosition([-200, 0]);
