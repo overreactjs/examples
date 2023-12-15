@@ -22,7 +22,10 @@
 
     "baseUrl": ".",
     "paths": {
-      "@engine": ["src/engine"]
+      "@assets": ["src/assets"],
+      "@components": ["src/components"],
+      "@engine": ["src/engine"],
+      "@state": ["src/state"],
     }
   },
   "include": ["src"],

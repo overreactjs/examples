@@ -7,7 +7,10 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig({
   resolve: {
     alias: {
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@components': path.resolve(__dirname, './src/components'),
       '@engine': path.resolve(__dirname, './src/engine'),
+      '@state': path.resolve(__dirname, './src/state'),
     },
   },
   plugins: [

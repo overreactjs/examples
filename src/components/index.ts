@@ -1,13 +1,2 @@
-export { Ball } from './Ball';
-export { Balls } from './Balls';
 export { Close } from './Close';
-export { Collectibles } from './Collectibles';
 export { Debug } from './Debug';
-export { Flame } from './Flame';
-export { Gem } from './Gem';
-export { LevelGeometry } from './LevelGeometry';
-export { PassivePlayer } from './PassivePlayer';
-export { PlatformGame } from './PlatformGame';
-export { Player } from './Player';
-export { ScoreUI } from './ScoreUI';
-export { Wall } from './Wall';
