@@ -66,17 +66,17 @@ export const Engine: React.FC<EngineProps> = ({ children }) => {
   return (
     <EngineContext.Provider value={engineContext}>
       <NodeContext.Provider value={node}>
-        <Motion>
-          <Orientation>
-            <Keyboard>
-              <Mouse>
-                <Touch>
+        <Keyboard>
+          <Mouse>
+            <Touch>
+              <Motion>
+                <Orientation>
                   {children}
-                </Touch>
-              </Mouse>
-            </Keyboard>
-          </Orientation>
-        </Motion>
+                </Orientation>
+              </Motion>
+            </Touch>
+          </Mouse>
+        </Keyboard>
       </NodeContext.Provider>
     </EngineContext.Provider>
   );

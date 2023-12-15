@@ -18,7 +18,7 @@ type BoxProps = {
  * ...
  */
 export const Box: React.FC<BoxProps> = ({ className, ...props }) => {
-  const element = useElement<HTMLDivElement>();
+  const element = useElement();
 
   const pos = usePosition(props.pos);
   const size = useProperty(props.size);

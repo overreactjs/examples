@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { MouseContext } from "../context";
 import { useProperty } from "../hooks";
-import { Position } from "../types";
+import { Position, Property } from "../types";
 
 type MouseProps = {
   children: React.ReactNode;
@@ -27,8 +27,18 @@ export const Mouse: React.FC<MouseProps> = ({ children }) => {
     return pressed.current.has(button);
   }, []);
 
-  const isTarget = useCallback((element: Element | null) => {
-    return element !== null && element.contains(target.current);
+  /**
+   * Returns true if the given element is inside of the current target.
+   */
+  const isTarget = useCallback((element: Property<Element | null> | Element | null) => {
+    if (element !== null) {
+      if ('current' in element) {
+        return element.current !== null && element.current.contains(target.current);
+      } else {
+        return element.contains(target.current);
+      }
+    }
+    return false;
   }, [target]);
 
   /**

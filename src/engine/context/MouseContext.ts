@@ -5,7 +5,7 @@ type MouseContextProps = {
   pos: Property<Position>;
   isDown: (button: number) => boolean;
   isPressed: (button: number) => boolean;
-  isTarget: (element: Element | null) => boolean;
+  isTarget: (element: Property<Element | null> | Element | null) => boolean;
 };
 
 export const MouseContext = React.createContext<MouseContextProps>({

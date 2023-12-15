@@ -44,7 +44,7 @@ const Card: React.FC<CardProps> = (props) => {
   const angle = useProperty(0);
 
   useUpdate(() => {
-    if (mouse.isPressed(0) && mouse.isTarget(element.ref.current)) {
+    if (mouse.isPressed(0) && mouse.isTarget(element.ref)) {
       game.current.flipCard(card.current);
     }
   });

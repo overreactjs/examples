@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo } from "react";
 import { MotionContext } from "../context";
-import { useProperty } from "../hooks";
+import { useKeyPressed, useProperty } from "../hooks";
 
 type MotionProps = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type MotionProps = {
 
 export const Motion: React.FC<MotionProps> = ({ children }) => {
   const acceleration = useProperty<[number, number, number]>([0, 0, 0]);
-
+  
   const activate = useCallback(() => {
     (DeviceMotionEvent as any).requestPermission();
   }, []);
@@ -33,6 +33,11 @@ export const Motion: React.FC<MotionProps> = ({ children }) => {
       removeEventListener('devicemotion', handleDeviceMotion);
     };
   }, []);
+
+  useKeyPressed('KeyS', () => {
+    acceleration.current = [50, 0, 0];
+    setTimeout(() => acceleration.current = [0, 0, 0], 100);
+  });
 
   const context = useMemo(
     () => ({ acceleration, activate, isShaking }),

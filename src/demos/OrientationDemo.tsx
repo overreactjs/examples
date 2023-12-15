@@ -4,7 +4,7 @@ import { Close } from "../components";
 export const OrientationDemo = () => {
   return (
     <Engine>
-      <Device allowShake>
+      <Device allowShake allowTilt>
         <OrientationGame />
         <Close />
       </Device>

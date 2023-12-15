@@ -1,34 +1,37 @@
 import { useCallback, useState } from "react";
 import { Body } from "matter-js";
-import { Device, Engine, Physics, Position, Prop, Viewport, World, useDevice, useDeviceShaken, useKeyPressed, useOrientation, usePhysicsEngine, usePosition, useProperty, useUpdate } from "@engine";
-import { Balls, Close, Wall } from "../components";
+import { Device, Engine, Physics, Position, Viewport, World, useDevice, useKeyPressed, useMotion, useOrientation, usePhysicsEngine, usePosition, useUpdate } from "@engine";
+import { Balls, Close, Debug, Wall } from "../components";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from "../constants";
 import { BallState } from "../state";
 
 export const PhysicsDemo = () => {
-  const angle = useProperty(0);
-
   return (
     <Engine>
       <Physics>
-        <Device angle={angle} allowShake allowTilt bg="#223344">
-          <PhysicsGame angle={angle} />
+        <Device allowShake allowTilt bg="#223344">
+          <PhysicsGame />
           <Close />
+          <Debug />
          </Device>
       </Physics>
     </Engine>
   );
 };
 
-type PhysicsGameProps = {
-  angle: Prop<number>;
-};
-
-const PhysicsGame: React.FC<PhysicsGameProps> = () => {
+const PhysicsGame: React.FC = () => {
   const device = useDevice();
-  const { engine, setGravity } = usePhysicsEngine();
+  const motion = useMotion();
+  const orientation = useOrientation();
+  const physics = usePhysicsEngine();
+
   const [balls, setBalls] = useState<BallState[]>([]);
   const [hasWalls, setHasWalls] = useState(true);
+
+  const left = usePosition([-200, 0]);
+  const right = usePosition([200, 0]);
+  const top = usePosition([0, -400]);
+  const bottom = usePosition([0, 400]);
   
   /**
    * Add a new ball at the given location.
@@ -48,8 +51,11 @@ const PhysicsGame: React.FC<PhysicsGameProps> = () => {
     setBalls((balls) => balls.filter((ball) => remove !== ball));
   }, []);
 
+  /**
+   * Give each of the balls a random velocity, for a reasonable shake effect.
+   */
   const shakeBalls = useCallback(() => {
-    for (const body of engine.current?.world.bodies || []) {
+    for (const body of physics.engine.current?.world.bodies || []) {
       if (!body.isStatic) {
         Body.setVelocity(body, {
           x: Math.random() * 140 - 70,
@@ -59,33 +65,24 @@ const PhysicsGame: React.FC<PhysicsGameProps> = () => {
     }
   }, []);
 
-  // Press "S": Shake the device.
-  useKeyPressed('KeyS', shakeBalls);
-  useDeviceShaken(1000, shakeBalls);
-
   // Press: "D": Toggle the wall devices at the ends.
   useKeyPressed('KeyD', () => {
     setHasWalls((hasBase) => !hasBase);
   });
-
-  // Press "G"/"H": Rotate the device.
-  // useKeyAxis('KeyG', 'KeyH', () => {
-  //   setGravity(angle.current);
-  // });
-
-  const orientation = useOrientation();
+  
   useUpdate(() => {
-    const x = orientation.gamma.current;
-    const y = orientation.beta.current;
-    setGravity(Math.min(4, x / 10), Math.min(4, y / 10));
-  });
+    // Shake the balls when the device is shaken.
+    if (motion.isShaking(250)) {
+      shakeBalls();
+    }
 
-  const left = usePosition([-200, 0]);
-  const right = usePosition([200, 0]);
-  const top = usePosition([0, -400]);
-  const bottom = usePosition([0, 400]);
+    // Set the gravity to the direction the device is facing.
+    physics.setGravity(
+      Math.min(4, orientation.gamma.current / 16),
+      Math.min(4, orientation.beta.current / 16),
+    );
 
-  useUpdate(() => {
+    // Position the outer walls to align with the device size.
     const [w, h] = device.size.current;
     left.current[0] = -50 - w / 2;
     right.current[0] = 50 + w / 2;
