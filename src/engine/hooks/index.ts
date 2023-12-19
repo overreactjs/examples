@@ -5,6 +5,7 @@ export { useDebug } from './useDebug';
 export { useDevice } from './useDevice';
 export { useDynamicProperty } from './useDynamicProperty';
 export { useElement } from './useElement';
+export { useHaptics } from './useHaptics';
 export { useKeyboard, useKeyAxis, useKeyPressed } from './useKeyboard';
 export { useLogMount } from './useLogMount';
 export { useMotion, useDeviceShaken } from './useMotion';

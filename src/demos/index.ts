@@ -1,4 +1,5 @@
 import { BuddyDemo } from "./buddy";
+import { HapticsDemo } from "./haptics";
 import { MarbleJarDemo } from "./marble-jar";
 import { MotionDemo } from "./motion";
 import { OrientationDemo } from "./orientation";
@@ -15,6 +16,7 @@ export const mobile = [
   { name: 'Lighting Effects', path: '/lighting', component: LightingDemo },
   { name: 'Device Motion', path: '/motion', component: MotionDemo },
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
+  { name: 'Haptics', path: '/haptics', component: HapticsDemo },
 ];
 
 export const desktop = [
