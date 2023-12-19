@@ -1,6 +1,7 @@
+import React from "react";
 import { useElement, useProperty, useRender, useUpdate } from "@engine";
 
-export const Debug: React.FC = () => {
+export const FrameRate: React.FC = () => {
   const fpsElement = useElement();
   const fps = useProperty(new SlidingWindow(30));
 

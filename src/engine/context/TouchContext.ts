@@ -3,8 +3,8 @@ import { Position, Property } from "../types";
 
 type TouchContextProps = {
   pos: Property<Position>;
-  isDown: () => boolean;
-  isPressed: () => boolean;
+  isDown: (element: Element) => boolean;
+  isPressed: (element: Element) => boolean;
 };
 
 export const TouchContext = React.createContext<TouchContextProps>({

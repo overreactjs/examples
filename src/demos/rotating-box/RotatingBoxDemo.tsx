@@ -1,5 +1,4 @@
 import { Box, Device, Engine, Position, Size, Viewport, World, useDynamicProperty, useProperty, useUpdate } from "@engine";
-import { Close } from "@components";
 
 export const RotatingBoxDemo = () => {
   return (
@@ -10,7 +9,6 @@ export const RotatingBoxDemo = () => {
             <RotatingBox />
           </World>
         </Viewport>
-        <Close />
       </Device>
     </Engine>
   );

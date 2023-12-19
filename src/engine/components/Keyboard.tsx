@@ -23,6 +23,14 @@ export const Keyboard: React.FC<KeyboardProps> = ({ children }) => {
     return +isKeyDown(positive) - +isKeyDown(negative);
   }, [isKeyDown]);
 
+  const simulateKeyDown = useCallback((code: string) => {
+    dispatchEvent(new KeyboardEvent('keydown', { code }));
+  }, []);
+
+  const simulateKeyUp = useCallback((code: string) => {
+    dispatchEvent(new KeyboardEvent('keyup', { code }));
+  }, []);
+
   /**
    * When a key is pressed down, add it to the 'down' list.
    */
@@ -67,8 +75,8 @@ export const Keyboard: React.FC<KeyboardProps> = ({ children }) => {
   });
 
   const context = useMemo(
-    () => ({ isKeyDown, isKeyPressed, hasKeyAxis }),
-    [isKeyDown, isKeyPressed, hasKeyAxis]
+    () => ({ isKeyDown, isKeyPressed, hasKeyAxis, simulateKeyDown, simulateKeyUp }),
+    [isKeyDown, isKeyPressed, hasKeyAxis, simulateKeyDown, simulateKeyUp]
   );
 
   return (

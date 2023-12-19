@@ -1,15 +1,18 @@
 import { useLayoutEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { DeviceContext, Prop, Size, useElement, useKeyAxis, useKeyPressed, useProperty, useRender , useShaker } from "@engine";
+import { FrameRate } from "./FrameRate";
 
 type DeviceProps = {
   children: React.ReactNode;
   angle?: Prop<number>;
   allowShake?: boolean;
   allowTilt?: boolean;
+  hideClose?: boolean;
   bg?: string;
 };
 
-export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', ...props }) => {
+export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', hideClose = false, ...props }) => {
   const device = useShaker();
   const screen = useElement<HTMLDivElement>();
   const size = useProperty<Size>([0, 0]);
@@ -52,9 +55,22 @@ export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', ...props
         <div className="engine-device" ref={device.ref}>
           <div className="engine-screen shadow-2xl" style={{ background: bg }} ref={screen.ref}>
             {children}
+            {!hideClose && <Close />}
+            <FrameRate />
           </div>
         </div>
       </div>
     </DeviceContext.Provider>
+  );
+};
+
+const Close: React.FC = () => {
+  return (
+    <Link className="absolute top-0 left-0 w-4 h-4 p-8 box-content mix-blend-difference" to="/">
+      <svg className="w-full h-full" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.071 1.92896L1.92891 16.0711" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+        <path d="M16.1422 16.1422L2.00002 2.00001" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+      </svg>
+    </Link>
   );
 };

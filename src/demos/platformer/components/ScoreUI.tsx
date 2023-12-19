@@ -9,5 +9,5 @@ export const ScoreUI: React.FC = () => {
     element.setText(game.current.score.toString());
   });
 
-  return <div ref={element.ref} className="absolute top-6 right-6 text-3xl text-white font-[quicksand] font-bold" />;
+  return <div ref={element.ref} className="absolute top-16 right-8 text-3xl text-white font-[quicksand] font-bold" />;
 };

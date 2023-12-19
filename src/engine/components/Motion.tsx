@@ -36,7 +36,7 @@ export const Motion: React.FC<MotionProps> = ({ children }) => {
 
   useKeyPressed('KeyS', () => {
     acceleration.current = [50, 0, 0];
-    setTimeout(() => acceleration.current = [0, 0, 0], 100);
+    setTimeout(() => acceleration.current = [0, 0, 0], 500);
   });
 
   const context = useMemo(

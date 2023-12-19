@@ -1,13 +1,11 @@
 import { useRef } from "react";
 import { Device, Engine, useElement, useMotion, useRender, useUpdate } from "@engine";
-import { Close } from "@components";
 
 export const MotionDemo = () => {
   return (
     <Engine>
       <Device allowShake>
         <MotionGame />
-        <Close />
       </Device>
     </Engine>
   );

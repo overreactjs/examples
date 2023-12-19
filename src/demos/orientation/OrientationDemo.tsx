@@ -1,12 +1,10 @@
 import { Device, Engine, useElement, useOrientation, useRender } from "@engine";
-import { Close } from "@components";
 
 export const OrientationDemo = () => {
   return (
     <Engine>
       <Device allowShake allowTilt>
         <OrientationGame />
-        <Close />
       </Device>
     </Engine>
   );

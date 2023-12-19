@@ -8,22 +8,29 @@ type TouchProps = {
 }
 
 export const Touch: React.FC<TouchProps> = ({ children }) => {
-  const down = useRef<Set<number>>(new Set());
-  const pressed = useRef<Set<number>>(new Set());
+  const down = useRef<Set<Element>>(new Set());
+  const pressed = useRef<Set<Element>>(new Set());
   const pos = useProperty<Position>([0, 0]);
 
   /**
    * Returns true if the given mouse button is down.
    */
-  const isDown = useCallback(() => {
-    return down.current.has(0);
+  const isDown = useCallback((element: Element) => {
+    for (const target of down.current) {
+      if (element === target || element.contains(target)) {
+        return true;
+      }
+    }
+
+    return false;
+    // return down.current.has(element);
   }, []);
 
   /**
    * Returns true if the given mouse button was *just* released.
    */
-  const isPressed = useCallback(() => {
-    return pressed.current.has(0);
+  const isPressed = useCallback((element: Element) => {
+    return pressed.current.has(element);
   }, []);
 
   /**
@@ -32,17 +39,17 @@ export const Touch: React.FC<TouchProps> = ({ children }) => {
   const handleTouchStart = useCallback((event: TouchEvent) => {
     pos.current[0] = event.touches[0].clientX;
     pos.current[1] = event.touches[0].clientY;
-    down.current.add(0);
+    down.current.add(event.target as Element);
   }, [pos]);
 
   /**
    * Keep track of which buttons have just been released.
    */
-  const handleTouchEnd = useCallback(() => {
-    down.current.delete(0);
-    pressed.current.add(0);
+  const handleTouchEnd = useCallback((event: TouchEvent) => {
+    down.current.delete(event.target as Element);
+    pressed.current.add(event.target as Element);
     requestAnimationFrame(() => {
-      pressed.current.delete(0);
+      pressed.current.delete(event.target as Element);
     });
   }, []);
 
