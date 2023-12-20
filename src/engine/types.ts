@@ -1,5 +1,6 @@
 import { MutableRefObject } from "react";
 import { Body } from "detect-collisions";
+import { Engine } from "matter-js";
 
 export type Property<T> = MutableRefObject<T>;
 
@@ -46,3 +47,7 @@ export type CollisionEventFunction = (props: CollisionEventFunctionProps) => voi
 export type CollisionTag = 'solid' | 'platform' | string;
 
 export type PhysicsUpdateFunction = (body: Matter.Body) => void;
+
+export type PhysicsEventType = 'collision';
+
+export type PhysicsEvent = Matter.IEventCollision<Engine>;

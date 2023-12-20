@@ -69,7 +69,7 @@ export const usePlatformMovement = (collider: string, pos: Property<Position>, v
       isJumping.current = true;
       isFalling.current = false;
       jumpCount.current++;
-      fireEvent('jump');
+      fireEvent('jump', undefined);
     }
 
     // Update state flags.

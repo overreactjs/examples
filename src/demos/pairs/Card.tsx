@@ -1,4 +1,4 @@
-import { Prop, useElement, useMouse, useProperty, useRender, useShaker, useUpdate } from "@engine";
+import { Prop, useElement, useHaptics, useMouse, useProperty, useRender, useShaker, useUpdate } from "@engine";
 import { CardState } from "./CardState";
 import { usePairsGame } from "./PairsGame";
 import { CONFIG } from "./constants";
@@ -13,6 +13,7 @@ export const Card: React.FC<CardProps> = (props) => {
   const back = useElement();
   const mouse = useMouse();
   const shaker = useShaker({ strength: 10, phase: 20 });
+  const haptics = useHaptics();
 
   const game = usePairsGame();
   const card = useProperty(props.card);
@@ -36,6 +37,7 @@ export const Card: React.FC<CardProps> = (props) => {
     if (shake.current) {
       shake.current = false;
       shaker.shake();
+      haptics.notification('error');
     }
   })
 

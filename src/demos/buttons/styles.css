@@ -1,0 +1,149 @@
+/**
+ * Define custom properties so that they can be animated.
+ */
+
+@property --button-face-from {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+@property --button-face-to {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+@property --button-edge-from {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+@property --button-edge-to {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+/**
+ * Default (disabled) state.
+ */
+
+.button {
+  --button-face-from: hsl(350deg 0% 94%);
+  --button-face-to: hsl(340deg 0% 84%);
+  --button-edge-from: hsl(340deg 0% 60%);
+  --button-edge-to: hsl(340deg 0% 70%);
+
+  display: block;
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: default;
+  width: 100%;
+  border-radius: 12px;
+  aspect-ratio: 1 / 1;
+  z-index: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    --button-face-from 250ms cubic-bezier(.3, .7, .4, 1),
+    --button-face-to 250ms cubic-bezier(.3, .7, .4, 1),
+    --button-edge-from 250ms cubic-bezier(.3, .7, .4, 1),
+    --button-edge-to 250ms cubic-bezier(.3, .7, .4, 1);
+}
+.button-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.15);
+  will-change: transform;
+  transform: translateY(1px);
+  transition: all 50ms cubic-bezier(.3, .7, .4, 1);
+  filter: blur(1px);
+}
+.button-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    var(--button-edge-from) 0%,
+    var(--button-edge-to) 8%,
+    var(--button-edge-to) 92%,
+    var(--button-edge-from) 100%
+  );
+}
+.button-front {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: radial-gradient(
+    circle at 50% 60%,
+    var(--button-face-from),
+    var(--button-face-to)
+  );
+  will-change: transform;
+  transform: translateY(-2px);
+  transition: all 50ms cubic-bezier(.3, .7, .4, 1);
+}
+
+/**
+ * Enabled state
+ */
+
+.button.button-enabled {
+  --button-face-from: hsl(10deg 100% 70%);
+  --button-face-to: hsl(350deg 100% 50%);
+  --button-edge-from: hsl(340deg 100% 25%);
+  --button-edge-to: hsl(340deg 100% 35%);
+
+  z-index: 1;
+  transition: all 250ms cubic-bezier(.3, -0.5, .4, 5);
+  cursor: pointer;
+  box-shadow: 0 0 50px var(--button-face-to);
+}
+.button.button-enabled .button-shadow {
+  transform: translateY(6px);
+  transition: all 250ms cubic-bezier(.3, -0.5, .4, 5);
+}
+.button.button-enabled .button-edge {
+  box-shadow: inset 0 -2px 2px var(--button-face-to);
+}
+.button.button-enabled .button-front {
+  transform: translateY(-10px);
+  transition: all 250ms cubic-bezier(.3, -0.5, .4, 5);
+}
+
+/**
+ * Active state
+ */
+
+.button.button-enabled:active {
+  filter: brightness(110%);
+}
+.button.button-enabled:active .button-shadow {
+  transform: translateY(1px);
+  transition: all 34ms;
+}
+.button.button-enabled:active .button-front {
+  transform: translateY(-2px);
+  transition: all 34ms;
+}
+
+/**
+ * Focused
+ */
+
+.button:focus:not(:focus-visible) {
+  outline: none;
+}

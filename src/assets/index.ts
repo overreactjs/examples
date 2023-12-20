@@ -1,6 +1,7 @@
 import { BitmapAsset, BitmapSpriteAsset } from "@engine";
 
 export * as cards from './cards';
+export * as sounds from './sounds';
 
 import gem from "./gem.png"
 import playerIdle from "./player-idle.png";

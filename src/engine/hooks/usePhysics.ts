@@ -7,7 +7,7 @@ import { useProperty } from "./useProperty";
 /**
  * Register a new physics body.
  */
-export const usePhysics = (
+export const usePhysicsBody = (
   body: Property<Matter.Body>,
   update: PhysicsUpdateFunction,
 ) => {
@@ -33,7 +33,7 @@ export const useBoxPhysics = (
   const body = useRef(Bodies.rectangle(x, y, w, h, options));
   const update = useSyncPositions(pos);
 
-  usePhysics(body, update);
+  usePhysicsBody(body, update);
 };
 
 /**
@@ -50,7 +50,7 @@ export const useCirclePhysics = (
   const body = useRef(Bodies.circle(x, y, r, options));
   const update = useSyncPositions(pos);
 
-  usePhysics(body, update);
+  usePhysicsBody(body, update);
 };
 
 /**

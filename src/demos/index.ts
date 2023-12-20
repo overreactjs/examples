@@ -1,4 +1,5 @@
 import { BuddyDemo } from "./buddy";
+import { ButtonsDemo } from "./buttons";
 import { HapticsDemo } from "./haptics";
 import { MarbleJarDemo } from "./marble-jar";
 import { MotionDemo } from "./motion";
@@ -14,6 +15,7 @@ export const mobile = [
   { name: 'Pairs (Events)', path: '/pairs', component: PairsDemo },
   { name: 'Platform Game (Collisions)', path: '/platformer', component: PlatformerDemo },
   { name: 'Lighting Effects', path: '/lighting', component: LightingDemo },
+  { name: 'Buttons (CSS Styles)', path: '/buttons', component: ButtonsDemo },
   { name: 'Device Motion', path: '/motion', component: MotionDemo },
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
   { name: 'Haptics', path: '/haptics', component: HapticsDemo },

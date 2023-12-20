@@ -32,27 +32,29 @@ function DemoList() {
 
   return (
     <Device hideClose>
-      <div className="w-full min-h-full p-12 pt-8 box-border bg-white leading-10 text-lg">
-        <Heading>Mobile Demos</Heading>
-        <OrderedList>
-          {mobile.map(({ name, path }) => (
-            <DemoLink key={path} path={path}>{name}</DemoLink>
-          ))}
-        </OrderedList>
-        
-        <Heading>Desktop Demos</Heading>
-        <OrderedList>
-          {desktop.map(({ name, path }) => (
-            <DemoLink key={path} path={path}>{name}</DemoLink>
-          ))}
-        </OrderedList>
+      <div className="w-full h-full overflow-auto">
+        <div className="w-full min-h-full p-12 pt-8 box-border bg-white leading-10 text-lg">
+          <Heading>Mobile Demos</Heading>
+          <OrderedList>
+            {mobile.map(({ name, path }) => (
+              <DemoLink key={path} path={path}>{name}</DemoLink>
+            ))}
+          </OrderedList>
+          
+          <Heading>Desktop Demos</Heading>
+          <OrderedList>
+            {desktop.map(({ name, path }) => (
+              <DemoLink key={path} path={path}>{name}</DemoLink>
+            ))}
+          </OrderedList>
 
-        <Heading>Setup</Heading>
-        <UnorderedList>
-          <li className="pl-2">
-            <button className="text-blue-500" onClick={activateDeviceEvents}>Activate device events</button>
-          </li>
-        </UnorderedList>
+          <Heading>Setup</Heading>
+          <UnorderedList>
+            <li className="pl-2">
+              <button className="text-blue-500" onClick={activateDeviceEvents}>Activate device events</button>
+            </li>
+          </UnorderedList>
+        </div>
       </div>
     </Device>
   );

@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo, useRef } from "react";
-import { Engine, Composite } from "matter-js";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import { Engine, Composite, Events } from "matter-js";
 import { PhysicsContext } from "../context";
-import { useUpdate } from "../hooks";
-import { PhysicsUpdateFunction } from "../types";
+import { useEventListeners, useUpdate } from "../hooks";
+import { PhysicsEvent, PhysicsEventType, PhysicsUpdateFunction } from "../types";
 
 type PhysicsProps = {
   children: React.ReactNode;
@@ -43,6 +43,22 @@ export const Physics: React.FC<PhysicsProps> = ({ children }) => {
   }, []);
 
   /**
+   * 
+   */
+  const { addEventListener, removeEventListener, fireEvent } = useEventListeners<PhysicsEventType, PhysicsEvent>();
+  const handleCollision = useCallback((event: Matter.IEventCollision<Engine>) => {
+    fireEvent('collision', event);
+  }, []);
+
+  /**
+   * 
+   */
+  useEffect(() => {
+    Events.on(engine.current, 'collisionStart', handleCollision);
+    return () => Events.off(engine.current, 'collisionStart', handleCollision);
+  }, []);
+
+  /**
    * Each frame, play the physics system forwards, then call all of the update functions.
    */
   useUpdate((delta) => {
@@ -53,7 +69,9 @@ export const Physics: React.FC<PhysicsProps> = ({ children }) => {
     }
   });
 
-  const context = useMemo(() => ({ engine, register, setGravity }), [engine, register, setGravity]);
+  const context = useMemo(() => ({
+    engine, register, setGravity, addEventListener, removeEventListener
+  }), [engine, register, setGravity, addEventListener, removeEventListener]);
 
   return (
     <PhysicsContext.Provider value={context}>
