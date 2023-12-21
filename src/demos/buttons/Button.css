@@ -89,12 +89,13 @@
   border-radius: 12px;
   background: radial-gradient(
     circle at 50% 60%,
-    var(--button-face-from),
-    var(--button-face-to)
+    var(--button-face-from) 20%,
+    var(--button-face-to) 80%
   );
   will-change: transform;
   transform: translateY(-2px);
   transition: all 50ms cubic-bezier(.3, .7, .4, 1);
+  box-shadow: inset 0 0 2px 2px hsl(0deg 0% 75% / 0.15);
 }
 
 /**

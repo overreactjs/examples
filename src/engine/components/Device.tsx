@@ -9,12 +9,14 @@ type DeviceProps = {
   allowShake?: boolean;
   allowTilt?: boolean;
   hideClose?: boolean;
+  showFPS?: boolean;
   bg?: string;
 };
 
-export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', hideClose = false, ...props }) => {
+export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', hideClose = false, showFPS = false, ...props }) => {
   const device = useShaker();
   const screen = useElement<HTMLDivElement>();
+
   const size = useProperty<Size>([0, 0]);
   const angle = useProperty(props.angle || 0);
   
@@ -43,7 +45,7 @@ export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', hideClos
 
       observer.observe(screen.ref.current);
     }
-  }, []);
+  }, [screen.ref, size]);
 
   const context = useMemo(() => ({
     size,
@@ -56,7 +58,7 @@ export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', hideClos
           <div className="engine-screen shadow-2xl" style={{ background: bg }} ref={screen.ref}>
             {children}
             {!hideClose && <Close />}
-            <FrameRate />
+            {showFPS && <FrameRate />}
           </div>
         </div>
       </div>
