@@ -1,6 +1,12 @@
 import React from "react";
-import { useElement, useProperty, useRender, useUpdate } from "@engine";
+import { SlidingWindow, useElement, useProperty, useRender, useUpdate } from "@engine";
 
+/**
+ * FrameRate
+ * ---------
+ * 
+ * Show the current FPS in the top right of the device.
+ */
 export const FrameRate: React.FC = () => {
   const fpsElement = useElement();
   const fps = useProperty(new SlidingWindow(30));
@@ -19,22 +25,3 @@ export const FrameRate: React.FC = () => {
     </div>
   );
 };
-
-class SlidingWindow {
-  values: number[] = [];
-  size: number;
-  index: number = 0;
-  
-  constructor(size: number) {
-    this.size = size;
-  }
-
-  push(value: number) {
-    this.values[this.index] = value;
-    this.index = (this.index + 1) % this.size;
-  }
-
-  mean(): number {
-    return this.values.reduce((result, current) => result + current, 0) / this.size;
-  }
-}

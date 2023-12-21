@@ -51,3 +51,5 @@ export type PhysicsUpdateFunction = (body: Matter.Body) => void;
 export type PhysicsEventType = 'collision';
 
 export type PhysicsEvent = Matter.IEventCollision<Engine>;
+
+export type CameraAxis = 'x' | 'y' | 'xy';

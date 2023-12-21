@@ -7,6 +7,12 @@ type TouchProps = {
   children: React.ReactNode;
 }
 
+/**
+ * Touch
+ * -----
+ * 
+ * ...
+ */
 export const Touch: React.FC<TouchProps> = ({ children }) => {
   const down = useRef<Set<Element>>(new Set());
   const pressed = useRef<Set<Element>>(new Set());
@@ -23,7 +29,6 @@ export const Touch: React.FC<TouchProps> = ({ children }) => {
     }
 
     return false;
-    // return down.current.has(element);
   }, []);
 
   /**

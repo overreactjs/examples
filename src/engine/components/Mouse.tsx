@@ -7,6 +7,13 @@ type MouseProps = {
   children: React.ReactNode;
 }
 
+/**
+ * Mouse
+ * -----
+ * 
+ * Keep track of the current move position (in screen space) and which buttons are currently 
+ * pressed.
+ */
 export const Mouse: React.FC<MouseProps> = ({ children }) => {
   const down = useRef<Set<number>>(new Set());
   const pressed = useRef<Set<number>>(new Set());

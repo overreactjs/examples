@@ -7,19 +7,18 @@ type AnimationConfig = {
   reset: () => void;
 }
 
-type SpriteSetContextProps = {
-  register: (animation: string, element: Property<HTMLOrSVGElement | null>, reset: () => void) => () => void;
-}
-
-export const SpriteSetContext = React.createContext<SpriteSetContextProps>({
-  register: () => () => {},
-});
-
 type SpriteSetProps = {
   animation: Prop<string>;
   children: React.ReactNode;
 };
 
+/**
+ * SpriteSet
+ * ---------
+ * 
+ * Wrap a set of bitmap or vector sprites, ensuring that only one is ever shown at once, based on
+ * the current animation.
+ */
 export const SpriteSet: React.FC<SpriteSetProps> = (props) => {
   const animation = useProperty(props.animation);
   const animations = useRef<Map<string, AnimationConfig>>(new Map());
@@ -49,3 +48,11 @@ export const SpriteSet: React.FC<SpriteSetProps> = (props) => {
     </SpriteSetContext.Provider>
   );
 };
+
+type SpriteSetContextProps = {
+  register: (animation: string, element: Property<HTMLOrSVGElement | null>, reset: () => void) => () => void;
+}
+
+export const SpriteSetContext = React.createContext<SpriteSetContextProps>({
+  register: () => () => {},
+});

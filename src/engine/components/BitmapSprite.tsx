@@ -2,13 +2,6 @@ import { useElement, usePosition, useProperty, useSpriteSet, useUpdate } from ".
 import { BitmapSpriteAsset, Position, Prop, Size } from "../types";
 import { BitmapImage } from "./BitmapImage";
 
-/**
- * BitmapSprite
- * ------------
- * 
- * ...
- */
-
 type BitmapSpriteProps = {
   name?: string;
   sprite: Prop<BitmapSpriteAsset>;
@@ -18,6 +11,13 @@ type BitmapSpriteProps = {
   repeat?: boolean;
 };
 
+/**
+ * BitmapSprite
+ * ------------
+ * 
+ * Animate a bitmap sprite by changing the offset of the background position, based on the number
+ * of frames and the frame rate.
+ */
 export const BitmapSprite: React.FC<BitmapSpriteProps> = (props) => {
   const element = useElement<HTMLDivElement>();
 

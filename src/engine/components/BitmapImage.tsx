@@ -13,6 +13,13 @@ type BitmapImageProps = {
   scale?: Prop<number>;
 }
 
+/**
+ * BitmapImage
+ * -----------
+ * 
+ * Render part of a bitmap image. The image is shown an a background image, sized and cropped as
+ * required.
+ */
 export const BitmapImage: React.FC<BitmapImageProps> = (props) => {
   const element = useElement<HTMLDivElement>(props.element);
 

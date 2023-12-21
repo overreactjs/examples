@@ -7,17 +7,16 @@ import { Touch } from "./Touch";
 import { Motion } from "./Motion";
 import { Orientation } from "./Orientation";
 
+type EngineProps = {
+  children: React.ReactNode;
+}
+
 /**
  * Engine
  * ------
  * 
  * Provides a game loop, ensuring updates are made at a constant frame rate.
  */
-
-type EngineProps = {
-  children: React.ReactNode;
-}
-
 export const Engine: React.FC<EngineProps> = ({ children }) => {
   const started = useRef(false);
   const paused = useRef(true);

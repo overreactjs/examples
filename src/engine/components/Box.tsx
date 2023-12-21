@@ -15,7 +15,8 @@ type BoxProps = {
  * Box
  * ---
  * 
- * ...
+ * A rectangle (just a div) with a position, size, angle, and a background color. It can be used to
+ * group elements that should be moved as though one.
  */
 export const Box: React.FC<BoxProps> = ({ className, ...props }) => {
   const element = useElement();

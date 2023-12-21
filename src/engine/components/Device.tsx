@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { DeviceContext, Prop, Size, useElement, useKeyAxis, useKeyPressed, useProperty, useRender , useShaker } from "@engine";
 import { FrameRate } from "./FrameRate";
@@ -13,6 +13,13 @@ type DeviceProps = {
   bg?: string;
 };
 
+/**
+ * Device
+ * ------
+ * 
+ * Try to mimic a real device, to improve the developer experience by allowing us to trigger shake
+ * actions, adjust the device orientation, and track the dimensions.
+ */
 export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', hideClose = false, showFPS = false, ...props }) => {
   const device = useShaker();
   const screen = useElement<HTMLDivElement>();
@@ -46,6 +53,13 @@ export const Device: React.FC<DeviceProps> = ({ children, bg = 'white', hideClos
       observer.observe(screen.ref.current);
     }
   }, [screen.ref, size]);
+
+  useEffect(() => {
+    const motion = DeviceMotionEvent as unknown as { requestPermission?: () => void };
+    const orientation = DeviceOrientationEvent as unknown as { requestPermission?: () => void };
+    motion.requestPermission?.();
+    orientation.requestPermission?.();
+  }, []);
 
   const context = useMemo(() => ({
     size,

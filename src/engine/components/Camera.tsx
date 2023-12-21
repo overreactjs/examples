@@ -1,19 +1,10 @@
 import { useDebug, useElement, usePosition, useRender, useUpdate, useViewport } from "../hooks";
-import { Position } from "../types";
+import { CameraAxis, Position } from "../types";
 import { lerp } from "../utils";
 
 const SMOOTH_FACTOR = 0.04;
 
 const CLASS_NAME = "absolute w-2 h-2 -m-1 border-2 border-pink-600";
-
-/**
- * Camera
- * ------
- * 
- * Reports the position of the nested object up to the closest viewport.
- */
-
-type CameraAxis = 'x' | 'y' | 'xy';
 
 type CameraProps = {
   axis?: CameraAxis;
@@ -21,6 +12,12 @@ type CameraProps = {
   smooth?: boolean;
 }
 
+/**
+ * Camera
+ * ------
+ * 
+ * Reports the position of the nested object up to the closest viewport.
+ */
 export const Camera: React.FC<CameraProps> = ({ axis = 'xy', offset = [0, 0], smooth = false }) => {
   const element = useElement<HTMLDivElement>();
   const debug = useDebug();

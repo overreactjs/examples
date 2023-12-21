@@ -11,6 +11,12 @@ type PhysicsBoxProps = {
   static?: boolean;
 }
 
+/**
+ * PhysicsBox
+ * ----------
+ * 
+ * Register a box-shaped physics body.
+ */
 export const PhysicsBox: React.FC<PhysicsBoxProps> = (props) => {
   const element = useElement<HTMLDivElement>();
   const debug = useDebug();
@@ -24,7 +30,8 @@ export const PhysicsBox: React.FC<PhysicsBoxProps> = (props) => {
     if (debug) {
       element.setBaseStyles({
         pos: { current: [pos.current[0] - size.current[0] / 2, pos.current[1] - size.current[1] / 2]},
-        size });
+        size,
+      });
     }
   });
 

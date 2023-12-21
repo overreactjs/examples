@@ -14,7 +14,8 @@ export const ViewportContext = React.createContext<ViewportContextProps>({
  * Viewport
  * --------
  * 
- * Hides everything outside of it, and can be controlled by a nested camera.
+ * Hide everything outside of the viewport, centering the content. The focus position can be
+ * controlled by a nested camera.
  */
 
 type ViewportProps = {

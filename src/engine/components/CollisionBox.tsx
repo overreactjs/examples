@@ -10,6 +10,12 @@ type CollisionBoxProps = {
   tags?: Prop<CollisionTag[]>;
 }
 
+/**
+ * CollisionBox
+ * ------------
+ * 
+ * Register a box-shaped collider that will report collisions and overlaps with other colliders
+ */
 export const CollisionBox: React.FC<CollisionBoxProps> = ({ id, ...props }) => {
   const element = useElement<HTMLDivElement>();
   const debug = useDebug();

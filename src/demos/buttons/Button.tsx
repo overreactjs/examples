@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useElement, useRender } from "@engine";
-import { useButtonsGame } from "./ButtonsGame";
+import { useButtonsGame } from "./useButtonsGame";
+
 import "./Button.css";
 
 type ButtonProps = {

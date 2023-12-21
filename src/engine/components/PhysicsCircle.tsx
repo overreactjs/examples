@@ -10,6 +10,12 @@ type PhysicsCircleProps = {
   radius: Prop<number>;
 }
 
+/**
+ * PhysicsCircle
+ * -------------
+ * 
+ * Register a circular physics body.
+ */
 export const PhysicsCircle: React.FC<PhysicsCircleProps> = (props) => {
   const element = useElement<HTMLDivElement>();
   const debug = useDebug();

@@ -10,6 +10,12 @@ type TilemapProps = {
   scale?: Prop<number>;
 }
 
+/**
+ * Tilemap
+ * -------
+ * 
+ * ...
+ */
 export const Tilemap: React.FC<TilemapProps> = ({ tileset, tiles, ...props }) => {
   const { image, cellSize, gridSize } = tileset;
 

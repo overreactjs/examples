@@ -2,13 +2,6 @@ import { useElement, usePosition, useProperty, useRender } from "../hooks";
 import { Position, Prop, Size } from "../types";
 import { Node } from "./Node";
 
-/**
- * Circle
- * ------
- * 
- * ...
- */
-
 type CircleProps = {
   pos?: Prop<Position>;
   size: Prop<Size>;
@@ -16,6 +9,13 @@ type CircleProps = {
   className?: string;
 };
 
+/**
+ * Circle
+ * ------
+ * 
+ * A fully rounded oval (just a div) with a position, size, angle, and a background color. It can
+ * be used to group elements that should be moved as though one.
+ */
 export const Circle: React.FC<CircleProps> = ({ className, ...props }) => {
   const element = useElement<HTMLDivElement>();
 

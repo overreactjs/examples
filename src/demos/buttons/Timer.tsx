@@ -1,5 +1,5 @@
 import { useElement, useRender } from "@engine";
-import { useButtonsGame } from "./ButtonsGame";
+import { useButtonsGame } from "./useButtonsGame";
 
 const RADIUS = 70;
 const CIRCUMFERENCE = RADIUS * 2 * Math.PI;

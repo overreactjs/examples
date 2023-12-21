@@ -1,18 +1,13 @@
-import { useState, useCallback, useContext } from "react";
+import { useState, useCallback } from "react";
 import { useAudio, useHaptics, useUpdate } from "@engine";
 import { sounds } from "@assets";
 import { Button } from "./Button";
 import { Timer } from "./Timer";
 import React from "react";
 import { ButtonsGameState } from "./ButtonsGameState";
+import { ButtonsGameContext } from "./useButtonsGame";
 
 const SOUNDS = [sounds.switch005, sounds.switch006, sounds.switch007];
-
-export const ButtonsGameContext = React.createContext<ButtonsGameState>(new ButtonsGameState());
-
-export const useButtonsGame = () => {
-  return useContext(ButtonsGameContext);
-};
 
 export const ButtonsGame: React.FC = () => {
   const audio = useAudio();

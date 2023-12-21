@@ -5,17 +5,16 @@ import { CollisionEventFunction, CollisionUpdateFunction, Position, Property } f
 import { useDynamicProperty, useMouse, useTouch, useUpdate } from "../hooks";
 import { WorldContext } from "../context";
 
+type WorldProps = {
+  children: React.ReactNode;
+}
+
 /**
  * World
  * -------
  * 
  * A collection of objects that can move independently and collide with one another.
  */
-
-type WorldProps = {
-  children: React.ReactNode;
-}
-
 export const World: React.FC<WorldProps> = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null);
   const system = useRef<System>(new System());
