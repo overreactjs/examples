@@ -1,11 +1,11 @@
 import { Device, Engine } from "@engine";
-import { Buttons } from "./Buttons";
+import { ButtonsGame } from "./ButtonsGame";
 
 export const ButtonsDemo = () => {
   return (
     <Engine>
       <Device>
-        <Buttons />
+        <ButtonsGame />
       </Device>
     </Engine>
   );

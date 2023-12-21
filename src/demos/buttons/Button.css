@@ -102,7 +102,7 @@
  * Enabled state
  */
 
-.button.button-enabled {
+.button[data-enabled="true"] {
   --button-face-from: hsl(10deg 100% 70%);
   --button-face-to: hsl(350deg 100% 50%);
   --button-edge-from: hsl(340deg 100% 25%);
@@ -113,14 +113,14 @@
   cursor: pointer;
   box-shadow: 0 0 50px var(--button-face-to);
 }
-.button.button-enabled .button-shadow {
+.button[data-enabled="true"] .button-shadow {
   transform: translateY(6px);
   transition: all 250ms cubic-bezier(.3, -0.5, .4, 5);
 }
-.button.button-enabled .button-edge {
+.button[data-enabled="true"] .button-edge {
   box-shadow: inset 0 -2px 2px var(--button-face-to);
 }
-.button.button-enabled .button-front {
+.button[data-enabled="true"] .button-front {
   transform: translateY(-10px);
   transition: all 250ms cubic-bezier(.3, -0.5, .4, 5);
 }
@@ -129,14 +129,14 @@
  * Active state
  */
 
-.button.button-enabled:active {
+.button[data-enabled="true"]:active {
   filter: brightness(110%);
 }
-.button.button-enabled:active .button-shadow {
+.button[data-enabled="true"]:active .button-shadow {
   transform: translateY(1px);
   transition: all 34ms;
 }
-.button.button-enabled:active .button-front {
+.button[data-enabled="true"]:active .button-front {
   transform: translateY(-2px);
   transition: all 34ms;
 }

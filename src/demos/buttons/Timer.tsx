@@ -1,27 +1,22 @@
-import { Prop, useElement, useProperty, useRender } from "@engine";
+import { useElement, useRender } from "@engine";
+import { useButtonsGame } from "./ButtonsGame";
 
 const RADIUS = 70;
 const CIRCUMFERENCE = RADIUS * 2 * Math.PI;
 
-type TimerProps = {
-  time: Prop<number>;
-  score: Prop<number>;
-};
-
-export const Timer: React.FC<TimerProps> = (props) => {
+export const Timer: React.FC = () => {
   const outer = useElement<SVGCircleElement>();
   const inner = useElement<SVGCircleElement>();
   const points = useElement();
 
-  const time = useProperty(props.time);
-  const score = useProperty(props.score);
+  const game = useButtonsGame();
 
   useRender(() => {
-    const value = time.current / 30000;
+    const value = game.time.current / 30000;
     const offset = Math.max(0, Math.min(CIRCUMFERENCE, CIRCUMFERENCE * (1 - value)));
     outer.setStyle('strokeDashoffset', offset);
     inner.setStyle('strokeDashoffset', offset);
-    points.setText(score.current.toString());
+    points.setText(game.score.current.toString());
   });
 
   return (

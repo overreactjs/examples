@@ -1,15 +1,28 @@
+import { useCallback } from "react";
+import { useElement, useRender } from "@engine";
+import { useButtonsGame } from "./ButtonsGame";
 import "./Button.css";
 
 type ButtonProps = {
-  disabled?: boolean;
-  onClick: () => void;
+  index: number;
+  onClick: (index: number) => void;
 };
 
-export const Button: React.FC<ButtonProps> = ({ disabled, onClick }) => {
-  const className = `button ${!disabled && 'button-enabled'}`;
+export const Button: React.FC<ButtonProps> = ({ index, onClick }) => {
+  const game = useButtonsGame();
+  const element = useElement<HTMLButtonElement>();
+
+  useRender(() => {
+    element.setData('enabled', index === game.activeButton.current);
+  });
+
+  const handleClick = useCallback(() => {
+    onClick(index);
+  }, [index, onClick]);
+
   return (
     <div>
-      <button className={className} onTouchStart={onClick} onMouseDown={onClick}>
+      <button ref={element.ref} className="button" onTouchStart={handleClick} onMouseDown={handleClick}>
         <span className="button-shadow" />
         <span className="button-edge" />
         <span className="button-front" />
