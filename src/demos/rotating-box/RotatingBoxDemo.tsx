@@ -1,4 +1,4 @@
-import { Box, Device, Engine, Position, Size, Viewport, World, useDynamicProperty, useProperty, useUpdate } from "@engine";
+import { Box, Device, Engine, Position, Size, Viewport, World, useDynamicProperty, useProperty, useUpdate } from "@overreact/engine";
 
 export const RotatingBoxDemo = () => {
   return (

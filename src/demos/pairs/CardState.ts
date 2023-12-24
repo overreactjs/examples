@@ -1,4 +1,4 @@
-import { ObjectState, StateProp } from "@engine";
+import { ObjectState, StateProp } from "@overreact/engine";
 import { CardType } from "./types";
 
 export class CardState extends ObjectState {

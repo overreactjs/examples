@@ -1,4 +1,4 @@
-import { ObjectState, Position, StateProp } from "@engine";
+import { ObjectState, Position, StateProp } from "@overreact/engine";
 
 export class PlayerState extends ObjectState {
   pos: StateProp<Position>;

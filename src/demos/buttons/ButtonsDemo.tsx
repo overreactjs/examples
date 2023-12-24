@@ -1,4 +1,4 @@
-import { Device, Engine } from "@engine";
+import { Device, Engine } from "@overreact/engine";
 import { ButtonsGame } from "./ButtonsGame";
 
 export const ButtonsDemo = () => {

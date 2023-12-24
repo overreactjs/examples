@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { Engine, Prop, Viewport, World, useKeyPressed, useProperty, useSync } from "@engine";
+import { Engine, Prop, Viewport, World, useKeyPressed, useProperty, useSync } from "@overreact/engine";
 import { Collectibles, PlatformGame, LevelGeometry, Player } from "./components";
 
 export const ViewportScaleDemo = () => {

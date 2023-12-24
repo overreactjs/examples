@@ -1,4 +1,4 @@
-import { Device, Engine, useElement, useOrientation, useRender } from "@engine";
+import { Device, Engine, useElement, useOrientation, useRender } from "@overreact/engine";
 
 export const OrientationDemo = () => {
   return (

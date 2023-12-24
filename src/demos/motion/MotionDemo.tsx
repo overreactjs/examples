@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Device, Engine, useElement, useMotion, useRender, useUpdate } from "@engine";
+import { Device, Engine, useElement, useMotion, useRender, useUpdate } from "@overreact/engine";
 
 export const MotionDemo = () => {
   return (

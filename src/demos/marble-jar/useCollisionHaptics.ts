@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import { PhysicsEvent, useHaptics, usePhysicsCollision, useUpdate } from "@engine";
+import { PhysicsEvent, usePhysicsCollision, useUpdate } from "@overreact/engine";
+import { useHaptics } from "@overreact/capacitor";
 
 export const useCollisionHaptics = () => {
   const haptics = useHaptics();

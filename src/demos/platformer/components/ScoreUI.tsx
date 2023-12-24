@@ -1,4 +1,4 @@
-import { useElement, useRender } from "@engine";
+import { useElement, useRender } from "@overreact/engine";
 import { usePlatformGame } from "./PlatformGame";
 
 export const ScoreUI: React.FC = () => {

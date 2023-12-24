@@ -1,4 +1,4 @@
-import { Device, Engine } from "@engine";
+import { Device, Engine } from "@overreact/engine";
 import { Cards } from "./Cards";
 
 export const PairsDemo = () => {

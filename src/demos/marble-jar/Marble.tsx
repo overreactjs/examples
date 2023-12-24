@@ -1,4 +1,4 @@
-import { Prop, Position, usePosition, useProperty, Size, Circle, Node, PhysicsCircle, useDynamicProperty } from "@engine";
+import { Prop, Position, usePosition, useProperty, Size, Circle, Node, PhysicsCircle, useDynamicProperty } from "@overreact/engine";
 
 type MarbleProps = {
   pos: Prop<Position>;

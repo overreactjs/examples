@@ -1,4 +1,5 @@
-import { Prop, useElement, useHaptics, useMouse, useProperty, useRender, useShaker, useUpdate } from "@engine";
+import { Prop, useElement, useMouse, useProperty, useRender, useShaker, useUpdate } from "@overreact/engine";
+import { useHaptics } from "@overreact/capacitor";
 import { CardState } from "./CardState";
 import { usePairsGame } from "./PairsGame";
 import { CONFIG } from "./constants";

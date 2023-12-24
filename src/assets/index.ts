@@ -1,4 +1,4 @@
-import { BitmapAsset, BitmapSpriteAsset } from "@engine";
+import { BitmapAsset, BitmapSpriteAsset } from "@overreact/engine";
 
 export * as cards from './cards';
 export * as sounds from './sounds';

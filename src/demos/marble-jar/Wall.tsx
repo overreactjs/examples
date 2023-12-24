@@ -1,4 +1,4 @@
-import { Box, Node, Prop, Position, Size, usePosition, useProperty, useDynamicProperty, PhysicsBox } from "@engine";
+import { Box, Node, Prop, Position, Size, usePosition, useProperty, useDynamicProperty, PhysicsBox } from "@overreact/engine";
 
 type WallProps = {
   pos: Prop<Position>;

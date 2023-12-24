@@ -1,5 +1,5 @@
 import React from "react";
-import { BitmapSprite, Node, SpriteSet, useOffsetPosition, usePosition, useProperty } from "@engine";
+import { BitmapSprite, Node, SpriteSet, useOffsetPosition, usePosition, useProperty } from "@overreact/engine";
 import { PLAYER_FALL, PLAYER_IDLE, PLAYER_JUMP, PLAYER_RUN } from "@assets";
 import { PlayerIndicator } from "./PlayerIndicator";
 import { usePlatformGame } from "./PlatformGame";

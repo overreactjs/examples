@@ -1,4 +1,4 @@
-import { Engine, Viewport, World } from "@engine";
+import { Engine, Viewport, World } from "@overreact/engine";
 import { Collectibles, LevelGeometry, PassivePlayer, PlatformGame, Player } from "./components";
 
 export const MultiplayerDemo = () => {

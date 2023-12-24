@@ -1,4 +1,4 @@
-import { useSync } from "@engine";
+import { useSync } from "@overreact/engine";
 import { Gem } from "./Gem";
 import { usePlatformGame } from "./PlatformGame";
 

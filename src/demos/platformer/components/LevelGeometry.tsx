@@ -1,4 +1,4 @@
-import { CollisionBox, Tilemap, Tileset } from "@engine";
+import { CollisionBox, Tilemap, Tileset } from "@overreact/engine";
 import { JUNGLE_TILESET } from "@assets";
 
 const TILESET: Tileset = {

@@ -1,4 +1,4 @@
-import { Device, Engine, Physics } from "@engine";
+import { Device, Engine, Physics } from "@overreact/engine";
 import { MarbleJarGame } from "./MarbleJarGame";
 
 export const MarbleJarDemo = () => {

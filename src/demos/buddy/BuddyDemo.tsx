@@ -1,4 +1,4 @@
-import { BitmapSprite, Device, Engine, Viewport, World } from "@engine";
+import { BitmapSprite, Device, Engine, Viewport, World } from "@overreact/engine";
 import { BUDDY_IDLE } from "@assets";
 
 export const BuddyDemo = () => {

@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { Position, Viewport, World, useDevice, useKeyPressed, useMotion, useOrientation, usePhysicsEngine, usePosition, useUpdate } from "@engine";
+import { Position, Viewport, World, useDevice, useKeyPressed, useMotion, useOrientation, usePhysicsEngine, usePosition, useUpdate } from "@overreact/engine";
 import { Body } from "matter-js";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from './constants';
 import { useCollisionHaptics } from "./useCollisionHaptics";

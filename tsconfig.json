@@ -24,7 +24,6 @@
     "paths": {
       "@assets": ["src/assets"],
       "@components": ["src/components"],
-      "@engine": ["src/engine"],
       "@state": ["src/state"],
     }
   },

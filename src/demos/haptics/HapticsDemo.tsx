@@ -1,4 +1,5 @@
-import { Device, Engine, useHaptics } from "@engine";
+import { Device, Engine } from "@overreact/engine";
+import { useHaptics } from "@overreact/capacitor";
 
 export const HapticsDemo = () => {
   return (

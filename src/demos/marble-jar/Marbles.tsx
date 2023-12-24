@@ -1,4 +1,4 @@
-import { Position, useMouse, useWorld, dist, useUpdate } from "@engine";
+import { Position, useMouse, useWorld, dist, useUpdate } from "@overreact/engine";
 import { MarbleState } from "./MarbleState";
 import { Marble } from "./Marble";
 

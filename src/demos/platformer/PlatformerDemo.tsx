@@ -1,4 +1,4 @@
-import { Device, Engine, Viewport, World } from "@engine";
+import { Device, Engine, Viewport, World } from "@overreact/engine";
 import { Collectibles, PlatformGame, LevelGeometry, Player, ScoreUI, OnscreenController } from "./components";
 
 export const PlatformerDemo = () => {

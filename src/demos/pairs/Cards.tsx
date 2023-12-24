@@ -1,4 +1,4 @@
-import { useSync } from "@engine";
+import { useSync } from "@overreact/engine";
 import { usePairsGame } from "./PairsGame";
 import { Card } from "./Card";
 

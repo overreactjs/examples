@@ -1,4 +1,4 @@
-import { Circle, Position, Prop, Size, useDynamicProperty, usePosition, useProperty, useUpdate } from "@engine";
+import { Circle, Position, Prop, Size, useDynamicProperty, usePosition, useProperty, useUpdate } from "@overreact/engine";
 
 const CLASS_NAME = "!bg-[radial-gradient(#888_0%,_black_70%)] mix-blend-lighten";
 const FRAMES = [1.00, 1.02, 0.96, 1.04, 0.98];

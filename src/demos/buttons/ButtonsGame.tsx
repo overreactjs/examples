@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
-import { useAudio, useHaptics, useUpdate } from "@engine";
+import { useHaptics } from "@overreact/capacitor";
+import { useAudio, useUpdate } from "@overreact/engine";
 import { sounds } from "@assets";
 import { Button } from "./Button";
 import { Timer } from "./Timer";

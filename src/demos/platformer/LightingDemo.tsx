@@ -1,4 +1,4 @@
-import { Box, Device, Engine, Viewport, World, useOffsetPosition } from "@engine";
+import { Box, Device, Engine, Viewport, World, useOffsetPosition } from "@overreact/engine";
 import { Collectibles, Flame, LevelGeometry, OnscreenController, PlatformGame, Player, usePlatformGame } from "./components";
 
 export const LightingDemo = () => {

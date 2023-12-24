@@ -1,4 +1,4 @@
-import { StateProp } from "@engine";
+import { StateProp } from "@overreact/engine";
 
 export class ButtonsGameState {
   activeButton: StateProp<number | null>;

@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from "react";
-import { Property } from "@engine";
+import { Property } from "@overreact/engine";
 import { PairsGameState } from "./PairsGameState";
 
 export const PairsGameContext = React.createContext<Property<PairsGameState>>({

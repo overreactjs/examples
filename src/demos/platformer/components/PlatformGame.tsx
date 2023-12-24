@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { PlatformGameState } from "../state";
-import { Property } from "@engine";
+import { Property } from "@overreact/engine";
 
 export const PlatformGameContext = React.createContext<Property<PlatformGameState>>({
   current: new PlatformGameState(),

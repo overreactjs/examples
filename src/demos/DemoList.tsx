@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Device } from "@engine";
+import { Device } from "@overreact/engine";
 import { mobile, desktop } from "./demos";
 
 export const DemoList = () => {
