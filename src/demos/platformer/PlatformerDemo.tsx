@@ -1,10 +1,10 @@
 import { Device, Engine, Viewport, World } from "@overreact/engine";
-import { Collectibles, PlatformGame, LevelGeometry, Player, ScoreUI, OnscreenController } from "./components";
+import { Collectibles, PlatformGame, LevelGeometry, Player, ScoreUI } from "./components";
 
 export const PlatformerDemo = () => {
   return (
     <Engine>
-      <Device bg="#001122">
+      <Device bg="#001122" mode="desktop" showFPS>
         <PlatformGame>
           <Viewport>
             <World>
@@ -14,7 +14,6 @@ export const PlatformerDemo = () => {
             </World>
           </Viewport>
           <ScoreUI />
-          <OnscreenController />
         </PlatformGame>
       </Device>
     </Engine>

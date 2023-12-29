@@ -4,7 +4,7 @@ import { ButtonsGame } from "./ButtonsGame";
 export const ButtonsDemo = () => {
   return (
     <Engine>
-      <Device>
+      <Device mode="mobile">
         <ButtonsGame />
       </Device>
     </Engine>

@@ -13,8 +13,6 @@ export const mobile = [
   { name: 'Buddy (Sprite Animation)', path: '/buddy', component: BuddyDemo },
   { name: 'Marble Jar (Physics)', path: '/physics', component: MarbleJarDemo },
   { name: 'Pairs (Events)', path: '/pairs', component: PairsDemo },
-  { name: 'Platform Game (Collisions)', path: '/platformer', component: PlatformerDemo },
-  { name: 'Lighting Effects', path: '/lighting', component: LightingDemo },
   { name: 'Buttons (CSS Styles)', path: '/buttons', component: ButtonsDemo },
   { name: 'Device Motion', path: '/motion', component: MotionDemo },
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
@@ -22,6 +20,8 @@ export const mobile = [
 ];
 
 export const desktop = [
+  { name: 'Platform Game (Collisions)', path: '/platformer', component: PlatformerDemo },
   { name: 'Multiplayer (Split-screen) ', path: '/multiplayer', component: MultiplayerDemo },
+  { name: 'Lighting Effects', path: '/lighting', component: LightingDemo },
   { name: 'Viewport Scaling', path: '/viewport-scale', component: ViewportScaleDemo },
 ];

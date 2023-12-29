@@ -46,6 +46,6 @@ export class GemsState {
   ];
 
   remove(gem: GemState) {
-    this.gems = this.gems.filter((entry) => entry !== gem);
+    this.gems = this.gems.filter((entry) => entry.id !== gem.id);
   }
 }

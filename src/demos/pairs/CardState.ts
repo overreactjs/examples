@@ -1,17 +1,17 @@
-import { ObjectState, StateProp } from "@overreact/engine";
+import { ObjectState, Property, VariableProperty } from "@overreact/engine";
 import { CardType } from "./types";
 
 export class CardState extends ObjectState {
-  type: StateProp<CardType>;
-  flipped: StateProp<boolean>;
-  found: StateProp<boolean>;
-  shake: StateProp<boolean>;
+  type: Property<CardType>;
+  flipped: Property<boolean>;
+  found: Property<boolean>;
+  shake: Property<boolean>;
 
   constructor(type: CardType) {
     super();
-    this.type = new StateProp(type);
-    this.flipped = new StateProp(false);
-    this.found = new StateProp(false);
-    this.shake = new StateProp(false);
+    this.type = new VariableProperty(type);
+    this.flipped = new VariableProperty(false);
+    this.found = new VariableProperty(false);
+    this.shake = new VariableProperty(false);
   }
 }

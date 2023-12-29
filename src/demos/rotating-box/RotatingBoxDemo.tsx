@@ -3,11 +3,11 @@ import { Box, Device, Engine, Position, Size, Viewport, World, useDynamicPropert
 export const RotatingBoxDemo = () => {
   return (
     <Engine>
-      <Device>
+      <Device mode="mobile">
         <Viewport>
           <World>
             <RotatingBox />
-          </World>
+          </World> 
         </Viewport>
       </Device>
     </Engine>
@@ -26,6 +26,7 @@ const RotatingBox: React.FC = () => {
     time.current += delta;
     const width = Math.sin(time.current / 1000) * 100 + 200;
     size.current = [width, width];
+    size.current[1] = width;
     angle.current += 1;
     hue.current = (hue.current + 1) % 360;
   });

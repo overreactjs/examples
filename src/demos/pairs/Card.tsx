@@ -47,14 +47,14 @@ export const Card: React.FC<CardProps> = (props) => {
     const { color, image } = CONFIG[type.current];
     
     element.setStyle('transform', `perspective(400px) rotateY(${angle.current}deg)`);
-    element.setStyle('transformStyle', 'preserve-3d');
+    element.setStyle('transform-style', 'preserve-3d');
 
-    front.setStyle('backgroundColor', color);
-    front.setStyle('backgroundImage', `url(${image})`);
-    front.setStyle('backfaceVisibility', 'hidden');
+    front.setStyle('background-color', color);
+    front.setStyle('background-image', `url(${image})`);
+    front.setStyle('backface-visibility', 'hidden');
     front.setStyle('transform', `rotateY(180deg)`);
     
-    back.setStyle('backfaceVisibility', 'hidden');
+    back.setStyle('backface-visibility', 'hidden');
   })
 
   return (

@@ -1,10 +1,10 @@
-import { Engine, Viewport, World } from "@overreact/engine";
+import { Device, Engine, Viewport, World } from "@overreact/engine";
 import { Collectibles, LevelGeometry, PassivePlayer, PlatformGame, Player } from "./components";
 
 export const MultiplayerDemo = () => {
   return (
-    <div className="w-screen h-screen bg-black">
-      <Engine>
+    <Engine>
+      <Device bg="black" mode="desktop" showFPS>
         <PlatformGame>
           <div className="w-full h-full grid grid-cols-2 box-border p-8 gap-8">
             <div className="w-full h-full border-4 border-red-500 box-border rounded-xl overflow-hidden bg-[#001122]">
@@ -29,7 +29,7 @@ export const MultiplayerDemo = () => {
             </div>
           </div>
         </PlatformGame>
-      </Engine>
-    </div>
+      </Device>
+    </Engine>
   );
 };

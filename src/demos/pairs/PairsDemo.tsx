@@ -4,7 +4,7 @@ import { Cards } from "./Cards";
 export const PairsDemo = () => {
   return (
     <Engine>
-      <Device bg="#223344">
+      <Device bg="#223344" mode="mobile">
         <Cards />
       </Device>
     </Engine>

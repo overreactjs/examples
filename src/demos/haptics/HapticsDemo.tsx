@@ -4,7 +4,7 @@ import { useHaptics } from "@overreact/capacitor";
 export const HapticsDemo = () => {
   return (
     <Engine>
-      <Device>
+      <Device mode="mobile">
         <HapticsGame />
       </Device>
     </Engine>

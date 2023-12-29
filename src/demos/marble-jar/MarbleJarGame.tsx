@@ -1,6 +1,5 @@
 import { useState, useCallback } from "react";
 import { Position, Viewport, World, useDevice, useKeyPressed, useMotion, useOrientation, usePhysicsEngine, usePosition, useUpdate } from "@overreact/engine";
-import { Body } from "matter-js";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from './constants';
 import { useCollisionHaptics } from "./useCollisionHaptics";
 import { MarbleState } from "./MarbleState";
@@ -48,13 +47,10 @@ export const MarbleJarGame: React.FC = () => {
   const shakeMarbles = useCallback(() => {
     for (const body of physics.engine.current?.world.bodies || []) {
       if (!body.isStatic) {
-        Body.setVelocity(body, {
-          x: Math.random() * 140 - 70,
-          y: Math.random() * 180 - 90,
-        });
+        physics.setVelocity(body, Math.random() * 140 - 70, Math.random() * 180 - 90);
       }
     }
-  }, []);
+  }, [physics]);
 
   // Press: "D": Toggle the wall devices at the ends.
   useKeyPressed('KeyD', () => {

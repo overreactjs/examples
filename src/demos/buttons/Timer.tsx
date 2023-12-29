@@ -14,8 +14,8 @@ export const Timer: React.FC = () => {
   useRender(() => {
     const value = game.time.current / 30000;
     const offset = Math.max(0, Math.min(CIRCUMFERENCE, CIRCUMFERENCE * (1 - value)));
-    outer.setStyle('strokeDashoffset', offset);
-    inner.setStyle('strokeDashoffset', offset);
+    outer.setStyle('stroke-dashoffset', offset);
+    inner.setStyle('stroke-dashoffset', offset);
     points.setText(game.score.current.toString());
   });
 

@@ -4,7 +4,7 @@ import { Device, Engine, useElement, useMotion, useRender, useUpdate } from "@ov
 export const MotionDemo = () => {
   return (
     <Engine>
-      <Device allowShake>
+      <Device allowShake mode="mobile">
         <MotionGame />
       </Device>
     </Engine>
@@ -21,7 +21,7 @@ const MotionGame: React.FC = () => {
   });
 
   useRender(() => {
-    element.setStyle('backgroundColor', shaking.current > 0 ? '#0f0' : '#bbb');
+    element.setStyle('background-color', shaking.current > 0 ? '#0f0' : '#bbb');
   });
 
   return (

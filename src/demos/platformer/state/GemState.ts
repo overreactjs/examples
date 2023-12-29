@@ -1,10 +1,10 @@
-import { ObjectState, Position, StateProp } from "@overreact/engine";
+import { ObjectState, Position, Property, VariableProperty } from "@overreact/engine";
 
 export class GemState extends ObjectState {
-  pos: StateProp<Position>;
+  pos: Property<Position>;
 
   constructor(pos: Position) {
     super();
-    this.pos = new StateProp(pos);
+    this.pos = new VariableProperty(pos);
   }
 }

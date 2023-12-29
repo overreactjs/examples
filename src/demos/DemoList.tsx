@@ -4,7 +4,7 @@ import { mobile, desktop } from "./demos";
 
 export const DemoList = () => {
   return (
-    <Device hideClose>
+    <Device hideClose mode="mobile">
       <div className="w-full h-full overflow-auto">
         <div className="w-full min-h-full p-12 pt-8 box-border bg-white leading-10 text-lg">
           <Heading>Mobile Demos</Heading>
@@ -31,7 +31,7 @@ const Heading: React.FC<{ children: string }> = ({ children }) => {
 };
 
 const OrderedList: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <ol className="mx-8 list-decimal text-slate-400">{children}</ol>;
+  return <ol className="ml-8 list-decimal text-slate-400">{children}</ol>;
 };
 
 const DemoLink: React.FC<{ path: string; children: string }> = ({ path, children }) => {

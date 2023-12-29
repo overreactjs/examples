@@ -1,14 +1,14 @@
-import { ObjectState, Position, StateProp } from "@overreact/engine";
+import { ObjectState, Position, Property, VariableProperty } from "@overreact/engine";
 
 export class PlayerState extends ObjectState {
-  pos: StateProp<Position>;
-  flip: StateProp<boolean>;
-  animation: StateProp<string>;
+  pos: Property<Position>;
+  flip: Property<boolean>;
+  animation: Property<string>;
 
   constructor(pos: Position = [0, 48]) {
     super();
-    this.pos = new StateProp(pos);
-    this.flip = new StateProp(false);
-    this.animation = new StateProp('idle');
+    this.pos = new VariableProperty(pos);
+    this.flip = new VariableProperty(false);
+    this.animation = new VariableProperty('idle');
   }
 }

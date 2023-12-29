@@ -1,16 +1,16 @@
-import { StateProp } from "@overreact/engine";
+import { Property, VariableProperty } from "@overreact/engine";
 
 export class ButtonsGameState {
-  activeButton: StateProp<number | null>;
-  started: StateProp<boolean>;
-  time: StateProp<number>;
-  score: StateProp<number>;
+  activeButton: Property<number | null>;
+  started: Property<boolean>;
+  time: Property<number>;
+  score: Property<number>;
 
   constructor() {
-    this.activeButton = new StateProp(Math.floor(Math.random() * 24));
-    this.started = new StateProp(false);
-    this.time = new StateProp(0);
-    this.score = new StateProp(0);
+    this.activeButton = new VariableProperty(Math.floor(Math.random() * 20));
+    this.started = new VariableProperty(false);
+    this.time = new VariableProperty(0);
+    this.score = new VariableProperty(0);
   }
 
   addPoint() {

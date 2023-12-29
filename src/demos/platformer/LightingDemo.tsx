@@ -1,10 +1,10 @@
 import { Box, Device, Engine, Viewport, World, useOffsetPosition } from "@overreact/engine";
-import { Collectibles, Flame, LevelGeometry, OnscreenController, PlatformGame, Player, usePlatformGame } from "./components";
+import { Collectibles, Flame, LevelGeometry, PlatformGame, Player, usePlatformGame } from "./components";
 
 export const LightingDemo = () => {
   return (
     <Engine>
-      <Device bg="#001122">
+      <Device bg="#001122" showFPS>
         <PlatformGame>
           <Viewport>
             <World>
@@ -15,7 +15,6 @@ export const LightingDemo = () => {
               <Lighting />
             </World>
           </Viewport>
-          <OnscreenController />
         </PlatformGame>
       </Device>
     </Engine>

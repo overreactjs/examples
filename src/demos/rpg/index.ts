@@ -1,0 +1,1 @@
+export { RpgDemo } from "./RpgDemo";
