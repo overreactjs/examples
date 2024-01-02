@@ -5,6 +5,7 @@ import { MarbleJarDemo } from "./marble-jar";
 import { MotionDemo } from "./motion";
 import { OrientationDemo } from "./orientation";
 import { PairsDemo } from "./pairs";
+import { ParticlesDemo } from "./particles";
 import { LightingDemo, MultiplayerDemo, PlatformerDemo, ViewportScaleDemo } from "./platformer";
 import { RotatingBoxDemo } from "./rotating-box";
 
@@ -17,6 +18,7 @@ export const mobile = [
   { name: 'Device Motion', path: '/motion', component: MotionDemo },
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
   { name: 'Haptics', path: '/haptics', component: HapticsDemo },
+  { name: 'Particles', path: '/particles', component: ParticlesDemo },
 ];
 
 export const desktop = [
