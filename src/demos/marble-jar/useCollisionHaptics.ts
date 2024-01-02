@@ -7,7 +7,7 @@ export const useCollisionHaptics = () => {
   const giveFeedback = useRef(false);
 
   usePhysicsCollision((event: PhysicsEvent) => {
-    const impact = event.pairs.reduce((prev, curr) => {
+    const impact = event.pairs.reduce((prev: number, curr: { collision: { depth: number} }) => {
       return Math.max(prev, curr.collision.depth);
     }, 0);
 

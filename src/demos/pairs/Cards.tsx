@@ -4,7 +4,7 @@ import { Card } from "./Card";
 
 export const Cards: React.FC = () => {
   const game = usePairsGame();
-  const cards = useSync(() => game.current.cards);
+  const cards = useSync(() => game.current?.cards);
 
   return (
     <div className="w-full h-full grid grid-rows-5 grid-cols-4 gap-3 p-4 py-24 box-border">

@@ -1,5 +1,5 @@
 import { Device, Engine, Viewport, World } from "@overreact/engine";
-import { Collectibles, PlatformGame, LevelGeometry, Player, ScoreUI } from "./components";
+import { Collectibles, PlatformGame, LevelGeometry, Player, ScoreUI, OnscreenController } from "./components";
 
 export const PlatformerDemo = () => {
   return (
@@ -14,6 +14,7 @@ export const PlatformerDemo = () => {
             </World>
           </Viewport>
           <ScoreUI />
+          <OnscreenController />
         </PlatformGame>
       </Device>
     </Engine>

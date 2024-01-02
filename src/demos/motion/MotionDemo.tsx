@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { Device, Engine, useElement, useMotion, useRender, useUpdate } from "@overreact/engine";
+import { Device, Engine, useElement, useMotion, useProperty, useRender, useUpdate } from "@overreact/engine";
 
 export const MotionDemo = () => {
   return (
@@ -14,14 +13,17 @@ export const MotionDemo = () => {
 const MotionGame: React.FC = () => {
   const element = useElement();
   const motion = useMotion();
-  const shaking = useRef(0);
+  const shaking = useProperty(0);
 
   useUpdate((delta) => {
     shaking.current = motion.isShaking() ? 100 : Math.max(0, shaking.current - delta);
   });
 
   useRender(() => {
-    element.setStyle('background-color', shaking.current > 0 ? '#0f0' : '#bbb');
+    if (shaking.invalidated) {
+      element.setStyle('background-color', shaking.current > 0 ? '#0f0' : '#bbb');
+      shaking.invalidated = false;
+    }
   });
 
   return (

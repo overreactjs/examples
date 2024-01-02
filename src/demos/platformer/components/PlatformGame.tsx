@@ -1,8 +1,7 @@
-import React, { useContext, useRef } from "react";
+import React, { MutableRefObject, useContext, useRef } from "react";
 import { PlatformGameState } from "../state";
-import { Property } from "@overreact/engine";
 
-export const PlatformGameContext = React.createContext<Property<PlatformGameState>>({
+export const PlatformGameContext = React.createContext<MutableRefObject<PlatformGameState>>({
   current: new PlatformGameState(),
 });
 

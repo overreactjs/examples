@@ -14,7 +14,10 @@ export const Button: React.FC<ButtonProps> = ({ index, onClick }) => {
   const element = useElement<HTMLButtonElement>();
 
   useRender(() => {
-    element.setData('enabled', index === game.activeButton.current);
+    if (game.activeButton.invalidated) {
+      element.setData('enabled', index === game.activeButton.current);
+      game.activeButton.invalidated = false;
+    }
   });
 
   const handleClick = useCallback(() => {

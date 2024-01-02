@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { Property, useElement, useKeyboard, useTouch, useUpdate } from "@overreact/engine";
+import { RefObject, useRef } from "react";
+import { useElement, useKeyboard, useTouch, useUpdate } from "@overreact/engine";
 
 export const OnscreenController: React.FC = () => {
   return (
@@ -28,7 +28,7 @@ const Control: React.FC<ControlProps> = ({ className, code }) => {
   );
 };
 
-const useSimulateButton = (code: string, ref: Property<Element | null>) => {
+const useSimulateButton = (code: string, ref: RefObject<Element | null>) => {
   const isDown = useRef(false);
   const touch = useTouch();
   const keyboard = useKeyboard();

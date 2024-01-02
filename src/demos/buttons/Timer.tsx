@@ -12,11 +12,18 @@ export const Timer: React.FC = () => {
   const game = useButtonsGame();
 
   useRender(() => {
-    const value = game.time.current / 30000;
-    const offset = Math.max(0, Math.min(CIRCUMFERENCE, CIRCUMFERENCE * (1 - value)));
-    outer.setStyle('stroke-dashoffset', offset);
-    inner.setStyle('stroke-dashoffset', offset);
-    points.setText(game.score.current.toString());
+    if (game.time.invalidated) {
+      const value = game.time.current / 30000;
+      const offset = Math.max(0, Math.min(CIRCUMFERENCE, CIRCUMFERENCE * (1 - value)));
+      outer.setStyle('stroke-dashoffset', offset);
+      inner.setStyle('stroke-dashoffset', offset);
+      game.time.invalidated = false;
+    }
+
+    if (game.score.invalidated) {
+      points.setText(game.score.current.toString());
+      game.score.invalidated = false;
+    }
   });
 
   return (

@@ -22,7 +22,7 @@ export const Card: React.FC<CardProps> = (props) => {
 
   useUpdate(() => {
     if (mouse.isPressed(0) && mouse.isTarget(element.ref)) {
-      game.current.flipCard(card.current);
+      game.current?.flipCard(card.current);
     }
   });
 
@@ -43,23 +43,29 @@ export const Card: React.FC<CardProps> = (props) => {
   })
 
   useRender(() => {
-    const { type } = card.current;
-    const { color, image } = CONFIG[type.current];
-    
-    element.setStyle('transform', `perspective(400px) rotateY(${angle.current}deg)`);
-    element.setStyle('transform-style', 'preserve-3d');
+    if (angle.invalidated) {
+      element.setStyle('transform', `perspective(400px) rotateY(${angle.current}deg)`);
+      angle.invalidated = false;
+    }
 
-    front.setStyle('background-color', color);
-    front.setStyle('background-image', `url(${image})`);
-    front.setStyle('backface-visibility', 'hidden');
-    front.setStyle('transform', `rotateY(180deg)`);
-    
-    back.setStyle('backface-visibility', 'hidden');
-  })
+    if (card.invalidated) {
+      const { type } = card.current;
+      const { color, image } = CONFIG[type.current];
+
+      front.setStyle('background-color', color);
+      front.setStyle('background-image', `url(${image})`);
+      front.setStyle('backface-visibility', 'hidden');
+      front.setStyle('transform', `rotateY(180deg)`);
+   
+      back.setStyle('backface-visibility', 'hidden');
+
+      card.invalidated = false;
+    }
+  });
 
   return (
     <div ref={shaker.ref} className="w-full h-full">
-      <div ref={element.ref} className="w-full h-full relative">
+      <div ref={element.ref} className="w-full h-full relative" style={{ 'transformStyle': 'preserve-3d' }}>
         <div ref={front.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-[90%_auto] bg-center bg-no-repeat" />
         <div ref={back.ref} className="absolute top-0 left-0 w-full h-full rounded-xl bg-slate-100 border-4 border-slate-300 grid place-items-center">
           <div className="text-6xl font-bold font-[quicksand] text-slate-600">?</div>
