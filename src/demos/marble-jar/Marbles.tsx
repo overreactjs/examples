@@ -1,4 +1,4 @@
-import { Position, useMouse, useWorld, dist, useUpdate } from "@overreact/engine";
+import { Position, useWorld, dist, useUpdate, useTouch } from "@overreact/engine";
 import { MarbleState } from "./MarbleState";
 import { Marble } from "./Marble";
 
@@ -11,7 +11,7 @@ type MarblesProps = {
 };
 
 export const Marbles: React.FC<MarblesProps> = ({ marbles, onAdd, onRemove }) => {
-  const mouse = useMouse();
+  const touch = useTouch();
   const world = useWorld();
 
   /**
@@ -19,14 +19,14 @@ export const Marbles: React.FC<MarblesProps> = ({ marbles, onAdd, onRemove }) =>
    * case it is removed.
    */
   useUpdate(() => {
-    if (mouse.isPressed(0)) {
+    if (touch.isPressed()) {
       for (const marble of marbles) {
         if (dist(world.mouse.current, marble.pos.current) <= marble.radius.current + RADIUS_TOLERANCE) {
           onRemove(marble);
           return;
         }
       }
-      onAdd(world.mouse.current);
+      onAdd(world.touch.current);
     }
   });
 
