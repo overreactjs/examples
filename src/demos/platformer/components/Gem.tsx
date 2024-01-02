@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { BitmapSprite, CollisionBox, Node, useOffsetPosition, useTaggedCollision } from "@overreact/engine";
-import { GEM } from "@assets";
+import { GEM } from "../assets";
 import { GemState } from "../state";
 import { usePlatformGame } from "./PlatformGame";
 

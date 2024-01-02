@@ -1,5 +1,5 @@
 import { BitmapSprite, Device, Engine, SpriteSet, Viewport, World, useProperty } from "@overreact/engine";
-import { BUDDY_IDLE } from "@assets";
+import { BUDDY_IDLE } from "./assets";
 
 export const BuddyDemo = () => {
   const animation = useProperty('idle');

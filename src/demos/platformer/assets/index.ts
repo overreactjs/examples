@@ -1,14 +1,10 @@
 import { BitmapAsset, BitmapSpriteAsset } from "@overreact/engine";
 
-export * as cards from './cards';
-export * as sounds from './sounds';
-
 import gem from "./gem.png"
 import playerIdle from "./player-idle.png";
 import playerRun from "./player-run.png";
 import playerJump from "./player-jump.png";
 import playerFall from "./player-fall.png";
-import buddyIdle from "./buddy-idle.png";
 import jungleTileset from "./jungle.png";
 
 export const GEM: BitmapSpriteAsset = {
@@ -40,12 +36,6 @@ export const PLAYER_FALL: BitmapSpriteAsset = {
   size: [40, 36],
   count: 2,
   rate: 10,
-};
-export const BUDDY_IDLE: BitmapSpriteAsset = {
-  url: buddyIdle,
-  size: [10880, 450],
-  count: 32,
-  rate: 30,
 };
 export const JUNGLE_TILESET: BitmapAsset = {
   url: jungleTileset,

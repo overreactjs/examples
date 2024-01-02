@@ -1,6 +1,6 @@
 import React, { useId } from "react";
 import { BitmapSprite, Camera, CollisionBox, Node, SpriteSet, Velocity, useOffsetPosition, usePlatformMovement, usePosition, usePostCollisions, useProperty } from "@overreact/engine";
-import { PLAYER_FALL, PLAYER_IDLE, PLAYER_JUMP, PLAYER_RUN } from "@assets";
+import { PLAYER_FALL, PLAYER_IDLE, PLAYER_JUMP, PLAYER_RUN } from "../assets";
 import { P1_KEYBINDINGS, P2_KEYBINDINGS } from "../constants";
 import { PlayerIndicator } from "./PlayerIndicator";
 import { usePlatformGame } from "./PlatformGame";

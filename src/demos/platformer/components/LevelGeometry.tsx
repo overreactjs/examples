@@ -1,5 +1,5 @@
 import { CollisionBox, Tilemap, Tileset } from "@overreact/engine";
-import { JUNGLE_TILESET } from "@assets";
+import { JUNGLE_TILESET } from "../assets";
 
 const TILESET: Tileset = {
   image: JUNGLE_TILESET,

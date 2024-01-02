@@ -1,5 +1,5 @@
-import { cards } from "@assets";
 import { CardConfig, CardType } from "./types";
+import * as cards from "./assets";
 
 export const CONFIG: Record<CardType, CardConfig> = {
   bee: {

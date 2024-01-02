@@ -1,14 +1,12 @@
 import { useState, useCallback } from "react";
 import { useHaptics } from "@overreact/capacitor";
 import { useAudio, useUpdate } from "@overreact/engine";
-import { sounds } from "@assets";
+import { sounds } from "./assets";
 import { Button } from "./Button";
 import { Timer } from "./Timer";
 import React from "react";
 import { ButtonsGameState } from "./ButtonsGameState";
 import { ButtonsGameContext } from "./useButtonsGame";
-
-const SOUNDS = [sounds.switch005, sounds.switch006, sounds.switch007];
 
 export const ButtonsGame: React.FC = () => {
   const audio = useAudio();
@@ -20,7 +18,7 @@ export const ButtonsGame: React.FC = () => {
    * monotonous.
    */
   const playRandomSound = useCallback(() => {
-    audio.play(SOUNDS[Math.floor(Math.random() * SOUNDS.length)]);
+    audio.play(sounds[Math.floor(Math.random() * sounds.length)]);
   }, [audio]);
 
   /**
