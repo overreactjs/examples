@@ -1,3 +1,4 @@
+import { AnimalsDemo } from "./animals";
 import { BuddyDemo } from "./buddy";
 import { ButtonsDemo } from "./buttons";
 import { HapticsDemo } from "./haptics";
@@ -19,6 +20,7 @@ export const mobile = [
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
   { name: 'Haptics', path: '/haptics', component: HapticsDemo },
   { name: 'Particles', path: '/particles', component: ParticlesDemo },
+  // { name: 'Animals (Speech)', path: '/animals', component: AnimalsDemo },
 ];
 
 export const desktop = [
