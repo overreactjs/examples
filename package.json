@@ -19,7 +19,7 @@
     "@capacitor/haptics": "^5.0.6",
     "@capacitor/ios": "^5.5.1",
     "@overreact/capacitor": "^0.1.0",
-    "@overreact/engine": "^0.5.0",
+    "@overreact/engine": "^0.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

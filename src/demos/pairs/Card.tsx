@@ -1,4 +1,4 @@
-import { Prop, useElement, useMouse, useProperty, useRender, useShaker, useUpdate } from "@overreact/engine";
+import { Prop, useElement, usePointer, useProperty, useRender, useShaker, useUpdate } from "@overreact/engine";
 import { useHaptics } from "@overreact/capacitor";
 import { CardState } from "./CardState";
 import { usePairsGame } from "./PairsGame";
@@ -12,7 +12,7 @@ export const Card: React.FC<CardProps> = (props) => {
   const element = useElement();
   const front = useElement();
   const back = useElement();
-  const mouse = useMouse();
+  const pointer = usePointer();
   const shaker = useShaker({ strength: 10, phase: 20 });
   const haptics = useHaptics();
 
@@ -21,7 +21,7 @@ export const Card: React.FC<CardProps> = (props) => {
   const angle = useProperty(0);
 
   useUpdate(() => {
-    if (mouse.isPressed(0) && mouse.isTarget(element.ref)) {
+    if (pointer.isPressed() && pointer.isTarget(element.ref)) {
       game.current?.flipCard(card.current);
     }
   });
