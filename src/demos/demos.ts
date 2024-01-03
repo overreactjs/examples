@@ -20,7 +20,7 @@ export const mobile = [
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
   { name: 'Haptics', path: '/haptics', component: HapticsDemo },
   { name: 'Particles', path: '/particles', component: ParticlesDemo },
-  // { name: 'Animals (Speech)', path: '/animals', component: AnimalsDemo },
+  { name: 'Animals (Speech)', path: '/animals', component: AnimalsDemo },
 ];
 
 export const desktop = [
