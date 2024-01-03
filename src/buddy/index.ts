@@ -1,1 +1,0 @@
-export { BuddyDemo } from './BuddyDemo';

@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.littlejourney.hackathon',
-  appName: 'Hackathon!',
+  appId: 'com.overreact.examples',
+  appName: 'Overreact!',
   webDir: 'dist',
   server: {
     androidScheme: 'https'

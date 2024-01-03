@@ -1,0 +1,1 @@
+export { SpritesDemo } from './SpritesDemo';

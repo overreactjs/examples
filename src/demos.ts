@@ -1,5 +1,4 @@
 import { AnimalsDemo } from "./animals";
-import { BuddyDemo } from "./buddy";
 import { ButtonsDemo } from "./buttons";
 import { HapticsDemo } from "./haptics";
 import { MarbleJarDemo } from "./marble-jar";
@@ -9,10 +8,11 @@ import { PairsDemo } from "./pairs";
 import { ParticlesDemo } from "./particles";
 import { LightingDemo, MultiplayerDemo, PlatformerDemo, ViewportScaleDemo } from "./platformer";
 import { RotatingBoxDemo } from "./rotating-box";
+import { SpritesDemo } from "./sprites";
 
 export const mobile = [
   { name: 'Rotating Box', path: '/rotating-box', component: RotatingBoxDemo },
-  { name: 'Buddy (Sprite Animation)', path: '/buddy', component: BuddyDemo },
+  { name: 'Animations (Sprites)', path: '/sprites', component: SpritesDemo },
   { name: 'Marble Jar (Physics)', path: '/physics', component: MarbleJarDemo },
   { name: 'Pairs (Events)', path: '/pairs', component: PairsDemo },
   { name: 'Buttons (CSS Styles)', path: '/buttons', component: ButtonsDemo },

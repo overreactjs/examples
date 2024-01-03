@@ -9,9 +9,8 @@
     "build": "tsc && npm run build-styles && vite build",
     "build-styles": "tailwindcss -i ./src/index.css -o ./dist/output.css",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "app": "npm run build && npx cap sync && npx cap run ios",
-    "open": "npm run build && npx cap sync && npx cap open ios"
+    "ios": "npm run build && npx cap sync && npx @capacitor/assets generate && npx cap run ios",
+    "ios-open": "npm run build && npx cap sync && npx @capacitor/assets generate && npx cap open ios"
   },
   "dependencies": {
     "@capacitor/android": "^5.5.1",
