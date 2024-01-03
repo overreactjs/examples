@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useRef } from "react";
-import { Camera, Device, Engine, Node, Position, Viewport, clamp, useDevice, useDynamicProperty, usePointer, useProperty, useRender, useTicker, useUpdate } from "@overreact/engine";
+import { useRef } from "react";
+import { Camera, Device, Engine, Node, Position, Viewport, clamp, useDevice, useDynamicProperty, useProperty, useRender, useSwipe, useUpdate } from "@overreact/engine";
 import { ANIMALS } from "./constants";
 import { Animal } from "./Animal";
 
@@ -26,9 +26,9 @@ const AnimalsGame = () => {
 
   useUpdate(() => {
     if (swipe.hasSwiped()) {
-      if (swipe.distance() > 100) {
+      if (swipe.distance.current[1] > 100) {
         selected.current--;
-      } else if (swipe.distance() < -100) {
+      } else if (swipe.distance.current[1] < -100) {
         selected.current++;
       }
       
@@ -69,36 +69,4 @@ const AnimalsGame = () => {
       </Viewport>
     </div>
   );
-};
-
-const useSwipe = () => {
-  const pointer = usePointer();
-  const started = useRef<Position | null>(null);
-  const swiped = useRef(false);
-  const delta = useRef<number>(0);
-
-  const hasSwiped = useCallback((): boolean => {
-    return swiped.current;
-  }, []);
-
-  const distance = useCallback((): number => {
-    return delta.current;
-  }, []);
-
-  useTicker(() => {
-    if (swiped.current) {
-      swiped.current = false;
-    }
-
-    if (pointer.isDown()) {
-      started.current = started.current || [...pointer.pos.current];
-      delta.current = pointer.pos.current[1] - started.current[1];
-
-    } else if (started.current !== null) {
-      swiped.current = true;
-      started.current = null;
-    }
-  });
-
-  return useMemo(() => ({ hasSwiped, distance }), [hasSwiped, distance]);
 };

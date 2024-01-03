@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { DemoList, desktop, mobile } from "./demos";
+import { desktop, mobile } from "./demos";
+import { DemoList } from "./DemoList";
 
 import "@overreact/engine/styles.css";
 
