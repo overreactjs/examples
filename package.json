@@ -1,5 +1,5 @@
 {
-  "name": "hackathon",
+  "name": "@overreact/examples",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -9,8 +9,9 @@
     "build": "tsc && npm run build-styles && vite build",
     "build-styles": "tailwindcss -i ./src/index.css -o ./dist/output.css",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "ios": "npm run build && npx cap sync && npx @capacitor/assets generate && npx cap run ios",
-    "ios-open": "npm run build && npx cap sync && npx @capacitor/assets generate && npx cap open ios"
+    "assets": "npx @capacitor/assets generate",
+    "ios": "npm run build && npx cap sync && npm run assets && npx cap run ios",
+    "ios-open": "npm run build && npx cap sync && npm run assets && npx cap open ios"
   },
   "dependencies": {
     "@capacitor/android": "^5.5.1",
