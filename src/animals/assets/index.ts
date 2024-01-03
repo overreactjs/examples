@@ -1,0 +1,15 @@
+export { default as badger } from "./badger.svg";
+export { default as brownBear } from "./brown-bear.svg";
+export { default as deer } from "./deer.svg";
+export { default as eagle } from "./eagle.svg";
+export { default as fox } from "./fox.svg";
+export { default as grizzlyBear } from "./grizzly-bear.svg";
+export { default as hedgehog } from "./hedgehog.svg";
+export { default as mole } from "./mole.svg";
+export { default as owl } from "./owl.svg";
+export { default as snake } from "./snake.svg";
+export { default as squirrel } from "./squirrel.svg";
+export { default as turkey } from "./turkey.svg";
+export { default as vulture } from "./vulture.svg";
+export { default as wildBoar } from "./wild-boar.svg";
+export { default as wolf } from "./wolf.svg";

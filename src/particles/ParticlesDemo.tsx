@@ -1,4 +1,4 @@
-import { Device, Engine, Node, Particle, ParticleGenerator, Viewport, World, useProperty, useTouch, useUpdate } from "@overreact/engine";
+import { Device, Engine, Node, Particle, ParticleGenerator, Viewport, World, usePointer, useProperty, useUpdate } from "@overreact/engine";
 
 export const ParticlesDemo = () => {
   return (
@@ -15,7 +15,7 @@ export const ParticlesDemo = () => {
 };
 
 const Particles: React.FC = () => {
-  const touch = useTouch();
+  const pointer = usePointer();
 
   const hue = useProperty(180);
   const timeScale = useProperty(1);
@@ -55,7 +55,7 @@ const Particles: React.FC = () => {
 
   useUpdate((delta) => {
     hue.current += 0.024 * delta * timeScale.current; // 0.02
-    timeScale.current = touch.isDown() ? 0.2 : 1.0;
+    timeScale.current = pointer.isDown() ? 0.2 : 1.0;
   });
 
   return (
