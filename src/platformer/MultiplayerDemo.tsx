@@ -1,4 +1,4 @@
-import { Device, Engine, Viewport, World } from "@overreact/engine";
+import { Device, Engine, Viewport, VirtualInput, World } from "@overreact/engine";
 import { Collectibles, LevelGeometry, PassivePlayer, PlatformGame, Player } from "./components";
 
 export const MultiplayerDemo = () => {
@@ -12,7 +12,9 @@ export const MultiplayerDemo = () => {
                 <World>
                   <LevelGeometry />
                   <Collectibles />
-                  <Player index={0} showLabels />
+                  <VirtualInput>
+                    <Player index={0} showLabels />
+                  </VirtualInput>
                   <PassivePlayer index={1} />
                 </World>
               </Viewport>
@@ -22,7 +24,9 @@ export const MultiplayerDemo = () => {
                 <World>
                   <LevelGeometry />
                   <Collectibles />
-                  <Player index={1} showLabels />
+                  <VirtualInput>
+                    <Player index={1} showLabels />
+                  </VirtualInput>
                   <PassivePlayer index={0} />
                 </World>
               </Viewport>

@@ -5,7 +5,7 @@ export const MarbleJarDemo = () => {
   return (
     <Engine>
       <Physics>
-        <Device allowShake allowTilt bg="#223344" mode="mobile">
+        <Device bg="#223344" mode="mobile" showInfo showFPS>
           <MarbleJarGame />
          </Device>
       </Physics>

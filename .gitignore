@@ -24,5 +24,7 @@ dist-ssr
 *.sw?
 
 # Project specific
+.yalc
 ios
 icons
+yalc.lock

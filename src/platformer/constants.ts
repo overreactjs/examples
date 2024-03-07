@@ -1,12 +1,12 @@
 export const P1_KEYBINDINGS = {
-  jumpKey: 'KeyW',
-  leftKey: 'KeyA',
-  rightKey: 'KeyD',
+  jump: 'KeyW',
+  left: 'KeyA',
+  right: 'KeyD',
 };
 
 export const P2_KEYBINDINGS = {
-  jumpKey: 'KeyI',
-  leftKey: 'KeyJ',
-  rightKey: 'KeyL',
+  jump: 'KeyI',
+  left: 'KeyJ',
+  right: 'KeyL',
 };
   

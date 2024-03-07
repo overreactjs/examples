@@ -4,6 +4,7 @@ import { JUNGLE_TILESET } from "../assets";
 const TILESET: Tileset = {
   image: JUNGLE_TILESET,
   gridSize: [24, 20],
+  tileSize: [16, 16],
   cellSize: [48, 48],
 };
 
@@ -43,7 +44,7 @@ const TILES: number[] = [
 export const LevelGeometry: React.FC = () => {
   return (
     <>
-      <Tilemap pos={[-576, -240]} tileset={TILESET} tiles={TILES} scale={3} />
+      <Tilemap pos={[-576, -240]} tileset={TILESET} tiles={TILES} />
 
       <CollisionBox pos={[-576, -240]} size={[336, 48]} tags={['platform']} />
       <CollisionBox pos={[240, -240]} size={[336, 48]} tags={['platform']} />

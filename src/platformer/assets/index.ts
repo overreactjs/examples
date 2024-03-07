@@ -27,7 +27,7 @@ export const PLAYER_RUN: BitmapSpriteAsset = {
 };
 export const PLAYER_JUMP: BitmapSpriteAsset = {
   url: playerJump,
-  size: [40, 36],
+  size: [20, 36],
   count: 1,
   rate: 10,
 };

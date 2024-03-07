@@ -3,7 +3,7 @@ import { Device, Engine, useElement, useOrientation, useRender } from "@overreac
 export const OrientationDemo = () => {
   return (
     <Engine>
-      <Device allowShake allowTilt mode="mobile">
+      <Device mode="mobile">
         <OrientationGame />
       </Device>
     </Engine>

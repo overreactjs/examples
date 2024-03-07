@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import { Position, Viewport, World, useDevice, useKeyPressed, useMotion, useOrientation, usePhysicsEngine, usePosition, useUpdate } from "@overreact/engine";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from './constants';
-import { useCollisionHaptics } from "./useCollisionHaptics";
 import { MarbleState } from "./MarbleState";
 import { Marbles } from "./Marbles";
 import { Wall } from "./Wall";
@@ -19,9 +18,6 @@ export const MarbleJarGame: React.FC = () => {
   const right = usePosition([200, 0]);
   const top = usePosition([0, -400]);
   const bottom = usePosition([0, 400]);
-
-  // 
-  useCollisionHaptics();
   
   /**
    * Add a new marble at the given location.

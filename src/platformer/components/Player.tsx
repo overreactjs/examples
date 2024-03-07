@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import { BitmapSprite, Camera, CollisionBox, Node, SpriteSet, Velocity, useOffsetPosition, usePlatformMovement, usePosition, usePostCollisions, useProperty } from "@overreact/engine";
+import { BitmapSprite, Camera, CollisionBox, Node, SpriteSet, Velocity, useKeyboardMap, useOffsetPosition, usePlatformMovement, usePosition, usePostCollisions, useProperty } from "@overreact/engine";
 import { PLAYER_FALL, PLAYER_IDLE, PLAYER_JUMP, PLAYER_RUN } from "../assets";
 import { P1_KEYBINDINGS, P2_KEYBINDINGS } from "../constants";
 import { PlayerIndicator } from "./PlayerIndicator";
@@ -22,15 +22,17 @@ export const Player: React.FC<PlayerProps> = ({ index, showLabels = false }) => 
   const collider = useId();
 
   const colliderPos = useOffsetPosition(pos, [-25, -78]);
-  const idleSpritePos = useOffsetPosition(pos, [-30, -99 + COLLIDER_OFFSET_Y]);
-  const runSpritePos = useOffsetPosition(pos, [-33, -102 + COLLIDER_OFFSET_Y]);
+  const idleSpritePos = useOffsetPosition(pos, [-28, -102 + COLLIDER_OFFSET_Y]);
+  const runSpritePos = useOffsetPosition(pos, [-31, -99 + COLLIDER_OFFSET_Y]);
   const jumpSpritePos = useOffsetPosition(pos, [-30, -108 + COLLIDER_OFFSET_Y]);
   const fallSpritePos = useOffsetPosition(pos, [-30, -108 + COLLIDER_OFFSET_Y]);
   const labelPos = useOffsetPosition(pos, [0, -128]);
   
+  useKeyboardMap(KEY_BINDINGS[index]);
+
   const movement = usePlatformMovement(collider, pos, velocity, {
     jumpStrength: 0.8,
-    ...KEY_BINDINGS[index],
+    maxFallSpeed: 0.8,
   });
 
   usePostCollisions(() => {
