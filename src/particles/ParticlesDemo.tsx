@@ -46,11 +46,14 @@ const Particles: React.FC = () => {
     opacity.current *= 1 - (0.0096 * delta); // 0.92
     scale.current *= 1 + (0.0012 * delta); // 1.01
 
-    node.attributeStyleMap.set('opacity', CSS.number(opacity.current));
-    node.attributeStyleMap.set('transform', new CSSTransformValue([
-      new CSSTranslate(CSS.px(pos.current[0]), CSS.px(pos.current[1])),
-      new CSSScale(CSS.number(scale.current), CSS.number(scale.current)),
-    ]));
+    // node.attributeStyleMap.set('opacity', CSS.number(opacity.current));
+    // node.attributeStyleMap.set('transform', new CSSTransformValue([
+    //   new CSSTranslate(CSS.px(pos.current[0]), CSS.px(pos.current[1])),
+    //   new CSSScale(CSS.number(scale.current), CSS.number(scale.current)),
+    // ]));
+
+    node.style.opacity = String(opacity.current);
+    node.style.transform = `translate(${pos.current[0]}px, ${pos.current[1]}px) scale(${scale.current}, ${scale.current})`;
   };
 
   useUpdate((delta) => {
