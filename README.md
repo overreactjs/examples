@@ -1,11 +1,19 @@
 # Overreact Examples
 
-To run:
+A handful of examples, showing how to use the overreact game engine.
 
-```bash
-# In one terminal, run the vite dev server:
-npm run dev
+## Run in browser
 
-# In another terminal, run tailwind:
-npm run dev-styles
+First, install dependencies:
+
 ```
+npm i
+```
+
+Next, run the vite server and process tailwind styles:
+
+```
+npm run dev
+```
+
+Open `http://localhost:5173` in a browser.
