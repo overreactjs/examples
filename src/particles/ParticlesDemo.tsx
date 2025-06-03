@@ -1,4 +1,4 @@
-import { BaseParticle, Device, Engine, Node, ParticleEngine, Particles, Position, Property, VariableProperty, Velocity, Viewport, World, useFixedUpdate, useParticles, usePointer, useProperty, useUpdate } from "@overreact/engine";
+import { BaseParticle, Device, Engine, Node, ParticleEngine, Particles, Position, Prop, Property, VariableProperty, Velocity, Viewport, World, useFixedUpdate, useParticles, usePointer, useProperty, useUpdate } from "@overreact/engine";
 
 export const ParticlesDemo = () => {
   const timeScale = useProperty(1);
