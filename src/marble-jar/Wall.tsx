@@ -16,7 +16,7 @@ export const Wall: React.FC<WallProps> = (props) => {
 
   return (
     <Node>
-      <Box pos={boxPos} size={size} color="transparent" />
+      <Box pos={boxPos} size={size} color="magenta" />
       <PhysicsBox pos={pos} size={size} static />
     </Node>
   );
