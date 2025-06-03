@@ -15,6 +15,7 @@ import { ResponsiveDemo } from "./responsive";
 import { Day1Demo } from "./day-1-blobs";
 import { Day2Demo } from "./day-2-flickers";
 import { Day3Demo } from "./day-3-more-blobs";
+import { Day4Demo } from "./day-4-zx-spectrum";
 
 export const demos = [
   { name: 'Rotating Box', path: '/rotating-box', component: RotatingBoxDemo },
@@ -33,6 +34,7 @@ export const demos = [
 ];
 
 export const experiments = [
+  { name: 'Day 3: ZX Spectrum Emulation', path: '/day-4', component: Day4Demo },
   { name: 'Day 3: Ink Blob', path: '/day-3', component: Day3Demo },
   { name: 'Day 2: Flickers', path: '/day-2', component: Day2Demo },
   { name: 'Day 1: Blobs', path: '/day-1', component: Day1Demo },
