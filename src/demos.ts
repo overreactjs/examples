@@ -1,5 +1,4 @@
 // Demos
-// import { AnimalsDemo } from "./animals";
 import { ButtonsDemo } from "./buttons";
 import { HapticsDemo } from "./haptics";
 import { MarbleJarDemo } from "./marble-jar";
@@ -9,7 +8,7 @@ import { PairsDemo } from "./pairs";
 import { ParticlesDemo } from "./particles";
 import { RotatingBoxDemo } from "./rotating-box";
 import { SpritesDemo } from "./sprites";
-import { LightingDemo, MultiplayerDemo, PlatformerDemo, ViewportScaleDemo } from "./platformer";
+import { LightingDemo, MultiplayerDemo, PlatformerDemo } from "./platformer";
 import { ResponsiveDemo } from "./responsive";
 
 // Experiments
@@ -24,14 +23,12 @@ export const demos = [
   { name: 'Pairs (Events)', path: '/pairs', component: PairsDemo },
   { name: 'Buttons (CSS Styles)', path: '/buttons', component: ButtonsDemo },
   { name: 'Particles', path: '/particles', component: ParticlesDemo },
-  // { name: 'Animals (Speech)', path: '/animals', component: AnimalsDemo },
   { name: 'Device Motion', path: '/motion', component: MotionDemo },
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
   { name: 'Haptics', path: '/haptics', component: HapticsDemo },
   { name: 'Platform Game (Collisions)', path: '/platformer', component: PlatformerDemo },
   { name: 'Multiplayer (Split-screen) ', path: '/multiplayer', component: MultiplayerDemo },
   { name: 'Lighting Effects', path: '/lighting', component: LightingDemo },
-  { name: 'Viewport Scaling', path: '/viewport-scale', component: ViewportScaleDemo },
   { name: 'Responsive Screen', path: '/responsive', component: ResponsiveDemo },
 ];
 

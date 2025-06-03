@@ -7,16 +7,16 @@ export const DemoList = () => {
     <Device>
       <div className="w-full h-full overflow-auto">
         <div className="w-full min-h-full p-12 pt-8 box-border bg-white leading-10 text-lg">
-          <Heading>Experiments</Heading>
+          <Heading>Demos</Heading>
           <OrderedList>
-            {experiments.map(({ name, path }) => (
+            {demos.map(({ name, path }) => (
               <DemoLink key={path} path={path}>{name}</DemoLink>
             ))}
           </OrderedList>
 
-          <Heading>Demos</Heading>
+          <Heading>Experiments</Heading>
           <OrderedList>
-            {demos.map(({ name, path }) => (
+            {experiments.map(({ name, path }) => (
               <DemoLink key={path} path={path}>{name}</DemoLink>
             ))}
           </OrderedList>
