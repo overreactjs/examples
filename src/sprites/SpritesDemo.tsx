@@ -2,7 +2,7 @@ import { ChangeEvent, useCallback } from "react";
 import { BitmapSprite, Device, Engine, SpriteSet, Viewport, World, useProperty } from "@overreact/engine";
 import { IDLE, RUN, WALK } from "./assets";
 
-const SELECT_INPUT = 'absolute top-24 left-6 right-6 px-5 py-4 box-border bg-slate-50 text-slate-900 font-[Quicksand] font-bold text-2xl rounded-lg shadow-xl';
+const SELECT_INPUT = 'block w-[300px] px-5 py-4 box-border bg-slate-50 text-slate-900 font-[Quicksand] font-bold text-2xl rounded-lg shadow-xl';
 
 export const SpritesDemo = () => {
   const animation = useProperty('idle');
@@ -13,7 +13,7 @@ export const SpritesDemo = () => {
 
   return (
     <Engine>
-      <Device mode="mobile">
+      <Device>
         <div className="w-full h-full bg-slate-800">
           <Viewport>
             <World>
@@ -24,11 +24,13 @@ export const SpritesDemo = () => {
               </SpriteSet>
             </World>
           </Viewport>
-          <select onChange={handleChange} className={SELECT_INPUT} style={{ appearance: 'none' }}>
-            <option value="idle">Idle</option>
-            <option value="walk">Walk</option>
-            <option value="run">Run</option>
-          </select>
+          <div className="absolute top-24 w-full grid px-8 place-items-center">
+            <select onChange={handleChange} className={SELECT_INPUT} style={{ appearance: 'none' }}>
+              <option value="idle">Idle</option>
+              <option value="walk">Walk</option>
+              <option value="run">Run</option>
+            </select>
+          </div>
         </div>
       </Device>
     </Engine>

@@ -4,8 +4,10 @@ import { ButtonsGame } from "./ButtonsGame";
 export const ButtonsDemo = () => {
   return (
     <Engine>
-      <Device mode="mobile">
-        <ButtonsGame />
+      <Device>
+        <div className="w-full h-full grid place-items-center">
+          <ButtonsGame />
+        </div>
       </Device>
     </Engine>
   );

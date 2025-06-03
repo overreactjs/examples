@@ -1,5 +1,5 @@
-// Mobile
-import { AnimalsDemo } from "./animals";
+// Demos
+// import { AnimalsDemo } from "./animals";
 import { ButtonsDemo } from "./buttons";
 import { HapticsDemo } from "./haptics";
 import { MarbleJarDemo } from "./marble-jar";
@@ -9,8 +9,6 @@ import { PairsDemo } from "./pairs";
 import { ParticlesDemo } from "./particles";
 import { RotatingBoxDemo } from "./rotating-box";
 import { SpritesDemo } from "./sprites";
-
-// Desktop
 import { LightingDemo, MultiplayerDemo, PlatformerDemo, ViewportScaleDemo } from "./platformer";
 import { ResponsiveDemo } from "./responsive";
 
@@ -19,20 +17,17 @@ import { Day1Demo } from "./day-1-blobs";
 import { Day2Demo } from "./day-2-flickers";
 import { Day3Demo } from "./day-3-more-blobs";
 
-export const mobile = [
+export const demos = [
   { name: 'Rotating Box', path: '/rotating-box', component: RotatingBoxDemo },
   { name: 'Animations (Sprites)', path: '/sprites', component: SpritesDemo },
-  { name: 'Marble Jar (Physicss)', path: '/physics', component: MarbleJarDemo },
+  { name: 'Marble Jar (Physics)', path: '/physics', component: MarbleJarDemo },
   { name: 'Pairs (Events)', path: '/pairs', component: PairsDemo },
   { name: 'Buttons (CSS Styles)', path: '/buttons', component: ButtonsDemo },
+  { name: 'Particles', path: '/particles', component: ParticlesDemo },
+  // { name: 'Animals (Speech)', path: '/animals', component: AnimalsDemo },
   { name: 'Device Motion', path: '/motion', component: MotionDemo },
   { name: 'Device Orientation', path: '/orientation', component: OrientationDemo },
   { name: 'Haptics', path: '/haptics', component: HapticsDemo },
-  { name: 'Particles', path: '/particles', component: ParticlesDemo },
-  { name: 'Animals (Speech)', path: '/animals', component: AnimalsDemo },
-];
-
-export const desktop = [
   { name: 'Platform Game (Collisions)', path: '/platformer', component: PlatformerDemo },
   { name: 'Multiplayer (Split-screen) ', path: '/multiplayer', component: MultiplayerDemo },
   { name: 'Lighting Effects', path: '/lighting', component: LightingDemo },

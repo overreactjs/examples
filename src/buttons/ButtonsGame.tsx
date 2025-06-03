@@ -54,7 +54,7 @@ export const ButtonsGame: React.FC = () => {
 
   return (
     <ButtonsGameContext.Provider value={game}>
-      <div className="w-full h-full grid place-items-center">
+      <div className="w-full h-full max-w-[480px] max-h-[920px] grid place-items-center">
         <div className="w-full flex flex-col items-center gap-8">
           <Timer />
           <div className="w-full grid grid-cols-4 gap-3 gap-y-5 p-4 box-border">

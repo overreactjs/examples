@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { Device, Engine, Physics, Position, Size, useDevice, useFixedUpdate, useMotion, useOrientation, usePhysicsEngine, usePointer, usePosition, useProperty, useUpdate, useWorld, Viewport, World } from "@overreact/engine";
+import { useCallback, useState } from "react";
+import { Device, Engine, Physics, Position, Size, useDevice, useFixedUpdate, useMotion, useOrientation, usePhysicsEngine, usePointer, usePosition, useProperty, usePropertyListen, useUpdate, useWorld, Viewport, World } from "@overreact/engine";
 import { Wall } from "./Wall";
 import { Blob } from "./Blob";
 import { BlobState } from "./BlobState";
@@ -105,16 +105,14 @@ const BlobsGame: React.FC = () => {
   /**
    * Position the outer walls to align with the device size.
    */
-  useEffect(() => {
-    return device.size.listen(([w, h]) => {
-      left.current[0] = -50 - w / 2;
-      right.current[0] = 50 + w / 2;
-      top.current[1] = -50 - h / 2;
-      bottom.current[1] = 50 + h / 2;
-      width.current[0] = w;
-      height.current[1] = h;
-    });
-  }, [bottom, device.size, height, left, right, top, width]);
+  usePropertyListen(device.size, ([w, h]) => {
+    left.current[0] = -50 - w / 2;
+    right.current[0] = 50 + w / 2;
+    top.current[1] = -50 - h / 2;
+    bottom.current[1] = 50 + h / 2;
+    width.current[0] = w;
+    height.current[1] = h;
+  });
 
   /**
    * Create a new blob at the given position, unless there is already a blob there, in which

@@ -3,7 +3,7 @@ import { Box, Device, Engine, Position, Size, Viewport, World, useDynamicPropert
 export const RotatingBoxDemo = () => {
   return (
     <Engine>
-      <Device mode="mobile">
+      <Device>
         <Viewport>
           <World>
             <RotatingBox />

@@ -1,5 +1,5 @@
-import { useState, useCallback, useEffect } from "react";
-import { Position, Viewport, World, useDevice, useMotion, useOrientation, usePhysicsEngine, usePosition, useUpdate } from "@overreact/engine";
+import { useState, useCallback } from "react";
+import { Position, Viewport, World, useDevice, useMotion, useOrientation, usePhysicsEngine, usePosition, usePropertyListen, useUpdate } from "@overreact/engine";
 import { PALETTE_ISLAND_JOY_16 as COLORS } from './constants';
 import { MarbleState } from "./MarbleState";
 import { Marbles } from "./Marbles";
@@ -67,22 +67,20 @@ export const MarbleJarGame: React.FC = () => {
   /**
    * Position the outer walls to align with the device size.
    */
-  useEffect(() => {
-    return device.size.listen(([w, h]) => {
-      left.current[0] = -50 - w / 2;
-      right.current[0] = 50 + w / 2;
-      top.current[1] = -50 - h / 2;
-      bottom.current[1] = 50 + h / 2;
-    });
-  }, [bottom, device.size, left, right, top]);
+  usePropertyListen(device.size, ([w, h]) => {
+    left.current[0] = -50 - w / 2;
+    right.current[0] = 50 + w / 2;
+    top.current[1] = -50 - h / 2;
+    bottom.current[1] = 50 + h / 2;
+  });
   
   return (
     <Viewport>
       <World>
-        <Wall pos={left} size={[100, 1000]} />
-        <Wall pos={right} size={[100, 1000]} />
-        <Wall pos={top} size={[600, 100]} />
-        <Wall pos={bottom} size={[600, 100]} />
+        <Wall pos={left} size={[100, 2000]} />
+        <Wall pos={right} size={[100, 2000]} />
+        <Wall pos={top} size={[3000, 100]} />
+        <Wall pos={bottom} size={[3000, 100]} />
 
         <Marbles marbles={marbles} onAdd={addMarble} onRemove={removeMarble} />
       </World>

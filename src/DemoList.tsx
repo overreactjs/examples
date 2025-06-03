@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Device } from "@overreact/engine";
-import { mobile, desktop, experiments } from "./demos";
+import { demos, experiments } from "./demos";
 
 export const DemoList = () => {
   return (
@@ -14,16 +14,9 @@ export const DemoList = () => {
             ))}
           </OrderedList>
 
-          <Heading>Mobile Demos</Heading>
+          <Heading>Demos</Heading>
           <OrderedList>
-            {mobile.map(({ name, path }) => (
-              <DemoLink key={path} path={path}>{name}</DemoLink>
-            ))}
-          </OrderedList>
-          
-          <Heading>Desktop-only Demos</Heading>
-          <OrderedList>
-            {desktop.map(({ name, path }) => (
+            {demos.map(({ name, path }) => (
               <DemoLink key={path} path={path}>{name}</DemoLink>
             ))}
           </OrderedList>

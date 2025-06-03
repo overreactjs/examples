@@ -1,71 +1,93 @@
-import { Device, Engine, Node, Particle, ParticleGenerator, Viewport, World, usePointer, useProperty, useUpdate } from "@overreact/engine";
+import { BaseParticle, Device, Engine, Node, ParticleEngine, Particles, Position, Property, VariableProperty, Velocity, Viewport, World, useFixedUpdate, useParticles, usePointer, useProperty, useUpdate } from "@overreact/engine";
 
 export const ParticlesDemo = () => {
+  const timeScale = useProperty(1);
+
   return (
     <Engine>
-      <Device bg="#001122" mode="mobile" showFPS>
-        <Viewport>
-          <World>
-            <Particles />   
-          </World>
-        </Viewport>
-      </Device>
+      <Node timeScale={timeScale}>
+        <ParticleEngine>
+          <Device bg="#001122" showFPS>
+            <Viewport>
+              <World>  
+                <ParticleGenerator timeScale={timeScale} />
+              </World>
+            </Viewport>
+          </Device>
+        </ParticleEngine>
+      </Node>
     </Engine>
   );
 };
 
-const Particles: React.FC = () => {
+type ParticleGeneratorProps = {
+  timeScale: Prop<number>;
+};
+
+const ParticleGenerator: React.FC<ParticleGeneratorProps> = (props) => {
+  const particles = useParticles();
   const pointer = usePointer();
-
   const hue = useProperty(180);
-  const timeScale = useProperty(1);
-
-  const onInit = ({ age, pos, velocity, opacity, scale, node }: Particle) => {
-    age.current = 0;
-    pos.current[0] = Math.random() * 20 - 10;
-    pos.current[1] = 450;
-    velocity.current = [Math.random() * 0.7 - 0.35, -Math.random() - 1.0]
-    scale.current = Math.random() * 2.5 + 1;
-    opacity.current = 100;
-
-    node.style.position = 'absolute';
-    node.style.borderRadius = '100%';
-    node.style.width = '10px';
-    node.style.height = '10px';
-    node.style.marginTop = '-5px';
-    node.style.marginLeft = '-5px';
-    node.style.backgroundColor = `hsl(${Math.random() * 40 + hue.current}deg 100% 50%)`;
-  };
-
-  const onUpdate = ({ age, pos, velocity, opacity, scale, node }: Particle, delta: number) => {
-    age.current += delta;
-    pos.current[0] += velocity.current[0] * delta;
-    pos.current[1] += velocity.current[1] * delta;
-    velocity.current[0] *= 1 - (0.0012 * delta); // 0.99 
-    velocity.current[1] += 0.0024 * delta; // 0.02
-    opacity.current *= 1 - (0.0096 * delta); // 0.92
-    scale.current *= 1 + (0.0012 * delta); // 1.01
-
-    // node.attributeStyleMap.set('opacity', CSS.number(opacity.current));
-    // node.attributeStyleMap.set('transform', new CSSTransformValue([
-    //   new CSSTranslate(CSS.px(pos.current[0]), CSS.px(pos.current[1])),
-    //   new CSSScale(CSS.number(scale.current), CSS.number(scale.current)),
-    // ]));
-
-    node.style.opacity = String(opacity.current);
-    node.style.transform = `translate(${pos.current[0]}px, ${pos.current[1]}px) scale(${scale.current}, ${scale.current})`;
-  };
+  const timeScale = useProperty(props.timeScale);
+  
+  useFixedUpdate(320, () => {
+    particles.attach(new Particle(hue.current));
+  });
 
   useUpdate((delta) => {
-    hue.current += 0.024 * delta * timeScale.current; // 0.02
+    hue.current += 0.024 * delta * timeScale.current;
     timeScale.current = pointer.isDown() ? 0.2 : 1.0;
   });
 
-  return (
-    <Node timeScale={timeScale}>
-      <ParticleGenerator onInit={onInit} onUpdate={onUpdate} rate={240} lifespan={1000} />
-    </Node>
-  );
+  return <Particles />;
 };
 
+class Particle extends BaseParticle {
+  hue: number;
+  pos: Property<Position>;
+  velocity: Property<Velocity>;
+  scale: Property<number>;
+  opacity: Property<number>;
+
+  constructor(hue: number) {
+    super();
+    this.ttl = 1000;
+    this.hue = hue;
+    this.pos = new VariableProperty([Math.random() * 20 - 10, 450]);
+    this.scale = new VariableProperty(Math.random() * 2.5 + 1);
+    this.opacity = new VariableProperty(100);
+    this.velocity = new VariableProperty([Math.random() * 0.7 - 0.35, -Math.random() - 1.0]);
+  }
+
+  init() {
+    this.node.style.position = 'absolute';
+    this.node.style.borderRadius = '100%';
+    this.node.style.width = '10px';
+    this.node.style.height = '10px';
+    this.node.style.marginTop = '-5px';
+    this.node.style.marginLeft = '-5px';
+    this.node.style.backgroundColor = `hsl(${Math.random() * 40 + this.hue}deg 100% 50%)`;
+
+    const [x, y] = this.pos.current;
+    this.node.style.transform = `translate(${x}px, ${y}px) scale(${this.scale.current}, ${this.scale.current})`;
+    this.node.style.display = 'block';
+  }
+
+  update(delta: number) {
+    this.pos.current[0] += this.velocity.current[0] * delta;
+    this.pos.current[1] += this.velocity.current[1] * delta;
+    this.velocity.current[0] *= 1 - (0.0012 * delta);
+    this.velocity.current[1] += 0.0024 * delta;
+    this.opacity.current *= 1 - (0.0096 * delta);
+    this.scale.current *= 1 + (0.0012 * delta);
+
+    const [x, y] = this.pos.current;
+    this.node.style.transform = `translate(${x}px, ${y}px) scale(${this.scale.current}, ${this.scale.current})`;
+    this.node.style.opacity = String(this.opacity.current);
+  }
+
+  destroy() {
+    this.node.style.display = 'none';
+  }
+}
 

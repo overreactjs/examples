@@ -3,7 +3,7 @@ import { Device, Engine, useElement, useMotion, useProperty, useRender, useUpdat
 export const MotionDemo = () => {
   return (
     <Engine>
-      <Device mode="mobile">
+      <Device>
         <MotionGame />
       </Device>
     </Engine>
