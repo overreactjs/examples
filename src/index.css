@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  background: black;
+}
+
 body {
   margin: 0;
 }
@@ -9,4 +13,12 @@ body {
 body.debug * {
   outline: 2px solid #0ff;
   outline-offset: -1px;
+}
+
+.blobs {
+  filter: blur(10px) brightness(1.7) saturate(10) contrast(20);
+}
+
+.blobs2 {
+  filter: blur(15px) brightness(2) contrast(20) invert(1);
 }
