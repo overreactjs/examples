@@ -1,3 +1,3 @@
 export { Screen } from "./Screen";
-export { Tilemap } from "./Tilemap";
-export { ZXEntity, ZXPaper, ZXPen, ZXPaperSprite, ZXPenSprite, ZXSprite } from "./ZXEntity";
+export { ZXPaper, ZXPen, ZXSprite } from "./ZXEntity";
+export { ZXPortals } from "./ZXPortals";

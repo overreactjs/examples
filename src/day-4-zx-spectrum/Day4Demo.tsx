@@ -1,8 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import { BitmapImage, Box, Device, Engine, Node, Position, Prop, useProperty, useUpdate } from "@overreact/engine";
 import { IMAGE, PLAYER } from "./assets";
-import { Screen, ZXPaper, ZXPen, ZXSprite } from "./components";
-import { ZXPortals } from "./components/ZXPortals";
+import { Screen, ZXPaper, ZXPen, ZXPortals, ZXSprite } from "./components";
 
 const FACTOR = 1000;
 
@@ -20,7 +19,7 @@ export const Day4Demo = () => {
       <Engine>
         <Device bg="black" showFPS>
           <Screen size={[256, 192]} scale="auto">
-            {active && <Game />}
+            {active && <Scene />}
             <ZXPortals />
           </Screen>
         </Device>
@@ -29,7 +28,7 @@ export const Day4Demo = () => {
   );
 };
 
-const Game: React.FC = () => {
+const Scene = () => {
   const time = useProperty(0);
   const pos1 = useProperty<Position>([0, 0]);
   const pos2 = useProperty<Position>([0, 0]);
@@ -54,33 +53,33 @@ const Game: React.FC = () => {
 
   return (
     <>
-      <Foo paper="#00f" pen="#f0f" pos={[32, 48]} />
-      <Foo paper="#ff0" pen="#f00" pos={[48, 64]} />
-      <Foo paper="#0f0" pen="#00f" pos={[64, 80]} />
-      <Foo paper="#0ff" pen="#ff0" pos={[80, 96]} />
-      <Foo paper="#f0f" pen="#00f" pos={[96, 112]} />
+      <BackgroundSprite paper="#00f" pen="#f0f" pos={[32, 48]} />
+      <BackgroundSprite paper="#ff0" pen="#f00" pos={[48, 64]} />
+      <BackgroundSprite paper="#0f0" pen="#00f" pos={[64, 80]} />
+      <BackgroundSprite paper="#0ff" pen="#ff0" pos={[80, 96]} />
+      <BackgroundSprite paper="#f0f" pen="#00f" pos={[96, 112]} />
 
-      <Foo paper="#0ff" pen="#f00" pos={[128, 48]} />
-      <Foo paper="#00f" pen="#0f0" pos={[144, 64]} />
-      <Foo paper="#f0f" pen="#ff0" pos={[160, 80]} />
-      <Foo paper="#f00" pen="#00f" pos={[176, 96]} />
-      <Foo paper="#ff0" pen="#0ff" pos={[192, 112]} />
+      <BackgroundSprite paper="#0ff" pen="#f00" pos={[128, 48]} />
+      <BackgroundSprite paper="#00f" pen="#0f0" pos={[144, 64]} />
+      <BackgroundSprite paper="#f0f" pen="#ff0" pos={[160, 80]} />
+      <BackgroundSprite paper="#f00" pen="#00f" pos={[176, 96]} />
+      <BackgroundSprite paper="#ff0" pen="#0ff" pos={[192, 112]} />
 
-      <Bar pos={pos1} />
-      <Bar pos={pos2} />
-      <Bar pos={pos3} />
-      <Bar pos={pos4} />
+      <ForegroundSprite pos={pos1} />
+      <ForegroundSprite pos={pos2} />
+      <ForegroundSprite pos={pos3} />
+      <ForegroundSprite pos={pos4} />
     </>
   );
 };
 
-type FooProps = {
+type BackgroundSpriteProps = {
   pos: Prop<Position>;
   paper: string;
   pen: string;
 };
 
-const Foo: React.FC<FooProps> = ({ pos, paper, pen }) => {
+const BackgroundSprite = ({ pos, paper, pen }: BackgroundSpriteProps) => {
   return (
     <Node pos={pos}>
       <ZXPaper>
@@ -96,11 +95,11 @@ const Foo: React.FC<FooProps> = ({ pos, paper, pen }) => {
   );
 };
 
-type BarProps = {
+type ForegroundSpriteProps = {
   pos: Prop<Position>;
 };
 
-const Bar: React.FC<BarProps> = ({ pos }) => {
+const ForegroundSprite = ({ pos }: ForegroundSpriteProps) => {
   return (
     <Node pos={pos}>
       <ZXSprite>

@@ -4,8 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { demos, experiments } from "./demos";
 import { DemoList } from "./DemoList";
 
-import "@overreact/engine/styles.css";
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>

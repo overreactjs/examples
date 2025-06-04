@@ -26,7 +26,7 @@ export const Day1Demo = () => {
     <Engine>
       <Physics>
         <Device bg="#000000" showFPS>
-          <div className="blobs w-full h-full bg-black">
+          <div className="day-1-blobs w-full h-full bg-black">
             <Viewport>
               <World>
                 <BlobsGame />

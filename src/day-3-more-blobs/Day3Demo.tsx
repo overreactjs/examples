@@ -8,7 +8,7 @@ export const Day3Demo = () => {
     <Engine>
       <Physics>
         <Device bg="#ffffff" showFPS>
-          <div className="blobs2 w-full h-full bg-black">
+          <div className="day-3-blobs w-full h-full bg-black">
             <Viewport>
               <World>
                 <BlobsGame />

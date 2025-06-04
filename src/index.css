@@ -15,15 +15,21 @@ body.debug * {
   outline-offset: -1px;
 }
 
-.blobs {
+/* Day 1: Blobs */
+
+.day-1-blobs {
   filter: blur(10px) brightness(1.7) saturate(10) contrast(20);
 }
 
-.blobs2 {
+/* Day 3: Ink Blob */
+
+.day-3-blobs {
   filter: blur(15px) brightness(2) contrast(20) invert(1);
 }
 
-.zx-wrapper {
+/* Day 4: ZX Spectrum Emulation */
+
+.day-4-zx-wrapper {
   position: absolute;
   top: 0;
   left: 0;

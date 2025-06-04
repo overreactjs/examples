@@ -1,8 +1,6 @@
-import { Position, useWorld, dist, useUpdate, usePointer } from "@overreact/engine";
+import { Position, useWorld, usePointer, useFixedUpdate } from "@overreact/engine";
 import { MarbleState } from "./MarbleState";
 import { Marble } from "./Marble";
-
-const RADIUS_TOLERANCE = 10;
 
 type MarblesProps = {
   marbles: MarbleState[];
@@ -10,23 +8,17 @@ type MarblesProps = {
   onRemove: (marble: MarbleState) => void;
 };
 
-export const Marbles: React.FC<MarblesProps> = ({ marbles, onAdd, onRemove }) => {
-  const { isPressed } = usePointer();
+export const Marbles: React.FC<MarblesProps> = ({ marbles, onAdd }) => {
+  const pointer = usePointer();
   const world = useWorld();
 
   /**
-   * Create a new marble at the given position, unless there is already a marble there, in which
-   * case it is removed.
+   * Create a new marble at the given mouse/pointer position.
    */
-  useUpdate(() => {
-    if (isPressed()) {
-      for (const marble of marbles) {
-        if (dist(world.pointer.current, marble.pos.current) <= marble.radius.current + RADIUS_TOLERANCE) {
-          onRemove(marble);
-          return;
-        }
-      }
-      onAdd(world.pointer.current);
+  useFixedUpdate(15, () => {
+    if (pointer.isDown()) {
+      const [x, y] = world.pointer.current;
+      onAdd([x + Math.random() * 10 - 5, y + Math.random() * 10 - 5]);
     }
   });
 

@@ -34,7 +34,7 @@ export const demos = [
 ];
 
 export const experiments = [
-  { name: 'Day 3: ZX Spectrum Emulation', path: '/day-4', component: Day4Demo },
+  { name: 'Day 4: ZX Spectrum Emulation', path: '/day-4', component: Day4Demo },
   { name: 'Day 3: Ink Blob', path: '/day-3', component: Day3Demo },
   { name: 'Day 2: Flickers', path: '/day-2', component: Day2Demo },
   { name: 'Day 1: Blobs', path: '/day-1', component: Day1Demo },
