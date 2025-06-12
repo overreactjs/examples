@@ -5,7 +5,7 @@ export const MultiplayerDemo = () => {
   return (
     <Engine>
       <PlatformGame>
-        <Device bg="black" mode="desktop" showFPS>
+        <Device bg="black" showFPS>
           <div className="w-full h-full grid grid-cols-2 box-border p-8 gap-8">
             <div className="w-full h-full border-4 border-red-500 box-border rounded-xl overflow-hidden bg-[#001122]">
               <Viewport>
