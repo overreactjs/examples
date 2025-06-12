@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
-import { Circle, Device, Engine, Tilemap, Tileset, useProperty, useUpdate } from "@overreact/engine";
+import { useCallback, useMemo } from "react";
+import { Circle, Device, Engine, Position, randi, Tilemap, Tileset, useProperty, useTiles, useUpdate } from "@overreact/engine";
 import { Screen } from "./Screen";
 import tileset from "./tileset.png";
 
@@ -43,7 +43,7 @@ const Maze = () => {
 
   return (
     <Screen size={[768, 768]} scale={1}>
-      <div className="w-full h-full outline-[2px] outline outline-[#333333] rounded-sm">
+      <div className="w-full h-full outline-[2px] outline outline-[#333333] bg-[#333333] rounded-sm">
         <Tilemap tileset={TILESET} tiles={tiles} />
         <Circle size={[16, 16]} pos={[8, 8]} color="#333333" />
         <Circle size={[16, 16]} pos={[744, 744]} color="#333333" />
@@ -56,50 +56,31 @@ const Maze = () => {
  * Returns the tiles for a maze, along with a 'generate' function to trigger random generation.
  */
 const useMaze = () => {
-  const [tiles, setTiles] = useState(new Array(TILESET.gridSize[0] * TILESET.gridSize[1]).fill(0));
+  const tiles = useTiles(TILESET.gridSize);
   const active = useProperty(false);
 
   const generate = useCallback(async () => {
     active.current = true;
+    tiles.update(() => 0);
 
-    const tiles = new Array(TILESET.gridSize[0] * TILESET.gridSize[1]).fill(0);
-    const candidates: number[] = [];
+    const getNeighbours = ([x, y]: Position) => {
+      const neighbours: Position[] = [];
+      const deltas = [[1, 0], [-1, 0], [0, 1], [0, -1]];
 
-    const fromIndex = (index: number): [number, number] => {
-      const x = index % TILESET.gridSize[0];
-      const y = Math.floor(index / TILESET.gridSize[0]);
-      return [x, y];
-    };
-
-    const toIndex = (x: number, y: number): number => {
-      return y * TILESET.gridSize[0] + x;
-    };
-
-    const getNeighbours = (index: number) => {
-      const [x, y] = fromIndex(index);
-      const neighbours = [];
-  
-      if (x < TILESET.gridSize[0] - 1 && tiles[toIndex(x + 1, y)] === 0) {
-        neighbours.push(toIndex(x + 1, y));
-      }
-  
-      if (x > 0 && tiles[toIndex(x - 1, y)] === 0) {
-        neighbours.push(toIndex(x -1, y));
-      }
-  
-      if (y < TILESET.gridSize[1] - 1 && tiles[toIndex(x, y + 1)] === 0) {
-        neighbours.push(toIndex(x, y + 1));
-      }
-  
-      if (y > 0 && tiles[toIndex(x, y - 1)] === 0) {
-        neighbours.push(toIndex(x, y - 1));
+      for (const [dx, dy] of deltas) {
+        if (tiles.get([x + dx, y + dy]) === 0) {
+          neighbours.push([x + dx, y + dy]);
+        }
       }
   
       return neighbours;
     };
 
-    candidates.push(Math.floor(Math.random() * tiles.length));
+    // Pick a random starting point.
+    const candidates: Position[] = [];
+    candidates.push([randi(tiles.size[0]), randi(tiles.size[1])]);
 
+    // Keep track of how long each generation chain is.
     let chainLength = 0;
     
     while (candidates.length > 0) {
@@ -110,30 +91,35 @@ const useMaze = () => {
         
         if (neighbours.length > 0) {
           if (chainLength < 5) {
-            const neighbour = neighbours[Math.floor(Math.random() * neighbours.length)];
+            const value = tiles.get(cell) || 0;
+            const neighbour = neighbours[randi(neighbours.length)];
             candidates.push(neighbour);
             chainLength += 1;
 
             await wait(0);
 
-            if (neighbour - cell === 1) {
-              tiles[neighbour] = 8;
-              tiles[cell] = tiles[cell] | 2;
+            // east
+            if (neighbour[0] - cell[0] === 1) {
+              tiles.set(neighbour, 8);
+              tiles.set(cell, value | 2);
             }
 
-            if (neighbour - cell === -1) {
-              tiles[neighbour] = 2;
-              tiles[cell] = tiles[cell] | 8;
+            // west
+            if (cell[0] - neighbour[0] === 1) {
+              tiles.set(neighbour, 2);
+              tiles.set(cell, value | 8);
             }
 
-            if (neighbour - cell === TILESET.gridSize[0]) {
-              tiles[neighbour] = 1;
-              tiles[cell] = tiles[cell] | 4;
+            // south
+            if (neighbour[1] - cell[1] === 1) {
+              tiles.set(neighbour, 1);
+              tiles.set(cell, value | 4);
             }
 
-            if (neighbour - cell === -TILESET.gridSize[0]) {
-              tiles[neighbour] = 4;
-              tiles[cell] = tiles[cell] | 1;
+            // north
+            if (cell[1] - neighbour[1] === 1) {
+              tiles.set(neighbour, 4);
+              tiles.set(cell, value | 1);
             }
           } else {
             candidates.pop();
@@ -145,12 +131,10 @@ const useMaze = () => {
           chainLength = 0;
         }
       }
-      
-      setTiles([...tiles]);
     }
 
     active.current = false;
-  }, [active]);
+  }, [active, tiles]);
 
   return useMemo(() => ({ active, tiles, generate }), [active, tiles, generate]);
 };
