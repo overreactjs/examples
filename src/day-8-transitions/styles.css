@@ -1,0 +1,26 @@
+:root {
+  view-transition-name: none;
+}
+
+.slide {
+  view-transition-name: slide;
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(slide),
+::view-transition-new(slide) {
+  animation: none !important;
+  pointer-events: none;
+}
+
+/**
+ * For some transitions we apply the clip mask to the previous state,
+ * so we need to pull it up above the new state.
+ */
+.circleOut::view-transition-old(slide),
+.squareOut::view-transition-old(slide) {
+  z-index: 1;
+}
