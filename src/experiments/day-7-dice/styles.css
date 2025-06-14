@@ -30,6 +30,7 @@
   border: 5px solid #f6f3f0;
   transform-style: preserve-3d;
   background: linear-gradient(145deg, #d6d4d0, #fff);
+  box-shadow: inset -1px -1px white, inset 1px 1px 4px #00000005;
 }
 
 .face::before {
