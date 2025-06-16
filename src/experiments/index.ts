@@ -1,4 +1,5 @@
 import { Day1Demo } from "./day-1-blobs";
+import { Day10Demo } from "./day-10-marble-maze";
 import { Day2Demo } from "./day-2-flickers";
 import { Day3Demo } from "./day-3-more-blobs";
 import { Day4Demo } from "./day-4-zx-spectrum";
@@ -9,6 +10,7 @@ import { Day8Demo } from "./day-8-transitions";
 import { Day9Demo } from "./day-9-pixelate-filter";
 
 export const experiments = [
+  { name: 'Day 10: Marble Maze', path: '/day-10', component: Day10Demo },
   { name: 'Day 9: Pixelate Filter', path: '/day-9', component: Day9Demo },
   { name: 'Day 8: Transitions', path: '/day-8', component: Day8Demo },
   { name: 'Day 7: Dice', path: '/day-7', component: Day7Demo },

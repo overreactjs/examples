@@ -1,6 +1,5 @@
 import { useCallback, useMemo } from "react";
 import { Circle, Device, Engine, Position, randi, Tilemap, Tileset, useProperty, useTiles, useUpdate } from "@overreact/engine";
-import { Screen } from "./Screen";
 import tileset from "./tileset.png";
 
 const TILESET: Tileset = {
@@ -17,7 +16,9 @@ export const Day6Demo = () => {
   return (
     <Engine>
       <Device bg="#ffffff" showFPS>
-        <Maze />
+        <div className="w-full h-full grid place-items-center">
+          <Maze />
+        </div>
       </Device>
     </Engine>
   );
@@ -42,13 +43,11 @@ const Maze = () => {
   });
 
   return (
-    <Screen size={[768, 768]} scale={1}>
-      <div className="w-full h-full outline-[2px] outline outline-[#333333] bg-[#333333] rounded-sm">
-        <Tilemap tileset={TILESET} tiles={tiles} />
-        <Circle size={[16, 16]} pos={[8, 8]} color="#333333" />
-        <Circle size={[16, 16]} pos={[744, 744]} color="#333333" />
-      </div>
-    </Screen>
+    <div className="w-[768px] h-[768px] outline-[2px] outline outline-[#333333] bg-[#333333] rounded-sm">
+      <Tilemap tileset={TILESET} tiles={tiles} />
+      <Circle size={[16, 16]} pos={[8, 8]} color="#333333" />
+      <Circle size={[16, 16]} pos={[744, 744]} color="#333333" />
+    </div>
   );
 };
 
