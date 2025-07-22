@@ -9,17 +9,21 @@ import { Day8Demo } from "./day-8-transitions";
 import { Day9Demo } from "./day-9-pixelate-filter";
 import { Day10Demo } from "./day-10-marble-maze";
 import { Day11Demo } from "./day-11-destructible-terrain";
+import { Day12Demo } from "./day-12-pointer-trail";
+import { Day13Demo } from "./day-13-confetti";
 
 export const experiments = [
-  { name: 'Day 11: Destructible Terrain', path: '/day-11', component: Day11Demo },
-  { name: 'Day 10: Marble Maze', path: '/day-10', component: Day10Demo },
-  { name: 'Day 9: Pixelate Filter', path: '/day-9', component: Day9Demo },
-  { name: 'Day 8: Transitions', path: '/day-8', component: Day8Demo },
-  { name: 'Day 7: Dice', path: '/day-7', component: Day7Demo },
-  { name: 'Day 6: Maze Builder', path: '/day-6', component: Day6Demo },
-  { name: 'Day 5: Pointer Proximity', path: '/day-5', component: Day5Demo },
-  { name: 'Day 4: ZX Spectrum Emulation', path: '/day-4', component: Day4Demo },
-  { name: 'Day 3: Ink Blob', path: '/day-3', component: Day3Demo },
-  { name: 'Day 2: Flickers', path: '/day-2', component: Day2Demo },
-  { name: 'Day 1: Blobs', path: '/day-1', component: Day1Demo },
+  { name: '#13 – Confetti', path: '/day-13', component: Day13Demo },
+  { name: '#12 – Pointer Trail', path: '/day-12', component: Day12Demo },
+  { name: '#11 – Destructible Terrain', path: '/day-11', component: Day11Demo },
+  { name: '#10 – Marble Maze', path: '/day-10', component: Day10Demo },
+  { name: '#9 – Pixelate Filter', path: '/day-9', component: Day9Demo },
+  { name: '#8 – Transitions', path: '/day-8', component: Day8Demo },
+  { name: '#7 – Dice', path: '/day-7', component: Day7Demo },
+  { name: '#6 – Maze Builder', path: '/day-6', component: Day6Demo },
+  { name: '#5 – Pointer Proximity', path: '/day-5', component: Day5Demo },
+  { name: '#4 – ZX Spectrum Emulation', path: '/day-4', component: Day4Demo },
+  { name: '#3 – Ink Blob', path: '/day-3', component: Day3Demo },
+  { name: '#2 – Flickers', path: '/day-2', component: Day2Demo },
+  { name: '#1 – Blobs', path: '/day-1', component: Day1Demo },
 ];
